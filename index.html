@@ -1,0 +1,2632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Shiwam Singh · Boundary Layer Meteorology · IIT Roorkee</title>
+<meta name="description" content="Shiwam Singh, PhD researcher at IIT Roorkee, works on surface layer parameterization in numerical weather prediction models over mountainous terrain. EGU 2026 Early Career Scientist travel awardee.">
+<meta name="keywords" content="Shiwam Singh, IIT Roorkee, boundary layer meteorology, surface layer parameterization, WRF model, Monin-Obukhov similarity theory, numerical weather prediction, mountain meteorology, eddy covariance, EGU, AGU, GEWEX">
+<meta name="author" content="Shiwam Singh">
+<meta property="og:title" content="Shiwam Singh · Boundary Layer Meteorology · IIT Roorkee">
+<meta property="og:description" content="PhD researcher working on surface-atmosphere exchange and NWP model improvement over mountainous terrain.">
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://shiwam-singh.github.io">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shiwam Singh",
+  "email": "shivambela1@gmail.com",
+  "telephone": "+91 9198093834",
+  "jobTitle": "PhD Researcher, Atmospheric Science",
+  "affiliation": {
+    "@type": "Organization",
+    "name": "Indian Institute of Technology Roorkee",
+    "department": "Centre of Excellence in Disaster Mitigation and Management"
+  },
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "Indian Institute of Technology Hyderabad", "description": "M.Sc Mathematics, 2020-2022" },
+    { "@type": "CollegeOrUniversity", "name": "Kisan P.G. College, Dr. RMLAU Ayodhya", "description": "B.Sc Mathematics, 2016-2019" }
+  ],
+  "knowsAbout": ["Boundary Layer Meteorology","Surface Layer Parameterization","Weather Research and Forecasting Model","WRF-ARW","WRF-Chem","WRF-UCM","RegCM","Monin-Obukhov Similarity Theory","Numerical Weather Prediction","Mountain Meteorology","Data Assimilation","Eddy Covariance"],
+  "award": ["Early Career Scientist Travel Support Awardee, EGU General Assembly 2026","Travel Grant Awardee, HPC4Climate Summer School 2025","2nd Prize Poster Presentation, Research Scholar's Day 2025","GATE 2022 and 2023","JAM 2019 and 2020"],
+  "url": "https://shiwam-singh.github.io",
+  "sameAs": [
+    "https://www.linkedin.com/in/shiwam-singh-ab1392219",
+    "https://scholar.google.co.in/citations?user=D6hiOkkAAAAJ&hl=en",
+    "https://www.researchgate.net/profile/Shiwam-Singh-2"
+  ]
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ================================================================
+   DESIGN TOKENS — BLUISH, SEAMLESS, PERFORMANT
+================================================================ */
+:root{
+  --ink:#eaf2fa;
+  --ink-2:#ffffff;
+  --ink-3:#f7fbfe;
+  --wash:rgba(20,60,110,.04);
+  --wash-2:rgba(20,60,110,.08);
+  --line:rgba(20,60,110,.13);
+  --line-2:rgba(20,60,110,.26);
+  --text:#0a1c2e;
+  --dim:#3a5872;
+  --faint:#6b8aa6;
+  --brass:#c8821e;
+  --brass-2:#9c6212;
+  --teal:#0d8d9c;
+  --blue:#1668d0;
+  --blue-2:#0d4b9a;
+  --sky:#4ba3e3;
+  --paper:#f2f7fc;
+  --rail:250px;
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --ease:cubic-bezier(.66,0,.2,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  /* accent used by cards; was referenced but never defined, which left card backgrounds transparent */
+  --a-rgb:22 104 208;
+  --accent:#1668d0;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:var(--sans);
+  background:var(--ink);
+  color:var(--text);
+  line-height:1.62;
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(22,104,208,.26);color:#0a1c2e}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+
+/* ================================================================
+   SKY — bluish smooth gradient
+================================================================ */
+.sky{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 1300px 800px at 5% -20%, rgba(0,190,255,.32), transparent 60%),
+    radial-gradient(ellipse 1000px 700px at 98% 5%, rgba(80,90,255,.28), transparent 58%),
+    radial-gradient(ellipse 900px 600px at 25% 55%, rgba(190,60,255,.18), transparent 55%),
+    radial-gradient(ellipse 800px 500px at 75% 70%, rgba(0,220,200,.24), transparent 55%),
+    radial-gradient(ellipse 1400px 520px at 50% 118%, rgba(150,198,240,.58), transparent 72%),
+    linear-gradient(180deg,#f7fbff 0%, #eaf2fb 46%, #dbe8f6 100%);
+  background-size:130% 130%, 120% 120%, 110% 110%, 110% 110%, 110% 110%, 100% 100%;
+  background-position:0% 0%, 100% 0%, 25% 55%, 75% 70%, 50% 100%, 0 0;
+  animation:skyDrift 30s ease-in-out infinite alternate;
+}
+@keyframes skyDrift{
+  0%{background-position:0% 0%, 100% 0%, 25% 55%, 75% 70%, 50% 100%, 0 0}
+  100%{background-position:5% 3%, 95% 5%, 30% 50%, 70% 65%, 50% 100%, 0 0}
+}
+#flow{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.9}
+.ridge{position:fixed;left:0;right:0;bottom:0;height:30vh;z-index:1;pointer-events:none;opacity:.7}
+
+/* ================================================================
+   GEOMETRIC BACKGROUND — rotating rings, floating polygons, grids
+================================================================ */
+.geo{
+  position:fixed;inset:0;z-index:1;pointer-events:none;overflow:hidden;
+  will-change:transform;
+}
+.geo svg{
+  position:absolute;width:100%;height:100%;
+  top:0;left:0;
+}
+
+.ring{
+  position:absolute;border-radius:50%;
+  border:1.5px solid rgba(22,104,208,.18);
+  top:50%;left:50%;
+  transform-origin:center;
+  will-change:transform;
+}
+.ring.r1{
+  width:70vmin;height:70vmin;margin:-35vmin 0 0 -35vmin;
+  border-color:rgba(0,150,255,.22);
+  animation:spin 60s linear infinite;
+}
+.ring.r2{
+  width:100vmin;height:100vmin;margin:-50vmin 0 0 -50vmin;
+  border-color:rgba(0,205,185,.22);
+  border-style:dashed;
+  animation:spin 90s linear infinite reverse;
+}
+.ring.r3{
+  width:130vmin;height:130vmin;margin:-65vmin 0 0 -65vmin;
+  border-color:rgba(176,60,255,.17);
+  animation:spin 140s linear infinite;
+}
+.ring.r4{
+  width:45vmin;height:45vmin;margin:-22.5vmin 0 0 -22.5vmin;
+  border-color:rgba(255,59,160,.16);
+  animation:spin 45s linear infinite reverse;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.poly{
+  position:absolute;will-change:transform;
+  opacity:.5;
+}
+.poly.p1{left:8%;top:18%;animation:float1 22s ease-in-out infinite}
+.poly.p2{right:12%;top:32%;animation:float2 26s ease-in-out infinite}
+.poly.p3{left:22%;bottom:22%;animation:float3 30s ease-in-out infinite}
+.poly.p4{right:18%;bottom:18%;animation:float4 24s ease-in-out infinite}
+.poly.p5{left:52%;top:12%;animation:float1 28s ease-in-out infinite reverse}
+@keyframes float1{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%{transform:translate3d(30px,-25px,0) rotate(12deg)}
+}
+@keyframes float2{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%{transform:translate3d(-35px,20px,0) rotate(-15deg)}
+}
+@keyframes float3{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%{transform:translate3d(25px,30px,0) rotate(10deg)}
+}
+@keyframes float4{
+  0%,100%{transform:translate3d(0,0,0) rotate(0deg)}
+  50%{transform:translate3d(-28px,-22px,0) rotate(-8deg)}
+}
+
+.halo{
+  position:absolute;border-radius:50%;filter:blur(90px);will-change:transform;
+  mix-blend-mode:screen;
+}
+.halo.h1{
+  width:55vw;height:55vw;left:-15vw;top:-10vh;
+  background:radial-gradient(circle,#00cfe0,transparent 70%);
+  opacity:.5;
+  animation:halo1 24s ease-in-out infinite;
+}
+.halo.h2{
+  width:48vw;height:48vw;right:-12vw;top:10vh;
+  background:radial-gradient(circle,#2f6cff,transparent 70%);
+  opacity:.48;
+  animation:halo2 30s ease-in-out infinite;
+}
+.halo.h3{
+  width:42vw;height:42vw;left:30vw;bottom:-15vh;
+  background:radial-gradient(circle,#b03cff,transparent 70%);
+  opacity:.44;
+  animation:halo3 34s ease-in-out infinite;
+}
+.halo.h4{
+  width:40vw;height:40vw;right:-10vw;bottom:-10vh;
+  background:radial-gradient(circle,#ff3ba0,transparent 70%);
+  opacity:.34;
+  animation:halo4 28s ease-in-out infinite;
+}
+@keyframes halo1{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(6vw,4vh,0) scale(1.12)}
+}
+@keyframes halo2{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-7vw,5vh,0) scale(1.15)}
+}
+@keyframes halo3{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(-5vw,-6vh,0) scale(1.1)}
+}
+@keyframes halo4{
+  0%,100%{transform:translate3d(0,0,0) scale(1)}
+  50%{transform:translate3d(5vw,-4vh,0) scale(1.1)}
+}
+
+.grid-dots{
+  position:absolute;inset:0;
+  background-image:radial-gradient(rgba(0,120,220,.24) 1px, transparent 1px);
+  background-size:36px 36px;
+  opacity:.32;
+  animation:gridPulse 12s ease-in-out infinite;
+}
+@keyframes gridPulse{
+  0%,100%{opacity:.26}
+  50%{opacity:.4}
+}
+
+/* ================================================================
+   RAIL
+================================================================ */
+.rail{
+  position:fixed;top:0;left:0;bottom:0;width:var(--rail);z-index:20;
+  display:flex;flex-direction:column;
+  padding:26px 20px 20px 26px;
+  border-right:1px solid var(--line);
+  background:linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.58));
+  backdrop-filter: blur(12px);
+}
+.brand{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.mono-mark{
+  width:48px;height:48px;border-radius:50%;flex:none;
+  display:grid;place-items:center;
+  border:1px solid var(--line-2);
+  background:radial-gradient(circle at 32% 28%, #ffffff, #dee9f3);
+  font-family:var(--serif);font-weight:600;font-size:1.25rem;color:var(--blue);
+  letter-spacing:.02em;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  position:relative;
+}
+.brand b{font-family:var(--serif);font-weight:600;font-size:1.06rem;letter-spacing:.005em;display:block;line-height:1.2}
+.brand span{font-family:var(--mono);font-size:.68rem;color:var(--faint);letter-spacing:.04em}
+
+.axis{position:relative;flex:1;margin:22px 0 14px;padding-left:26px;min-height:0}
+.axis:before{
+  content:"";position:absolute;left:7px;top:4px;bottom:4px;width:1px;
+  background:linear-gradient(180deg,transparent,var(--line-2) 12%,var(--line-2) 88%,transparent);
+}
+.axis-cap{
+  position:absolute;left:-3px;font-family:var(--mono);font-size:.58rem;color:var(--faint);
+  letter-spacing:.06em;writing-mode:vertical-rl;
+}
+.axis-cap.hi{top:2px}
+.axis-cap.lo{bottom:2px}
+
+.nav{display:flex;flex-direction:column;gap:1px;height:100%;justify-content:space-between}
+.nav a{
+  position:relative;display:flex;align-items:baseline;gap:10px;
+  font-size:.875rem;color:var(--dim);padding:3px 8px 3px 0;
+  transition:color .28s var(--ease), transform .35s var(--ease);
+}
+.nav a .tick{
+  position:absolute;left:-23px;top:50%;width:9px;height:1px;background:var(--line-2);
+  transform:translateY(-50%);transform-origin:left;
+  transition:width .34s var(--ease), background .28s;
+}
+.nav a .no{font-family:var(--mono);font-size:.64rem;color:var(--faint);transition:color .28s}
+.nav a:hover{color:var(--text);transform:translateX(4px)}
+.nav a:hover .tick{width:16px}
+.nav a.on{color:var(--blue)}
+.nav a.on .tick{width:20px;background:var(--blue);height:2px}
+.nav a.on .no{color:var(--blue-2)}
+
+.rail-foot{border-top:1px solid var(--line);padding-top:12px;display:flex;flex-direction:column;gap:10px}
+.clock{font-family:var(--mono);font-size:.68rem;color:var(--faint);letter-spacing:.03em;display:flex;justify-content:space-between}
+.clock b{color:var(--blue);font-weight:500}
+.socials{display:flex;gap:8px}
+.socials a{
+  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;
+  border:1px solid var(--line-2);color:var(--dim);
+  transition:color .25s, border-color .25s, transform .3s var(--ease-out), background .25s;
+}
+.socials a:hover{color:var(--blue);border-color:var(--blue);transform:translateY(-4px) scale(1.08);background:rgba(22,104,208,.14)}
+.socials svg{width:16px;height:16px}
+
+/* ================================================================
+   STAGE
+================================================================ */
+.stage{position:fixed;inset:0 0 0 var(--rail);z-index:10;overflow:hidden}
+.track{display:flex;height:100%;width:100%;will-change:transform;transition:transform .95s var(--ease)}
+.panel{
+  flex:0 0 100%;height:100%;min-width:0;
+  display:flex;flex-direction:column;
+  padding:clamp(24px,4vh,50px) clamp(26px,3.4vw,62px) 76px;
+}
+.phead{display:flex;align-items:flex-end;justify-content:space-between;gap:28px;flex:none;
+  border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:clamp(14px,2.4vh,26px)}
+.phead h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.6rem,2.9vh,2.25rem);letter-spacing:-.01em;line-height:1.1;color:#0a2038}
+.phead .lede{font-size:.9rem;color:var(--dim);max-width:62ch;margin-top:6px;line-height:1.6}
+.phead .stamp{font-family:var(--mono);font-size:.7rem;color:var(--faint);white-space:nowrap;letter-spacing:.04em}
+.body{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding-right:12px;scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+.body::-webkit-scrollbar{width:6px}
+.body::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:6px}
+.body::-webkit-scrollbar-track{background:transparent}
+
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease-out),transform .7s var(--ease-out)}
+.panel.on .rv{opacity:1;transform:none;transition-delay:calc(var(--d,0) * 1ms)}
+
+/* ================================================================
+   SHARED PIECES
+================================================================ */
+.cols{display:grid;gap:clamp(14px,1.5vw,22px)}
+.c2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+
+.card{
+  background:linear-gradient(168deg, var(--ink-3), var(--ink-2));
+  background-image:linear-gradient(168deg, rgb(var(--a-rgb)/.16), rgba(255,255,255,.9));
+  border:1px solid var(--line);border-radius:16px;padding:20px 22px;
+  transition:border-color .35s, transform .45s var(--ease-out), box-shadow .45s var(--ease-out);
+  position:relative;
+  overflow:hidden;
+}
+.card::before{
+  content:"";position:absolute;inset:0;border-radius:16px;padding:1px;
+  background:linear-gradient(135deg, rgb(var(--a-rgb)/.7), transparent 42%, transparent 58%, rgb(var(--a-rgb)/.4));
+  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  pointer-events:none;opacity:0;transition:opacity .55s ease;
+}
+.card:hover::before{opacity:1}
+.card:hover{border-color:transparent;transform:translateY(-5px);box-shadow:0 22px 50px -18px rgb(var(--a-rgb)/.6)}
+.card h3{
+  font-family:var(--serif);font-weight:500;font-size:1.12rem;color:#0a2038;
+  display:flex;align-items:center;gap:10px;padding-bottom:10px;margin-bottom:13px;
+  border-bottom:1px solid var(--line);
+}
+.card h3 svg{width:16px;height:16px;color:var(--accent);flex:none}
+
+.item{position:relative;padding:10px 0 10px 18px;border-bottom:1px dashed var(--line)}
+.item:last-child{border-bottom:0;padding-bottom:2px}
+.item:before{
+  content:"";position:absolute;left:0;top:19px;width:7px;height:7px;border-radius:50%;
+  border:1.5px solid var(--blue);background:var(--ink);transition:background .3s,border-color .3s,box-shadow .3s
+}
+.item:hover:before{background:var(--blue);border-color:var(--blue);box-shadow:0 0 0 6px rgba(22,104,208,.2)}
+.item .when{font-family:var(--mono);font-size:.7rem;color:var(--faint);letter-spacing:.03em}
+.item .what{font-weight:600;font-size:1rem;margin-top:1px;color:#0a2038}
+.item .where{color:var(--blue);font-size:.865rem}
+.item .note{color:#3a5a75;font-size:.865rem;margin-top:4px;line-height:1.6}
+.item .score{font-family:var(--mono);font-size:.72rem;color:var(--blue);margin-left:6px}
+
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin:8px 0 16px}
+.tags:last-child{margin-bottom:0}
+.tag{
+  font-family:var(--mono);font-size:.75rem;padding:5px 12px;border-radius:999px;
+  border:1px solid var(--line-2);color:var(--dim);background:var(--wash);
+  transition:color .25s,border-color .25s,background .25s,transform .3s var(--ease-out);
+  cursor:default;
+}
+.tag:hover{color:var(--text);border-color:var(--blue);background:rgba(22,104,208,.14);transform:translateY(-3px) scale(1.06)}
+.group{font-family:var(--mono);font-size:.7rem;letter-spacing:.05em;color:var(--blue);margin-bottom:2px}
+
+/* ================================================================
+   HOME / HERO
+================================================================ */
+#p-home .body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(320px,.85fr);gap:clamp(24px,3vw,56px);align-items:center;overflow-x:hidden;overflow-y:auto;position:relative}
+
+.hero-kicker{
+  font-family:var(--mono);font-size:.78rem;color:var(--blue);
+  letter-spacing:.1em;margin-bottom:16px;display:flex;align-items:center;gap:10px;
+  text-transform:uppercase;
+}
+.hero-kicker i{display:block;width:30px;height:2px;background:linear-gradient(90deg,#00cdb9,#008eff,#a23aff,#ff2e94);opacity:.95;border-radius:2px}
+
+.hero .role{font-family:var(--mono);font-size:.92rem;color:var(--dim);margin-top:18px;letter-spacing:.01em}
+.hero p.intro{font-size:clamp(.95rem,1.9vh,1.1rem);color:#28465f;max-width:60ch;margin-top:18px;line-height:1.7}
+
+.stats{display:flex;gap:clamp(18px,2.4vw,40px);margin-top:clamp(18px,3vh,36px);flex-wrap:wrap}
+.stat .n{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(2rem,5vh,3.2rem);color:var(--text);line-height:1;
+  text-shadow:0 2px 20px rgba(0,0,0,.06);
+}
+.stat .l{font-family:var(--mono);font-size:.7rem;color:var(--faint);letter-spacing:.04em;margin-top:6px;max-width:15ch}
+
+/* NAME — bluish smooth gradient, no blink */
+.hero .name{
+  font-family:var(--serif);
+  font-size:clamp(2.6rem,9vh,5.6rem);
+  line-height:1.0;letter-spacing:-.03em;margin:8px 0 0;
+  background:linear-gradient(100deg,
+    #0a1c2e 0%,
+    #007a72 12%,
+    #00c8b4 26%,
+    #008eff 42%,
+    #5a46ff 56%,
+    #a23aff 70%,
+    #ff2e94 84%,
+    #0a1c2e 100%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  animation:nameFlow 14s ease-in-out infinite alternate;
+  filter:drop-shadow(0 6px 22px rgba(22,104,208,.20));
+  will-change:background-position;
+}
+@keyframes nameFlow{
+  0%{background-position:0% 50%}
+  100%{background-position:100% 50%}
+}
+.hero .ln{display:block;overflow:hidden;padding-bottom:.22em;margin-bottom:-.18em}
+.hero .w{display:block;transform:translateY(135%);transition:transform 1.15s var(--ease-out)}
+.panel.on .hero .w{transform:none;transition-delay:calc(var(--n) * 170ms + 140ms)}
+.hero .ln:first-child .w{font-weight:300}
+.hero .ln:last-child .w{font-weight:600}
+
+.hero .tagline{
+  font-family:var(--serif);font-weight:300;
+  font-size:clamp(1.05rem,2.5vh,1.6rem);
+  color:#284a65;margin-top:16px;letter-spacing:-.005em;line-height:1.35;
+}
+
+/* ---------------- SOUNDING CARD — static glow, no blink ---------------- */
+.sounding{
+  background:var(--paper);border-radius:20px;padding:18px 18px 14px;
+  box-shadow:
+    0 28px 64px -30px rgba(10,30,60,.55),
+    0 0 0 1px rgba(22,104,208,.10),
+    0 0 70px rgba(22,104,208,.2);
+  transform:rotate(-1.3deg);
+  transition:transform .9s var(--ease-out), box-shadow .9s var(--ease-out);
+  position:relative;
+}
+.sounding::after{
+  content:'';position:absolute;inset:-4px;border-radius:24px;
+  background:conic-gradient(from 0deg,
+    rgba(0,205,185,.3),
+    rgba(0,142,255,.3),
+    rgba(112,78,255,.28),
+    rgba(255,46,148,.24),
+    rgba(0,205,185,.3));
+  z-index:-1;filter:blur(20px);opacity:.55;
+}
+.sounding:hover{
+  transform:rotate(0deg) scale(1.03);
+  box-shadow:0 40px 80px -30px rgba(10,30,60,.6), 0 0 100px rgba(22,104,208,.3);
+}
+.sounding svg{display:block;width:100%;height:auto}
+.sounding .cap{
+  font-family:var(--mono);font-size:.66rem;color:#5c6b7a;margin-top:10px;
+  display:flex;justify-content:space-between;letter-spacing:.02em
+}
+.draw{stroke-dasharray:520;stroke-dashoffset:520;animation:draw 2.8s var(--ease-out) .4s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.bob{animation:bob 7s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-1.3deg)}50%{transform:translateY(-7px) rotate(-1.3deg)}}
+
+/* ================================================================
+   PUBLICATIONS
+================================================================ */
+.pub{
+  background:linear-gradient(168deg,rgb(var(--a-rgb)/.18),rgba(255,255,255,.92));
+  border:1px solid var(--line);border-left:3px solid var(--blue-2);
+  border-radius:0 14px 14px 0;padding:18px 20px;height:100%;
+  display:flex;flex-direction:column;
+  transition:border-left-color .35s,transform .45s var(--ease-out),box-shadow .45s var(--ease-out)
+}
+.pub:hover{border-left-color:var(--blue);transform:translateY(-6px);box-shadow:0 24px 50px -22px rgba(10,30,60,.4)}
+.pub .yr{font-family:var(--mono);font-size:.7rem;color:var(--blue);letter-spacing:.05em}
+.pub .ti{font-family:var(--serif);font-weight:500;font-size:1.06rem;line-height:1.3;margin:6px 0 9px;color:#0a2038}
+.pub .au{font-size:.83rem;color:var(--dim);line-height:1.55;flex:1}
+.pub .au b{color:#081c2e;font-weight:600}
+.pub .jr{font-family:var(--mono);font-size:.77rem;color:var(--blue);margin-top:11px;padding-top:9px;border-top:1px solid var(--line)}
+.pub .doi{font-family:var(--mono);font-size:.7rem;color:var(--faint);word-break:break-all;margin-top:3px;transition:color .25s}
+.pub .doi:hover{color:var(--blue)}
+
+.conf{
+  background:rgb(var(--a-rgb)/.13);border:1px solid var(--line);border-radius:13px;
+  padding:14px 16px 14px 42px;position:relative;height:100%;
+  transition:background .3s,border-color .3s,transform .4s var(--ease-out)
+}
+.conf:hover{background:var(--wash-2);border-color:var(--line-2);transform:translateY(-4px)}
+.conf .idx{
+  position:absolute;left:14px;top:14px;font-family:var(--mono);font-size:.74rem;color:var(--blue-2);
+  transition:color .3s
+}
+.conf:hover .idx{color:var(--blue)}
+.conf .ti{font-size:.92rem;font-weight:500;line-height:1.38;color:#0a2038}
+.conf .au{font-size:.81rem;color:var(--dim);margin-top:4px}
+.conf .ve{font-family:var(--mono);font-size:.74rem;color:var(--blue);margin-top:7px;line-height:1.45}
+
+.award{
+  border:1px solid var(--line);border-radius:15px;padding:18px 20px;height:100%;
+  background:linear-gradient(150deg, rgba(22,104,208,.18), rgba(255,255,255,.92));
+  transition:transform .45s var(--ease-out),border-color .3s,box-shadow .45s var(--ease-out)
+}
+.award:hover{transform:translateY(-6px);border-color:rgba(22,104,208,.55);box-shadow:0 26px 54px -28px rgba(22,104,208,.6)}
+.award .ti{font-family:var(--serif);font-weight:600;font-size:1.08rem;color:var(--blue);line-height:1.25}
+.award .by{font-size:.88rem;color:#2a4557;margin-top:6px}
+.award .when{font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:8px}
+.award .perk{font-family:var(--mono);font-size:.74rem;color:var(--blue);margin-top:8px;line-height:1.55}
+
+.wk{
+  border:1px solid var(--line);border-radius:13px;padding:14px 16px;height:100%;
+  background:rgb(var(--a-rgb)/.14);
+  transition:background .3s,border-color .3s,transform .4s var(--ease-out)
+}
+.wk:hover{background:rgba(22,104,208,.13);border-color:rgba(22,104,208,.5);transform:translateY(-4px)}
+.wk .ti{font-size:.92rem;font-weight:500;line-height:1.35;color:#0a2038}
+.wk .ho{font-size:.83rem;color:var(--dim);margin-top:4px}
+.wk .when{font-family:var(--mono);font-size:.71rem;color:var(--blue-2);margin-top:7px}
+
+/* contact */
+#p-contact .body{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,3vw,48px);align-items:center}
+.reach{display:flex;flex-direction:column;gap:10px}
+.reach a,.reach div.ln{
+  display:flex;align-items:center;gap:14px;padding:13px 17px;border-radius:13px;
+  border:1px solid var(--line);background:var(--wash);
+  transition:border-color .3s,background .3s,transform .4s var(--ease-out)
+}
+.reach a:hover{border-color:var(--blue);background:rgba(22,104,208,.13);transform:translateX(6px)}
+.reach svg{width:16px;height:16px;color:var(--blue);flex:none}
+.reach .k{font-family:var(--mono);font-size:.68rem;color:var(--faint);letter-spacing:.05em}
+.reach .v{font-size:.92rem;color:var(--text)}
+.closing{font-family:var(--serif);font-weight:300;font-size:clamp(1.4rem,3.6vh,2.3rem);line-height:1.3;color:#0a2038}
+.closing b{color:var(--blue);font-weight:600}
+.closing small{display:block;font-family:var(--mono);font-size:.72rem;color:var(--faint);margin-top:18px;line-height:1.8;letter-spacing:.02em}
+
+/* ================================================================
+   HUD
+================================================================ */
+.hud{
+  position:fixed;left:var(--rail);right:0;bottom:0;z-index:30;height:60px;
+  display:flex;align-items:center;gap:20px;padding:0 clamp(26px,3.4vw,62px);
+  border-top:1px solid var(--line);
+  background:linear-gradient(0deg, rgba(255,255,255,.96), rgba(255,255,255,.3));
+  backdrop-filter: blur(10px);
+}
+.count{font-family:var(--mono);font-size:.74rem;color:var(--faint);letter-spacing:.06em;white-space:nowrap}
+.count b{color:var(--blue);font-weight:500}
+.bar{flex:1;height:3px;background:var(--line);border-radius:3px;overflow:hidden;min-width:60px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#00cdb9,#008eff,#5a46ff,#a23aff,#ff2e94);
+  transform-origin:left;transform:scaleX(.1);transition:transform .95s var(--ease)}
+.hint{font-family:var(--mono);font-size:.68rem;color:var(--faint);white-space:nowrap}
+.steps{display:flex;gap:7px}
+.steps button{
+  width:38px;height:38px;border-radius:10px;cursor:pointer;display:grid;place-items:center;
+  background:transparent;border:1px solid var(--line-2);color:var(--dim);
+  transition:color .25s,border-color .25s,background .25s,transform .3s var(--ease-out)
+}
+.steps button:hover:not(:disabled){color:var(--blue);border-color:var(--blue);background:rgba(22,104,208,.12);transform:scale(1.1)}
+.steps button:disabled{opacity:.3;cursor:not-allowed}
+.steps svg{width:15px;height:15px}
+
+/* ================================================================
+   THEME SWITCHER BUTTONS — top right
+================================================================ */
+.theme-switch {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 100;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.theme-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line-2);
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(12px);
+  color: var(--dim);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all .3s var(--ease-out);
+  box-shadow: 0 4px 16px rgba(10,30,60,.08);
+}
+.theme-btn:hover {
+  transform: translateY(-3px) scale(1.08);
+  border-color: var(--blue);
+  color: var(--blue);
+  box-shadow: 0 8px 28px rgba(10,30,60,.18);
+  background: rgba(255,255,255,.98);
+}
+.theme-btn svg {
+  width: 20px;
+  height: 20px;
+  transition: transform .5s var(--ease-out);
+}
+.theme-btn:hover svg {
+  transform: rotate(30deg);
+}
+
+/* Light / Dark shade buttons color feedback */
+.theme-btn[data-mode="light"] { border-color: #e8c87a; color: #b8860b; }
+.theme-btn[data-mode="light"]:hover { border-color: #daa520; color: #8b6914; background: #fffaf0; }
+.theme-btn[data-mode="dark"] { border-color: #4a6fa5; color: #2c3e6b; }
+.theme-btn[data-mode="dark"]:hover { border-color: #1a2a4a; color: #0d1b33; background: #1a1a2e; color: #a0c4ff; }
+
+/* Theme preview dots */
+.theme-dots {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  padding: 0 6px;
+}
+.theme-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid transparent;
+  transition: all .3s ease;
+  cursor: pointer;
+}
+.theme-dots span.active {
+  border-color: var(--blue);
+  transform: scale(1.25);
+}
+.theme-dots span:hover {
+  transform: scale(1.3);
+}
+
+/* ================================================================
+   THEME CLASSES — light/dark shades
+================================================================ */
+body.theme-light-1 {
+  --ink: #f8faff;
+  --ink-2: #ffffff;
+  --ink-3: #f0f5fe;
+  --wash: rgba(20,60,110,.025);
+  --wash-2: rgba(20,60,110,.06);
+  --line: rgba(20,60,110,.10);
+  --line-2: rgba(20,60,110,.22);
+  --text: #0a1c2e;
+  --dim: #3a5872;
+  --faint: #6b8aa6;
+}
+body.theme-light-2 {
+  --ink: #fefcf8;
+  --ink-2: #ffffff;
+  --ink-3: #fdf8f0;
+  --wash: rgba(140,100,20,.035);
+  --wash-2: rgba(140,100,20,.07);
+  --line: rgba(140,100,20,.12);
+  --line-2: rgba(140,100,20,.25);
+  --text: #2c1e0a;
+  --dim: #6b5a3a;
+  --faint: #9c8a6a;
+}
+body.theme-light-3 {
+  --ink: #f7fdfc;
+  --ink-2: #ffffff;
+  --ink-3: #f0faf9;
+  --wash: rgba(10,100,90,.03);
+  --wash-2: rgba(10,100,90,.07);
+  --line: rgba(10,100,90,.11);
+  --line-2: rgba(10,100,90,.23);
+  --text: #0a2e2a;
+  --dim: #3a6b62;
+  --faint: #6b9a90;
+}
+body.theme-dark-1 {
+  --ink: #161923;
+  --ink-2: #1d2130;
+  --ink-3: #191c28;
+  --wash: rgba(100,160,255,.06);
+  --wash-2: rgba(100,160,255,.12);
+  --line: rgba(100,160,255,.15);
+  --line-2: rgba(100,160,255,.28);
+  --text: #e0ecff;
+  --dim: #8aa8cc;
+  --faint: #5a7a9c;
+}
+body.theme-dark-2 {
+  --ink: #1a1428;
+  --ink-2: #241c36;
+  --ink-3: #1e182e;
+  --wash: rgba(180,140,255,.06);
+  --wash-2: rgba(180,140,255,.12);
+  --line: rgba(180,140,255,.15);
+  --line-2: rgba(180,140,255,.28);
+  --text: #e8ddff;
+  --dim: #a08cc0;
+  --faint: #7a669a;
+}
+body.theme-dark-3 {
+  --ink: #0d1a1f;
+  --ink-2: #142530;
+  --ink-3: #10202a;
+  --wash: rgba(80,220,200,.06);
+  --wash-2: rgba(80,220,200,.12);
+  --line: rgba(80,220,200,.14);
+  --line-2: rgba(80,220,200,.26);
+  --text: #d5f5ee;
+  --dim: #7ab8aa;
+  --faint: #5a9a8c;
+}
+body.theme-dark-4 {
+  --ink: #1f1a12;
+  --ink-2: #2a2418;
+  --ink-3: #241e14;
+  --wash: rgba(255,200,100,.06);
+  --wash-2: rgba(255,200,100,.12);
+  --line: rgba(255,200,100,.13);
+  --line-2: rgba(255,200,100,.25);
+  --text: #f5ecd5;
+  --dim: #c4b08a;
+  --faint: #9a8a6a;
+}
+
+/* Adjust card backgrounds for dark themes */
+body.theme-dark-1 .card,
+body.theme-dark-2 .card,
+body.theme-dark-3 .card,
+body.theme-dark-4 .card {
+  background: linear-gradient(168deg, rgb(var(--a-rgb)/.22), rgba(30,40,60,.95));
+}
+body.theme-dark-1 .card h3,
+body.theme-dark-2 .card h3,
+body.theme-dark-3 .card h3,
+body.theme-dark-4 .card h3 { color: #d0e0f0; }
+
+body.theme-dark-1 .item .what,
+body.theme-dark-2 .item .what,
+body.theme-dark-3 .item .what,
+body.theme-dark-4 .item .what { color: #c8d8e8; }
+
+body.theme-dark-1 .item .note,
+body.theme-dark-2 .item .note,
+body.theme-dark-3 .item .note,
+body.theme-dark-4 .item .note { color: #8aa8c0; }
+
+body.theme-dark-1 .phead h2,
+body.theme-dark-2 .phead h2,
+body.theme-dark-3 .phead h2,
+body.theme-dark-4 .phead h2 { color: #d0e0f0; }
+
+body.theme-dark-1 .hero .name,
+body.theme-dark-2 .hero .name,
+body.theme-dark-3 .hero .name,
+body.theme-dark-4 .hero .name {
+  filter: drop-shadow(0 6px 22px rgba(100,160,255,.35));
+}
+
+body.theme-dark-1 .sounding,
+body.theme-dark-2 .sounding,
+body.theme-dark-3 .sounding,
+body.theme-dark-4 .sounding {
+  background: #1a2540;
+}
+body.theme-dark-1 .sounding .cap,
+body.theme-dark-2 .sounding .cap,
+body.theme-dark-3 .sounding .cap,
+body.theme-dark-4 .sounding .cap { color: #8aa8cc; }
+
+body.theme-dark-1 .hero .tagline,
+body.theme-dark-2 .hero .tagline,
+body.theme-dark-3 .hero .tagline,
+body.theme-dark-4 .hero .tagline { color: #8aa8cc; }
+
+body.theme-dark-1 .hero p.intro,
+body.theme-dark-2 .hero p.intro,
+body.theme-dark-3 .hero p.intro,
+body.theme-dark-4 .hero p.intro { color: #a0b8d0; }
+
+body.theme-dark-1 .pub .ti,
+body.theme-dark-2 .pub .ti,
+body.theme-dark-3 .pub .ti,
+body.theme-dark-4 .pub .ti { color: #c8d8e8; }
+
+body.theme-dark-1 .pub .au,
+body.theme-dark-2 .pub .au,
+body.theme-dark-3 .pub .au,
+body.theme-dark-4 .pub .au { color: #8aa8c0; }
+
+body.theme-dark-1 .conf .ti,
+body.theme-dark-2 .conf .ti,
+body.theme-dark-3 .conf .ti,
+body.theme-dark-4 .conf .ti { color: #c8d8e8; }
+
+body.theme-dark-1 .conf .au,
+body.theme-dark-2 .conf .au,
+body.theme-dark-3 .conf .au,
+body.theme-dark-4 .conf .au { color: #8aa8c0; }
+
+body.theme-dark-1 .closing,
+body.theme-dark-2 .closing,
+body.theme-dark-3 .closing,
+body.theme-dark-4 .closing { color: #d0e0f0; }
+
+body.theme-dark-1 .closing b,
+body.theme-dark-2 .closing b,
+body.theme-dark-3 .closing b,
+body.theme-dark-4 .closing b { color: #60a0ff; }
+
+body.theme-dark-1 .rail,
+body.theme-dark-2 .rail,
+body.theme-dark-3 .rail,
+body.theme-dark-4 .rail {
+  background: linear-gradient(180deg, rgba(20,30,50,.95), rgba(20,30,50,.75));
+}
+
+body.theme-dark-1 .nav a,
+body.theme-dark-2 .nav a,
+body.theme-dark-3 .nav a,
+body.theme-dark-4 .nav a { color: #8aa8cc; }
+
+body.theme-dark-1 .nav a:hover,
+body.theme-dark-2 .nav a:hover,
+body.theme-dark-3 .nav a:hover,
+body.theme-dark-4 .nav a:hover { color: #e0ecff; }
+
+body.theme-dark-1 .hud,
+body.theme-dark-2 .hud,
+body.theme-dark-3 .hud,
+body.theme-dark-4 .hud {
+  background: linear-gradient(0deg, rgba(20,30,50,.98), rgba(20,30,50,.4));
+}
+
+body.theme-dark-1 .brand b,
+body.theme-dark-2 .brand b,
+body.theme-dark-3 .brand b,
+body.theme-dark-4 .brand b { color: #e0ecff; }
+
+body.theme-dark-1 .mono-mark,
+body.theme-dark-2 .mono-mark,
+body.theme-dark-3 .mono-mark,
+body.theme-dark-4 .mono-mark {
+  background: radial-gradient(circle at 32% 28%, #2a3a5a, #1a2540);
+  color: #60a0ff;
+}
+
+body.theme-dark-1 .socials a,
+body.theme-dark-2 .socials a,
+body.theme-dark-3 .socials a,
+body.theme-dark-4 .socials a { color: #8aa8cc; border-color: rgba(100,160,255,.25); }
+
+body.theme-dark-1 .socials a:hover,
+body.theme-dark-2 .socials a:hover,
+body.theme-dark-3 .socials a:hover,
+body.theme-dark-4 .socials a:hover { color: #60a0ff; border-color: #60a0ff; background: rgba(60,120,255,.15); }
+
+body.theme-dark-1 .theme-btn,
+body.theme-dark-2 .theme-btn,
+body.theme-dark-3 .theme-btn,
+body.theme-dark-4 .theme-btn {
+  background: rgba(30,45,70,.9);
+  border-color: rgba(100,160,255,.3);
+  color: #8aa8cc;
+}
+body.theme-dark-1 .theme-btn:hover,
+body.theme-dark-2 .theme-btn:hover,
+body.theme-dark-3 .theme-btn:hover,
+body.theme-dark-4 .theme-btn:hover {
+  color: #60a0ff;
+  border-color: #60a0ff;
+  background: rgba(40,60,100,.95);
+}
+
+/* preserve original theme class for default (no class = original light blue) */
+body.theme-original .sky { /* default */ }
+body.theme-dark-1 .sky,
+body.theme-dark-2 .sky,
+body.theme-dark-3 .sky,
+body.theme-dark-4 .sky {
+  opacity: .3;
+  filter: brightness(.4) saturate(1.5);
+}
+
+/* ================================================================
+   GALAXY LAYER
+================================================================ */
+#galaxy{
+  position:fixed;left:0;top:0;z-index:1;pointer-events:none;
+  width:100vw;height:100vh;height:100lvh;
+  opacity:.62;transition:opacity .8s ease;
+}
+/* dark page colour behind everything, so overscroll and browser bars never show white */
+html:has(body[class*="theme-dark"]){background:#161923}
+body[class*="theme-dark"] #galaxy{opacity:1}
+
+/* dark themes: clean deep-space backdrop, the galaxy is the light source */
+body[class*="theme-dark"] .sky{opacity:.12}
+body[class*="theme-dark"] .halo{opacity:.1}
+body[class*="theme-dark"] .grid-dots{opacity:.08;animation:none}
+body[class*="theme-dark"] .ring{opacity:.35}
+body[class*="theme-dark"] .poly{opacity:.18}
+body[class*="theme-dark"] .ridge{opacity:.25}
+body[class*="theme-dark"] #flow{opacity:.35}
+
+/* ================================================================
+   READABILITY OVER THE GALAXY
+   Light themes: soft white halo behind text, more opaque surfaces.
+   Dark themes: light text, dark halo, dark surfaces, brighter blues.
+================================================================ */
+
+/* ---- light themes ---- */
+.hero{position:relative;isolation:isolate}
+.hero::before{
+  content:"";position:absolute;inset:-36px -48px;z-index:-1;pointer-events:none;
+  background:radial-gradient(ellipse at 42% 50%, rgba(247,251,255,.82) 0%, rgba(247,251,255,.55) 48%, rgba(247,251,255,0) 74%);
+  filter:blur(8px);
+}
+.hero .name{
+  filter:drop-shadow(0 0 16px rgba(255,255,255,.85)) drop-shadow(0 6px 22px rgba(22,104,208,.20));
+}
+.phead h2,.phead .lede,.phead .stamp,
+.hero-kicker,.hero .tagline,.hero .role,.hero p.intro,
+.stat .n,.stat .l,.closing{
+  text-shadow:0 0 14px rgba(247,251,255,.95),0 0 3px rgba(247,251,255,.9);
+}
+.hero p.intro{color:#1d3a54}
+.hero .tagline{color:#1f3f5a}
+.hero .role{color:#2f4d68}
+.stat .l{color:#4a6883}
+
+.conf,.wk{
+  background:linear-gradient(168deg, rgb(var(--a-rgb)/.12), rgba(255,255,255,.9));
+}
+.conf:hover,.wk:hover{
+  background:linear-gradient(168deg, rgb(var(--a-rgb)/.2), rgba(255,255,255,.95));
+}
+.reach a,.reach div.ln{background:rgba(255,255,255,.86)}
+.reach a:hover{background:linear-gradient(90deg, rgba(22,104,208,.14), rgba(255,255,255,.95))}
+
+/* ---- dark themes ---- */
+body[class*="theme-dark"]{
+  --blue:#6aa8ff;
+  --blue-2:#9cc4ff;
+  --a-rgb:90 140 255;
+  --accent:#6aa8ff;
+  --paper:#1a2540;
+}
+body[class*="theme-dark"] .hero::before{
+  background:radial-gradient(ellipse at 42% 50%, rgba(8,12,26,.78) 0%, rgba(8,12,26,.5) 48%, rgba(8,12,26,0) 74%);
+}
+body[class*="theme-dark"] .hero .name{
+  background-image:linear-gradient(100deg,
+    #e6f0ff 0%, #5eead4 14%, #38bdf8 30%, #818cf8 48%,
+    #c084fc 66%, #f472b6 84%, #e6f0ff 100%);
+  filter:drop-shadow(0 0 16px rgba(6,10,24,.9)) drop-shadow(0 6px 22px rgba(100,160,255,.35));
+}
+body[class*="theme-dark"] .phead h2,
+body[class*="theme-dark"] .phead .lede,
+body[class*="theme-dark"] .phead .stamp,
+body[class*="theme-dark"] .hero-kicker,
+body[class*="theme-dark"] .hero .tagline,
+body[class*="theme-dark"] .hero .role,
+body[class*="theme-dark"] .hero p.intro,
+body[class*="theme-dark"] .stat .n,
+body[class*="theme-dark"] .stat .l,
+body[class*="theme-dark"] .closing{
+  text-shadow:0 0 14px rgba(6,10,24,.95),0 0 3px rgba(6,10,24,.9);
+}
+body[class*="theme-dark"] .phead h2{color:#eef4ff}
+body[class*="theme-dark"] .phead .lede{color:#b9cce3}
+body[class*="theme-dark"] .hero p.intro{color:#c9d8ea}
+body[class*="theme-dark"] .hero .tagline{color:#b3c8e2}
+body[class*="theme-dark"] .hero .role{color:#a3b9d4}
+body[class*="theme-dark"] .stat .l{color:#9fb4cc}
+body[class*="theme-dark"] .stat:nth-child(1) .n{color:#5eead4 !important}
+body[class*="theme-dark"] .stat:nth-child(2) .n{color:#a5b4fc !important}
+body[class*="theme-dark"] .stat:nth-child(3) .n{color:#f9a8d4 !important}
+
+body[class*="theme-dark"] .card p{color:#bccde0 !important}
+body[class*="theme-dark"] .card h3{color:#e6eefa}
+body[class*="theme-dark"] .item .what{color:#e0eaf6}
+body[class*="theme-dark"] .item .note{color:#a9bdd3}
+
+body[class*="theme-dark"] .pub,
+body[class*="theme-dark"] .conf,
+body[class*="theme-dark"] .wk,
+body[class*="theme-dark"] .award,
+body[class*="theme-dark"] .reach a,
+body[class*="theme-dark"] .reach div.ln,
+body[class*="theme-dark"] .card{
+  background:linear-gradient(168deg, rgba(36,50,86,.95), rgba(17,21,33,.96));
+}
+body[class*="theme-dark"] .conf:hover,
+body[class*="theme-dark"] .wk:hover,
+body[class*="theme-dark"] .reach a:hover{
+  background:linear-gradient(168deg, rgba(46,66,112,.97), rgba(20,26,42,.97));
+}
+body[class*="theme-dark"] .pub .ti,
+body[class*="theme-dark"] .conf .ti,
+body[class*="theme-dark"] .wk .ti{color:#e0eaf6}
+body[class*="theme-dark"] .pub .au,
+body[class*="theme-dark"] .conf .au,
+body[class*="theme-dark"] .wk .ho{color:#a9bdd3}
+body[class*="theme-dark"] .pub .au b{color:#ffffff}
+body[class*="theme-dark"] .award .by{color:#bccde0}
+body[class*="theme-dark"] .closing{color:#e6eefa}
+body[class*="theme-dark"] .closing b{color:#7cb4ff}
+body[class*="theme-dark"] .reach .v{color:#e6eefa}
+body[class*="theme-dark"] .tag{color:#b3c6dc}
+body[class*="theme-dark"] .sounding svg text{fill:#a9bdd3}
+
+/* ================================================================
+   RESPONSIVE
+================================================================ */
+@media (max-width:1000px), (max-height:520px){
+  :root{--rail:0px}
+  body{overflow:auto}
+  .rail{
+    position:sticky;top:0;left:0;width:100%;height:auto;bottom:auto;flex-direction:row;
+    align-items:center;gap:14px;padding:12px 16px;border-right:0;border-bottom:1px solid var(--line);
+    backdrop-filter:blur(12px);background:rgba(255,255,255,.94)
+  }
+  .axis{flex:1;margin:0;padding:0;min-height:0}
+  .axis:before,.axis-cap,.rail-foot{display:none}
+  .nav{flex-direction:row;gap:4px;overflow-x:auto;height:auto;justify-content:flex-start;padding-bottom:2px}
+  .nav::-webkit-scrollbar{display:none}
+  .nav a{white-space:nowrap;padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:.8rem}
+  .nav a .tick{display:none}
+  .nav a.on{border-color:var(--blue)}
+  .stage{position:static;inset:auto;overflow:visible}
+  .track{display:block;height:auto;transform:none!important;transition:none}
+  .panel{height:auto;min-height:0;padding:32px 18px 40px;border-bottom:1px solid var(--line)}
+  .body{overflow:visible;max-height:none;padding-right:0}
+  .rv{opacity:1;transform:none}
+  .hud{display:none}
+  #p-home .body,#p-contact .body{grid-template-columns:1fr}
+  .c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ridge{position:absolute;transform:none!important}
+  #flow{display:none}
+  .glow{position:absolute;filter:blur(80px);opacity:.22}
+  .geo{display:none}
+  .hero .w{transform:none}
+  .theme-switch { top: 12px; right: 12px; }
+  .theme-btn { width: 36px; height: 36px; }
+  .theme-btn svg { width: 16px; height: 16px; }
+  /* galaxy is fainter on small screens because text scrolls straight over it */
+  #galaxy{opacity:.45}
+  body[class*="theme-dark"] #galaxy{opacity:.8}
+}
+/* phone fixes: the nav row was stretching the page to ~1450px wide,
+   which made phones zoom the whole site out instead of filling the screen */
+@media (max-width:1000px), (max-height:520px){
+  html,body{max-width:100%;overflow-x:hidden}
+  .rail{max-width:100vw}
+  .ridge{width:100%}   /* the svg was sizing itself from its aspect ratio, ~1400px wide */
+  .axis{min-width:0}
+  .nav{min-width:0;max-width:100%}
+  .phead{flex-wrap:wrap;gap:8px 20px}
+  .phead .stamp{white-space:normal}
+  .hero::before{inset:-24px -8px}
+  /* theme switcher floats bottom-right so it no longer covers the name and nav */
+  .theme-switch{
+    gap:6px;top:auto!important;bottom:calc(14px + env(safe-area-inset-bottom,0px));right:12px!important;
+    padding:6px 8px;border-radius:999px;
+    background:rgba(18,22,34,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border:1px solid rgba(255,255,255,.12);
+  }
+  body:not([class*="theme-dark"]) .theme-switch{background:rgba(255,255,255,.8);border-color:var(--line-2)}
+  .rail{padding-top:calc(12px + env(safe-area-inset-top,0px))}
+  .panel{scroll-margin-top:84px}
+  body[class*="theme-dark"] .hero .tagline,
+  body[class*="theme-dark"] .hero .role,
+  body[class*="theme-dark"] .hero p.intro,
+  body[class*="theme-dark"] .phead .lede{
+    text-shadow:0 0 10px rgba(6,10,24,1),0 0 4px rgba(6,10,24,1),0 1px 2px rgba(0,0,0,.9);
+  }
+}
+@media (max-width:620px){
+  .c2,.c3,.c4{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001s!important;animation-iteration-count:1!important;transition-duration:.001s!important}
+  .rv{opacity:1;transform:none}
+  .hero .w{transform:none!important}
+  .hero .name{animation:none;background-position:0 0}
+  .geo *{animation:none!important}
+  .sounding::after{opacity:.4}
+  .sky{animation:none}
+}
+</style>
+</head>
+<body class="theme-dark-1">
+
+<script>
+/* Deterrent only: blocks right-click, F12, Ctrl+U / Ctrl+S / Ctrl+P and the
+   devtools shortcuts. It does not prevent a determined visitor from reading
+   the source. */
+(function(){
+"use strict";
+function block(e){ e.preventDefault(); e.stopPropagation(); return false; }
+
+document.addEventListener('contextmenu', block, true);
+document.addEventListener('dragstart', block, true);
+
+document.addEventListener('keydown', function(e){
+  var k = (e.key || '').toLowerCase();
+  var mod = e.ctrlKey || e.metaKey;
+
+  if(k === 'f12') return block(e);
+  if(mod && e.shiftKey && ['i','j','c','k','e'].indexOf(k) > -1) return block(e);
+  if(mod && ['u','s','p'].indexOf(k) > -1) return block(e);
+  if(e.key === 'F12') return block(e);
+}, true);
+})();
+</script>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 9L12 4 2 9l10 5 10-5z"/><path d="M6 11.5V16c0 1.3 2.7 2.5 6 2.5s6-1.2 6-2.5v-4.5"/></symbol>
+  <symbol id="i-case" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M2 13h20"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M8.2 13.4L7 22l5-3 5 3-1.2-8.6"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0 5 5l-9.4 9.4a2.1 2.1 0 0 1-3-3z"/><path d="M14.7 6.3L18 3l3 3-3.3 3.3"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 18l6-6-6-6M8 6l-6 6 6 6"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4.5A2.5 2.5 0 0 1 4.5 2H20v16H4.5A2.5 2.5 0 0 0 2 20.5z"/><path d="M2 20.5A2.5 2.5 0 0 1 4.5 18H20v4H4.5A2.5 2.5 0 0 1 2 19.5z"/></symbol>
+  <symbol id="i-wind" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h11a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h8a2.5 2.5 0 1 1-2.5 2.5"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2.5 6.5l9.5 7 9.5-7"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.8a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.8 2.1z"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-in" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 1 0 5 8.5a2.5 2.5 0 0 0 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.76-1.95C21.3 8.75 22 11 22 14.1V21h-4v-6.1c0-1.46-.03-3.34-2.1-3.34-2.1 0-2.42 1.58-2.42 3.23V21h-4z"/></symbol>
+  <symbol id="i-scholar" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 8l11 6 9-4.9V16h2V8zM5 13.2V17c0 2.2 3.1 4 7 4s7-1.8 7-4v-3.8l-7 3.8z"/></symbol>
+  <symbol id="i-rg" viewBox="0 0 24 24" fill="currentColor"><path d="M19.6 2H4.4A2.4 2.4 0 0 0 2 4.4v15.2A2.4 2.4 0 0 0 4.4 22h15.2a2.4 2.4 0 0 0 2.4-2.4V4.4A2.4 2.4 0 0 0 19.6 2zM9.3 17.4H7.5V6.6h3.9c2.3 0 3.6 1.2 3.6 3.1 0 1.5-.8 2.5-2.1 2.9l2.6 4.8h-2l-2.4-4.5H9.3zm0-6h1.8c1.2 0 1.9-.5 1.9-1.6s-.7-1.6-1.9-1.6H9.3z"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 19l-7-7 7-7"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+</svg>
+
+<!-- ============ THEME SWITCHER — TOP RIGHT ============ -->
+<div class="theme-switch" id="themeSwitch">
+  <div class="theme-dots" id="themeDots">
+    <span data-theme="original" style="background: linear-gradient(135deg,#00cdb9,#008eff,#a23aff);" title="Original blue"></span>
+    <span data-theme="light-1" style="background: #f8faff;" title="Light blue"></span>
+    <span data-theme="light-2" style="background: #fefcf8;" title="Warm light"></span>
+    <span data-theme="light-3" style="background: #f7fdfc;" title="Mint light"></span>
+    <span data-theme="dark-1" style="background: #161923;" class="active" title="Deep space"></span>
+    <span data-theme="dark-2" style="background: #1a1428;" title="Dark purple"></span>
+    <span data-theme="dark-3" style="background: #0d1a1f;" title="Dark teal"></span>
+    <span data-theme="dark-4" style="background: #1f1a12;" title="Dark warm"></span>
+  </div>
+  <button class="theme-btn" id="lightModeBtn" data-mode="light" aria-label="Light shades">
+    <svg><use href="#i-sun"/></svg>
+  </button>
+  <button class="theme-btn" id="darkModeBtn" data-mode="dark" aria-label="Dark shades">
+    <svg><use href="#i-moon"/></svg>
+  </button>
+</div>
+
+<!-- ============ BACKGROUND LAYERS ============ -->
+<div class="sky"></div>
+
+<div class="geo" aria-hidden="true">
+  <div class="grid-dots"></div>
+
+  <div class="halo h1"></div>
+  <div class="halo h2"></div>
+  <div class="halo h3"></div>
+  <div class="halo h4"></div>
+
+  <div class="ring r1"></div>
+  <div class="ring r2"></div>
+  <div class="ring r3"></div>
+  <div class="ring r4"></div>
+
+  <svg class="poly p1" width="120" height="120" viewBox="0 0 120 120">
+    <polygon points="60,8 112,52 92,112 28,112 8,52" fill="none" stroke="rgba(0,142,255,.42)" stroke-width="1.4"/>
+    <circle cx="60" cy="60" r="6" fill="rgba(0,142,255,.46)"/>
+  </svg>
+  <svg class="poly p2" width="100" height="100" viewBox="0 0 100 100">
+    <polygon points="50,6 94,50 50,94 6,50" fill="none" stroke="rgba(0,205,185,.5)" stroke-width="1.4"/>
+    <circle cx="50" cy="50" r="5" fill="rgba(0,205,185,.52)"/>
+  </svg>
+  <svg class="poly p3" width="140" height="140" viewBox="0 0 140 140">
+    <polygon points="70,10 130,40 130,100 70,130 10,100 10,40" fill="none" stroke="rgba(162,58,255,.4)" stroke-width="1.4"/>
+    <circle cx="70" cy="70" r="7" fill="rgba(162,58,255,.44)"/>
+  </svg>
+  <svg class="poly p4" width="90" height="90" viewBox="0 0 90 90">
+    <polygon points="45,6 84,45 45,84 6,45" fill="none" stroke="rgba(112,78,255,.46)" stroke-width="1.4"/>
+    <circle cx="45" cy="45" r="5" fill="rgba(112,78,255,.5)"/>
+  </svg>
+  <svg class="poly p5" width="110" height="110" viewBox="0 0 110 110">
+    <polygon points="55,5 105,55 55,105 5,55" fill="none" stroke="rgba(255,38,148,.38)" stroke-width="1.4"/>
+    <circle cx="55" cy="55" r="6" fill="rgba(255,38,148,.42)"/>
+  </svg>
+</div>
+
+<!-- rotating spiral galaxy -->
+<canvas id="galaxy" aria-hidden="true"></canvas>
+
+<div class="glow g1" id="g1"></div>
+<div class="glow g2" id="g2"></div>
+<canvas id="flow"></canvas>
+<svg class="ridge" viewBox="0 0 1440 260" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,260 L0,168 L110,120 L215,162 L330,96 L430,140 L545,74 L660,128 L780,60 L900,118 L1020,86 L1140,140 L1260,104 L1360,150 L1440,118 L1440,260 Z" fill="rgba(108,158,205,.4)"/>
+  <path d="M0,260 L0,205 L140,176 L280,206 L420,160 L560,198 L700,152 L840,194 L980,166 L1120,202 L1280,172 L1440,200 L1440,260 Z" fill="rgba(64,112,168,.5)"/>
+</svg>
+
+<!-- ============ RAIL ============ -->
+<aside class="rail">
+  <div class="brand">
+    <div class="mono-mark">SS</div>
+    <div>
+      <b>Shiwam Singh</b>
+      <span>IIT Roorkee &middot; CoEDMM</span>
+    </div>
+  </div>
+
+  <div class="axis">
+    <span class="axis-cap hi">free atmosphere</span>
+    <span class="axis-cap lo">surface</span>
+    <nav class="nav" id="nav">
+      <a href="#contact" style="--c:198 24 62"><i class="tick"></i><span class="no">z₉</span>Get in touch</a>
+      <a href="#skills" style="--c:188 12 106"><i class="tick"></i><span class="no">z₈</span>Skills &amp; coursework</a>
+      <a href="#training" style="--c:170 16 156"><i class="tick"></i><span class="no">z₇</span>Training &amp; schools</a>
+      <a href="#awards" style="--c:146 20 188"><i class="tick"></i><span class="no">z₆</span>Awards</a>
+      <a href="#conferences" style="--c:112 26 202"><i class="tick"></i><span class="no">z₅</span>Conferences</a>
+      <a href="#publications" style="--c:74 44 212"><i class="tick"></i><span class="no">z₄</span>Publications</a>
+      <a href="#experience" style="--c:30 62 202"><i class="tick"></i><span class="no">z₃</span>Experience</a>
+      <a href="#education" style="--c:0 88 170"><i class="tick"></i><span class="no">z₂</span>Education</a>
+      <a href="#research" style="--c:0 104 140"><i class="tick"></i><span class="no">z₁</span>Research</a>
+      <a href="#home" style="--c:0 112 102"><i class="tick"></i><span class="no">z₀</span>Start here</a>
+    </nav>
+  </div>
+
+  <div class="rail-foot">
+    <div class="clock"><span>Roorkee, IST</span><b id="clock">--:--:--</b></div>
+    <div class="socials">
+      <a href="mailto:shiwam_s@dm.iitr.ac.in" aria-label="Email"><svg><use href="#i-mail"/></svg></a>
+      <a href="https://www.linkedin.com/in/shiwam-singh-ab1392219" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-in"/></svg></a>
+      <a href="https://scholar.google.co.in/citations?user=D6hiOkkAAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg><use href="#i-scholar"/></svg></a>
+      <a href="https://www.researchgate.net/profile/Shiwam-Singh-2" target="_blank" rel="noopener" aria-label="ResearchGate"><svg><use href="#i-rg"/></svg></a>
+    </div>
+  </div>
+</aside>
+
+<!-- ============ STAGE ============ -->
+<main class="stage" id="stage">
+<div class="track" id="track">
+
+  <!-- ---------- HOME ---------- -->
+  <section class="panel" id="p-home" data-name="home">
+    <div class="phead">
+      <div>
+        <h2>Start here</h2>
+        <p class="lede">Boundary layer meteorology, surface layer parameterization, and numerical weather prediction over mountains.</p>
+      </div>
+      <div class="stamp">Roorkee &middot; 29.86°N, 77.90°E &middot; 268 m</div>
+    </div>
+
+    <div class="body">
+      <div class="hero">
+        <div class="hero-kicker rv" style="--d:60"><i></i>PhD researcher &middot; fourth year</div>
+        <h1 class="name" aria-label="Shiwam Singh">
+          <span class="ln"><span class="w" style="--n:0">Shiwam</span></span>
+          <span class="ln"><span class="w" style="--n:1">Singh</span></span>
+        </h1>
+        <div class="tagline rv" style="--d:420">Surface layer processes in weather prediction models over mountains</div>
+        <div class="role rv" style="--d:480">Centre of Excellence in Disaster Mitigation and Management, IIT Roorkee</div>
+        <p class="intro rv" style="--d:540">
+          I study the exchange of heat and momentum between the ground and the air just above it.
+          Weather models handle this reasonably well over flat land. Over mountains, slope, stability
+          and terrain-driven flow break the assumptions those schemes were built on. I use tower
+          measurements from the Himalaya to test where the standard formulations fail, and to work out
+          what performs better in complex terrain.
+        </p>
+        <div class="stats">
+          <div class="stat rv" style="--d:620"><div class="n" data-to="3" style="color:#007066">0</div><div class="l">peer-reviewed papers</div></div>
+          <div class="stat rv" style="--d:680"><div class="n" data-to="8" style="color:#4a2cd4">0</div><div class="l">conference presentations</div></div>
+          <div class="stat rv" style="--d:740"><div class="n" data-to="10" style="color:#bc0c6a">0</div><div class="l">workshops and summer schools</div></div>
+        </div>
+      </div>
+
+      <div class="sounding rv bob" style="--d:560" aria-hidden="false">
+        <svg viewBox="0 0 300 250" role="img" aria-label="Idealised wind speed and potential temperature profile through the boundary layer">
+          <defs>
+            <linearGradient id="sl" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#00cdb9" stop-opacity=".4"/>
+              <stop offset="1" stop-color="#00cdb9" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <g stroke="#b0c4d8" stroke-width=".5">
+            <line x1="46" y1="20" x2="46" y2="214"/><line x1="46" y1="214" x2="284" y2="214"/>
+            <g stroke-dasharray="2 4" opacity=".75">
+              <line x1="46" y1="176" x2="284" y2="176"/><line x1="46" y1="134" x2="284" y2="134"/>
+              <line x1="46" y1="92" x2="284" y2="92"/><line x1="46" y1="50" x2="284" y2="50"/>
+              <line x1="106" y1="20" x2="106" y2="214"/><line x1="166" y1="20" x2="166" y2="214"/>
+              <line x1="226" y1="20" x2="226" y2="214"/>
+            </g>
+          </g>
+          <rect x="46" y="190" width="238" height="24" fill="url(#sl)"/>
+          <path d="M46,190 L284,190" stroke="#00c2b0" stroke-width="1" stroke-dasharray="4 3"/>
+          <path class="draw" d="M52,212 C 78,196 96,182 112,160 S 150,104 178,74 S 228,38 262,26"
+                stroke="#0a7bef" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+          <path class="draw" style="animation-delay:.9s" d="M62,212 C 84,200 92,186 104,168 S 124,128 140,98 S 168,52 190,30"
+                stroke="#a23aff" stroke-width="1.7" fill="none" stroke-dasharray="5 4" stroke-linecap="round"/>
+          <circle r="4" fill="#0a7bef"><animateMotion dur="8s" repeatCount="indefinite"
+            path="M52,212 C 78,196 96,182 112,160 S 150,104 178,74 S 228,38 262,26"/></circle>
+          <circle r="2.6" fill="#a23aff" opacity=".8"><animateMotion dur="11s" repeatCount="indefinite"
+            path="M62,212 C 84,200 92,186 104,168 S 124,128 140,98 S 168,52 190,30"/></circle>
+          <g font-family="IBM Plex Mono, monospace" font-size="8" fill="#5c6b7a">
+            <text x="8" y="196">0.1 z/h</text><text x="8" y="138">0.5 z/h</text><text x="8" y="54">1.0 z/h</text>
+            <text x="52" y="186" fill="#007a72">surface layer</text>
+            <text x="196" y="212">wind speed →</text>
+          </g>
+        </svg>
+        <div class="cap"><span>idealised profile, stable night</span><span>u(z) &middot; θ(z)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- RESEARCH ---------- -->
+  <section class="panel" id="p-research" data-name="research">
+    <div class="phead">
+      <div>
+        <h2>What I work on</h2>
+        <p class="lede">How surface-atmosphere exchange is represented in numerical weather prediction models over complex terrain, and where those representations fail.</p>
+      </div>
+      <div class="stamp">research statement</div>
+    </div>
+
+    <div class="body">
+      <div class="cols c3" style="margin-bottom:18px">
+        <div class="card rv" style="--d:60">
+          <h3><svg><use href="#i-wind"/></svg>Surface layer parameterization</h3>
+          <p style="font-size:.91rem;color:#28465f;line-height:1.65">
+            Monin-Obukhov similarity theory provides the flux calculation in nearly every operational
+            model. It assumes horizontal homogeneity, flat terrain and constant flux with height, none of
+            which hold over a mountain. I compare how different stability functions perform against
+            measured fluxes, particularly under stable stratification at night, and quantify the error
+            that results.
+          </p>
+          <div class="tags" style="margin-top:12px">
+            <span class="tag">MOST</span><span class="tag">stability functions</span>
+            <span class="tag">roughness length</span><span class="tag">flux-profile relations</span>
+          </div>
+        </div>
+
+        <div class="card rv" style="--d:130">
+          <h3><svg><use href="#i-tool"/></svg>Turbulence measurements</h3>
+          <p style="font-size:.91rem;color:#28465f;line-height:1.65">
+            The evaluation depends on direct measurement. I work with high-frequency eddy covariance data
+            from sonic anemometers sampling at 20 Hz and above, and compute turbulent heat and momentum
+            fluxes from it. Despiking, quality control, coordinate rotation and sorting the record by
+            stability regime all come before anything is compared against the model.
+          </p>
+          <div class="tags" style="margin-top:12px">
+            <span class="tag">eddy covariance</span><span class="tag">sonic anemometry</span>
+            <span class="tag">turbulent fluxes</span><span class="tag">stability regimes</span>
+          </div>
+        </div>
+
+        <div class="card rv" style="--d:200">
+          <h3><svg><use href="#i-code"/></svg>High-resolution modelling</h3>
+          <p style="font-size:.91rem;color:#28465f;line-height:1.65">
+            WRF-ARW is the model I use most, with the urban canopy model and the chemistry module where
+            the problem needs them, and RegCM for longer regional integrations. At kilometre resolution
+            over the Himalaya the results are sensitive to terrain smoothing, land-use classification and
+            the choice of boundary layer scheme, so much of the work is systematic sensitivity testing.
+          </p>
+          <div class="tags" style="margin-top:12px">
+            <span class="tag">WRF-ARW</span><span class="tag">WRF-UCM</span>
+            <span class="tag">WRF-Chem</span><span class="tag">RegCM</span><span class="tag">data assimilation</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cols c2">
+        <div class="card rv" style="--d:270">
+          <h3><svg><use href="#i-award"/></svg>Link to disaster forecasting</h3>
+          <p style="font-size:.91rem;color:#28465f;line-height:1.65">
+            An error in the simulated surface energy balance carries into the simulated convection, which
+            matters for forecasting cloudbursts and the rainfall that triggers landslides in the Himalaya.
+            I contribute the atmospheric modelling to group work of this kind, including a study of the
+            July 2024 Wayanad landslide and an impact-based heat stress warning framework for a coastal
+            city.
+          </p>
+        </div>
+        <div class="card rv" style="--d:340">
+          <h3><svg><use href="#i-book"/></svg>Mathematics background</h3>
+          <p style="font-size:.91rem;color:#28465f;line-height:1.65">
+            I came to atmospheric science from pure mathematics, with a B.Sc. and M.Sc. in the subject and
+            master's projects on the Riemann-Roch theorem for function fields and on arcs in finite
+            projective spaces. It is useful for working inside the numerics rather than treating the model
+            as a black box: the schemes are differential equations with closure assumptions, and both can
+            be checked directly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- EDUCATION ---------- -->
+  <section class="panel" id="p-education" data-name="education">
+    <div class="phead">
+      <div>
+        <h2>Education</h2>
+        <p class="lede">Degrees, doctoral work and master's projects.</p>
+      </div>
+      <div class="stamp">2013 to present</div>
+    </div>
+
+    <div class="body">
+      <div class="cols c3">
+        <div class="card rv" style="--d:60">
+          <h3><svg><use href="#i-cap"/></svg>Doctoral research</h3>
+          <div class="item">
+            <div class="when">July 2023 to present &middot; fourth year</div>
+            <div class="what">Ph.D., Disaster Mitigation and Management</div>
+            <div class="where">Indian Institute of Technology Roorkee</div>
+            <div class="note">Centre of Excellence in Disaster Mitigation and Management (CoEDMM). Research on the
+              representation of surface and boundary layer processes in numerical weather prediction models
+              over mountainous regions.</div>
+          </div>
+          <div class="item">
+            <div class="when">November 2022 to July 2023</div>
+            <div class="what">Junior Research Fellow</div>
+            <div class="where">CoEDMM, IIT Roorkee</div>
+            <div class="note">Project: “Improved Representation of Surface Layer Parameterizations in the
+              Weather Research and Forecasting Model”.</div>
+          </div>
+        </div>
+
+        <div class="card rv" style="--d:130">
+          <h3><svg><use href="#i-cap"/></svg>Degrees</h3>
+          <div class="item">
+            <div class="when">2020-2022</div>
+            <div class="what">M.Sc. Mathematics <span class="score">GPA 8.16</span></div>
+            <div class="where">Indian Institute of Technology Hyderabad</div>
+            <div class="note">Department of Mathematics.</div>
+          </div>
+          <div class="item">
+            <div class="when">2016-2019</div>
+            <div class="what">B.Sc. Mathematics <span class="score">66.28%</span></div>
+            <div class="where">Kisan P.G. College, Dr. RMLAU Ayodhya</div>
+            <div class="note">Department of Mathematics, Uttar Pradesh.</div>
+          </div>
+          <div class="item">
+            <div class="when">2014-2016</div>
+            <div class="what">Class XII <span class="score">72.6%</span></div>
+            <div class="where">R.S. Inter College, Shivpur, Bahraich</div>
+          </div>
+          <div class="item">
+            <div class="when">2013-2014</div>
+            <div class="what">Class X <span class="score">85.17%</span></div>
+            <div class="where">Mahanand Awasthi Inter College, Shivpur, Bahraich</div>
+          </div>
+        </div>
+
+        <div class="card rv" style="--d:200">
+          <h3><svg><use href="#i-book"/></svg>Master's projects</h3>
+          <div class="item">
+            <div class="when">July 2021 to December 2021</div>
+            <div class="what">Riemann-Roch Theorem for Function Fields</div>
+            <div class="where">IIT Hyderabad</div>
+            <div class="note">Algebraic function fields, divisors, genus, and the statement and proof machinery
+              of Riemann-Roch in the function field setting.</div>
+          </div>
+          <div class="item">
+            <div class="when">January 2022 to June 2022</div>
+            <div class="what">Arcs in Finite Projective Spaces</div>
+            <div class="where">IIT Hyderabad</div>
+            <div class="note">Combinatorial geometry over finite fields, with connections to algebraic coding
+              theory and maximum distance separable codes.</div>
+          </div>
+          <div class="item">
+            <div class="when">2019, 2020 &middot; 2022, 2023</div>
+            <div class="what">JAM and GATE qualified</div>
+            <div class="note">Joint Admission Test for Masters in 2019 and 2020; Graduate Aptitude Test in
+              Engineering in 2022 and 2023.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- EXPERIENCE ---------- -->
+  <section class="panel" id="p-experience" data-name="experience">
+    <div class="phead">
+      <div>
+        <h2>Experience</h2>
+        <p class="lede">Research positions held, and the modelling systems I work with.</p>
+      </div>
+      <div class="stamp">CoEDMM, IIT Roorkee</div>
+    </div>
+
+    <div class="body">
+      <div class="cols c2" style="margin-bottom:18px">
+        <div class="card rv" style="--d:60">
+          <h3><svg><use href="#i-case"/></svg>Positions</h3>
+          <div class="item">
+            <div class="when">November 2022 to July 2023</div>
+            <div class="what">Junior Research Fellow</div>
+            <div class="where">Centre of Excellence in Disaster Mitigation and Management, IIT Roorkee</div>
+            <div class="note">Worked on “Improved Representation of Surface Layer Parameterizations in the
+              Weather Research and Forecasting Model”. This work led directly into the doctoral research.</div>
+          </div>
+          <div class="item">
+            <div class="when">November 2022 to present</div>
+            <div class="what">Numerical weather prediction and model development</div>
+            <div class="where">Centre of Excellence in Disaster Mitigation and Management, IIT Roorkee</div>
+            <div class="note">Hands-on with WRF-ARW, WRF-UCM, WRF-Chem and RegCM for high-resolution weather and
+              climate simulation, together with subgrid-scale parameterization work driven by high-frequency
+              eddy covariance observations over complex mountainous terrain.</div>
+          </div>
+        </div>
+
+        <div class="card rv" style="--d:130">
+          <h3><svg><use href="#i-tool"/></svg>Day to day work</h3>
+          <div class="item">
+            <div class="what">Model configuration and runs</div>
+            <div class="note">Nested high-resolution domains over the Himalaya, sensitivity experiments across
+              boundary layer and surface layer schemes, and comparison against station and reanalysis data.</div>
+          </div>
+          <div class="item">
+            <div class="what">Source-code level modification</div>
+            <div class="note">Editing and recompiling surface layer routines in Fortran to test alternative
+              similarity functions and flux formulations rather than only switching between namelist options.</div>
+          </div>
+          <div class="item">
+            <div class="what">Observation processing</div>
+            <div class="note">Eddy covariance flux computation, despiking and quality control, stability
+              classification, and evaluation using correlation, mean bias, MAE, RMSE and index of agreement.</div>
+          </div>
+          <div class="item">
+            <div class="what">Collaborative field and case studies</div>
+            <div class="note">Atmospheric modelling contributed to multi-institution studies of landslides,
+              extreme rainfall and urban heat stress.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card rv" style="--d:200">
+        <h3><svg><use href="#i-code"/></svg>Modelling systems</h3>
+        <div class="tags">
+          <span class="tag">WRF-ARW</span><span class="tag">WRF-UCM</span><span class="tag">WRF-Chem</span>
+          <span class="tag">RegCM</span><span class="tag">WPS preprocessing</span><span class="tag">nested domains</span>
+          <span class="tag">PBL scheme sensitivity</span><span class="tag">surface layer schemes</span>
+          <span class="tag">data assimilation</span><span class="tag">eddy covariance processing</span>
+          <span class="tag">reanalysis evaluation</span><span class="tag">HPC workflows</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- PUBLICATIONS ---------- -->
+  <section class="panel" id="p-publications" data-name="publications">
+    <div class="phead">
+      <div>
+        <h2>Publications</h2>
+        <p class="lede">Peer-reviewed journal articles.</p>
+      </div>
+      <div class="stamp">3 papers &middot; 2025-2026</div>
+    </div>
+
+    <div class="body">
+      <div class="cols c3">
+        <article class="pub rv" style="--d:60">
+          <div class="yr">2025</div>
+          <div class="ti">Parameterization of Surface Layer Processes in Extreme Weather Conditions over Mountainous Region</div>
+          <div class="au"><b>Singh, S.</b> &amp; Srivastava, P.</div>
+          <div class="jr">Weather and Forecasting, 1489-1510</div>
+          <a class="doi" href="https://doi.org/10.1175/WAF-D-24-0178.1" target="_blank" rel="noopener">doi.org/10.1175/WAF-D-24-0178.1</a>
+        </article>
+
+        <article class="pub rv" style="--d:130">
+          <div class="yr">2025</div>
+          <div class="ti">Chronicle of Destruction: The Wayanad Landslide of July 30, 2024</div>
+          <div class="au">Yunus, A.P., Sajinkumar, K.S., Gopinath, G., Subramanian, S.S., Kaushal, S., Thanveer, J.,
+            Achu, A.L., Islam, S.M.U., Ishan, A., Krishnapriya, V.K., Rajaneesh, A., Dewrari, M., Dixit, S.,
+            <b>Singh, S.</b>, Srivastava, P., Oommen, T., Nedumpallile-Vasu, N., Sen, S., Narayana, A.C.,
+            Ambili, V., Pradeep, G.S. &amp; Kuriakose, S.L.</div>
+          <div class="jr">Landslides</div>
+          <a class="doi" href="https://doi.org/10.1007/s10346-025-02494-y" target="_blank" rel="noopener">doi.org/10.1007/s10346-025-02494-y</a>
+        </article>
+
+        <article class="pub rv" style="--d:200">
+          <div class="yr">2026</div>
+          <div class="ti">A Framework for Impact-Based Heat Stress Warning System for a Coastal City in India</div>
+          <div class="au">Kacker, K., Utpal, A., <b>Singh, S.</b>, Srivastava, P., Mukherjee, M.,
+            Subramanian, S.S. &amp; Rakesh, R.</div>
+          <div class="jr">Scientific Reports</div>
+          <a class="doi" href="https://doi.org/10.1038/s41598-026-38639-9" target="_blank" rel="noopener">doi.org/10.1038/s41598-026-38639-9</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CONFERENCES ---------- -->
+  <section class="panel" id="p-conferences" data-name="conferences">
+    <div class="phead">
+      <div>
+        <h2>Conference presentations</h2>
+        <p class="lede">Work presented at international meetings in Japan, the United States, Singapore, India and Austria.</p>
+      </div>
+      <div class="stamp">8 presentations &middot; 2024-2026</div>
+    </div>
+
+    <div class="body">
+      <div class="cols c4" style="grid-auto-rows:1fr">
+        <article class="conf rv" style="--d:40">
+          <span class="idx">01</span>
+          <div class="ti">Towards Improved Parameterization of Surface Turbulent Fluxes in Extreme Weather Conditions over Mountainous Region</div>
+          <div class="au">Srivastava, P. &amp; <b>Singh, S.</b> (2024)</div>
+          <div class="ve">9th GEWEX Open Science Conference<br>07-12 July 2024 &middot; Sapporo, Hokkaido, Japan</div>
+        </article>
+
+        <article class="conf rv" style="--d:90">
+          <span class="idx">02</span>
+          <div class="ti">Applicability of Monin-Obukhov Similarity Theory in Stable Conditions over Mountainous Region</div>
+          <div class="au"><b>Singh, S.</b> &amp; Srivastava, P. (2024)</div>
+          <div class="ve">AGU Fall Meeting Abstracts<br>Issue 2168, NH31F-2168</div>
+        </article>
+
+        <article class="conf rv" style="--d:140">
+          <span class="idx">03</span>
+          <div class="ti">Modelling and Analysis of Heat Stress over an Urban City in India</div>
+          <div class="au">Utpal, A., Srivastava, P., <b>Singh, S.</b> &amp; Subramanian, S.S. (2025)</div>
+          <div class="ve">JpGU Meeting 2025, Session A-AS05<br>Weather, Climate and Environmental Science Studies using High-Performance Computing</div>
+        </article>
+
+        <article class="conf rv" style="--d:190">
+          <span class="idx">04</span>
+          <div class="ti">Numerical Weather Prediction Model Underestimated the Extent of Extreme Rainfall Event During the 2024 Wayanad (Kerala, India) Landslide</div>
+          <div class="au">Srivastava, P., <b>Singh, S.</b>, Singh, S., Prabhakaran, A., Subramanian, S.S. &amp; Pulpadan, Y.A. (2025)</div>
+          <div class="ve">JpGU Meeting 2025, Session A-AS03<br>26-31 May 2025 &middot; Chiba, Japan</div>
+        </article>
+
+        <article class="conf rv" style="--d:240">
+          <span class="idx">05</span>
+          <div class="ti">Evaluation of the Impacts of Land Use / Land Cover Changes on Weather Forecast Using the WRF Model over an Urban Area (Dehradun) in India</div>
+          <div class="au">Yalakala, G., Srivastava, P. &amp; <b>Singh, S.</b> (2025)</div>
+          <div class="ve">AOGS 2025, 22nd Annual Meeting, Abstract AS66-A012<br>27 July to 01 August 2025 &middot; Singapore</div>
+        </article>
+
+        <article class="conf rv" style="--d:290">
+          <span class="idx">06</span>
+          <div class="ti">Evaluation of Different Similarity Functions Under Stable Conditions over a Mountainous Region</div>
+          <div class="au"><b>Singh, S.</b> &amp; Srivastava, P. (2025)</div>
+          <div class="ve">INTROMET-2025<br>18-20 November 2025 &middot; IITM, Pune, India</div>
+        </article>
+
+        <article class="conf rv" style="--d:340">
+          <span class="idx">07</span>
+          <div class="ti">Evaluation of Different Parameterizations for the Computation of Surface Fluxes over Mountainous Region</div>
+          <div class="au"><b>Singh, S.</b> &amp; Srivastava, P. (2025)</div>
+          <div class="ve">AGU Fall Meeting Abstracts 2025<br>A41L-VR8809</div>
+        </article>
+
+        <article class="conf rv" style="--d:390">
+          <span class="idx">08</span>
+          <div class="ti">Parameterization of Surface Layer Processes under Stable Conditions over Mountainous Region</div>
+          <div class="au"><b>Singh, S.</b> &amp; Srivastava, P. (2026)</div>
+          <div class="ve">EGU General Assembly 2026, Abstract EGU26-801<br>3-8 May 2026 &middot; Vienna, Austria</div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- AWARDS ---------- -->
+  <section class="panel" id="p-awards" data-name="awards">
+    <div class="phead">
+      <div>
+        <h2>Awards and honours</h2>
+        <p class="lede">Travel support, prizes and national qualifying examinations.</p>
+      </div>
+      <div class="stamp">2019 to 2026</div>
+    </div>
+
+    <div class="body">
+      <div class="cols c2" style="grid-auto-rows:1fr;margin-bottom:18px">
+        <div class="award rv" style="--d:60">
+          <div class="ti">Early Career Scientist Travel Support Awardee</div>
+          <div class="by">European Geosciences Union, EGU General Assembly 2026, Vienna, Austria</div>
+          <div class="when">03 May to 08 May 2026</div>
+          <div class="perk">Registration fee waiver &middot; €300 travel support &middot; APC refund<br>
+            Awarded for research on surface-atmosphere exchange processes over mountainous regions.</div>
+        </div>
+
+        <div class="award rv" style="--d:120">
+          <div class="ti">Travel Grant Awardee</div>
+          <div class="by">HPC4Climate Summer School 2025, Max Planck Institute for Meteorology, Lauenburg, Germany</div>
+          <div class="when">28 July to 07 August 2025</div>
+          <div class="perk">€500 travel grant to attend the summer school.</div>
+        </div>
+
+        <div class="award rv" style="--d:180">
+          <div class="ti">Second Prize, Poster Presentation</div>
+          <div class="by">Research Scholar's Day, Centre of Excellence in Disaster Mitigation and Management, IIT Roorkee</div>
+          <div class="when">13 October 2025</div>
+          <div class="perk">Poster: “Analysis of Observed Behavior of Heat and Momentum Fluxes Over Mountainous Region”.</div>
+        </div>
+
+        <div class="award rv" style="--d:240">
+          <div class="ti">National qualifying examinations</div>
+          <div class="by">Graduate Aptitude Test in Engineering and Joint Admission Test for Masters</div>
+          <div class="when">GATE 2022 and 2023 &middot; JAM 2019 and 2020</div>
+          <div class="perk">Qualified on all four attempts.</div>
+        </div>
+      </div>
+
+      <div class="card rv" style="--d:300">
+        <h3><svg><use href="#i-award"/></svg>Scholastic achievements</h3>
+        <div class="cols c2">
+          <div class="item">
+            <div class="what">Joint Admission Test for Masters (JAM)</div>
+            <div class="note">Qualified in 2019 and 2020.</div>
+          </div>
+          <div class="item">
+            <div class="what">Graduate Aptitude Test in Engineering (GATE)</div>
+            <div class="note">Qualified in 2022 and 2023.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- TRAINING ---------- -->
+  <section class="panel" id="p-training" data-name="training">
+    <div class="phead">
+      <div>
+        <h2>Workshops, schools and training</h2>
+        <p class="lede">Mathematics training programmes, disaster risk workshops, data assimilation courses and instrumentation training.</p>
+      </div>
+      <div class="stamp">10 programmes &middot; 2018-2025</div>
+    </div>
+
+    <div class="body">
+      <div class="cols c4" style="grid-auto-rows:1fr">
+        <div class="wk rv" style="--d:40">
+          <div class="ti">Mathematics Training and Talent Search Programme (MTTS), Levels 0, I and II</div>
+          <div class="ho">MTTS Trust, at IIT Guwahati (Level 0) and IISER Thiruvananthapuram (Levels I and II)</div>
+          <div class="when">28 May to 23 Jun 2018 &middot; 20 May to 15 Jun 2019 &middot; 18 May to 13 Jun 2020</div>
+        </div>
+        <div class="wk rv" style="--d:80">
+          <div class="ti">FORESEED: Forecasting and Early-Warning of Extreme Events and Disasters</div>
+          <div class="ho">CoEDMM, IIT Roorkee</div>
+          <div class="when">02-08 January 2023</div>
+        </div>
+        <div class="wk rv" style="--d:120">
+          <div class="ti">Disaster Risk Reduction in Museums and Heritage Safety in the Himalayan Region</div>
+          <div class="ho">CoEDMM, IIT Roorkee</div>
+          <div class="when">24-25 February 2023</div>
+        </div>
+        <div class="wk rv" style="--d:160">
+          <div class="ti">Technical Workshop on Earthquake Early Warning System (EEWS)</div>
+          <div class="ho">CoEDMM, IIT Roorkee</div>
+          <div class="when">10-12 April 2023</div>
+        </div>
+        <div class="wk rv" style="--d:200">
+          <div class="ti">Workshop on Weather Prediction and Climate Model</div>
+          <div class="ho">IIT Roorkee</div>
+          <div class="when">16-20 October 2023</div>
+        </div>
+        <div class="wk rv" style="--d:240">
+          <div class="ti">Data Assimilation in Weather and Climate Models</div>
+          <div class="ho">International Centre for Theoretical Sciences (ICTS), Bengaluru</div>
+          <div class="when">06-17 May 2024</div>
+        </div>
+        <div class="wk rv" style="--d:280">
+          <div class="ti">Advanced Data Assimilation and Inverse Modelling in the Earth System and Climate Sciences</div>
+          <div class="ho">National Remote Sensing Centre (NRSC), Hyderabad. Four-day customised training</div>
+          <div class="when">21-24 January 2025</div>
+        </div>
+        <div class="wk rv" style="--d:320">
+          <div class="ti">CRITICAL: Co-producing Risk-informed, Gender-responsive Actions and Adaptation Pathways at Local Level</div>
+          <div class="ho">CoEDMM, IIT Roorkee</div>
+          <div class="when">30 January 2025</div>
+        </div>
+        <div class="wk rv" style="--d:360">
+          <div class="ti">Training Session on Eddy Covariance Systems</div>
+          <div class="ho">Campbell Scientific India, at Lemon Tree Premier, Delhi</div>
+          <div class="when">02 May 2025</div>
+        </div>
+        <div class="wk rv" style="--d:400">
+          <div class="ti">HPC4Climate Summer School 2025</div>
+          <div class="ho">Max Planck Institute for Meteorology, Hamburg, held at Lauenburg, Germany</div>
+          <div class="when">28 July to 07 August 2025</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- SKILLS ---------- -->
+  <section class="panel" id="p-skills" data-name="skills">
+    <div class="phead">
+      <div>
+        <h2>Skills and coursework</h2>
+        <p class="lede">Computing environment, modelling tools, and the formal coursework behind them.</p>
+      </div>
+      <div class="stamp">technical profile</div>
+    </div>
+
+    <div class="body">
+      <div class="cols c3">
+        <div class="card rv" style="--d:60">
+          <h3><svg><use href="#i-code"/></svg>Technical skills</h3>
+          <div class="group">Programming languages</div>
+          <div class="tags">
+            <span class="tag">C++</span><span class="tag">R</span><span class="tag">Python</span>
+            <span class="tag">MATLAB</span><span class="tag">Fortran</span>
+          </div>
+          <div class="group">Work environment and markup</div>
+          <div class="tags"><span class="tag">Linux</span><span class="tag">LaTeX</span></div>
+          <div class="group">Graphing utilities and GIS</div>
+          <div class="tags">
+            <span class="tag">ArcGIS</span><span class="tag">ERDAS Imagine</span><span class="tag">GrADS</span>
+            <span class="tag">OriginPro</span><span class="tag">Ncview</span>
+          </div>
+          <div class="group">Models</div>
+          <div class="tags">
+            <span class="tag">WRF-ARW</span><span class="tag">WRF-UCM</span><span class="tag">WRF-Chem</span>
+            <span class="tag">RegCM</span>
+          </div>
+        </div>
+
+        <div class="card rv" style="--d:130">
+          <h3><svg><use href="#i-book"/></svg>Mathematics coursework</h3>
+          <div class="group">Algebra</div>
+          <div class="tags">
+            <span class="tag">Advanced linear algebra</span><span class="tag">Groups and rings</span>
+            <span class="tag">Fields and modules</span><span class="tag">Algebraic geometry</span>
+            <span class="tag">Modern number theory</span><span class="tag">Algebraic coding theory</span>
+          </div>
+          <div class="group">Analysis</div>
+          <div class="tags">
+            <span class="tag">Real analysis</span><span class="tag">Complex analysis</span>
+            <span class="tag">Numerical analysis</span><span class="tag">Functional analysis</span>
+          </div>
+          <div class="group">Applied mathematics</div>
+          <div class="tags">
+            <span class="tag">Ordinary differential equations</span><span class="tag">Partial differential equations</span>
+            <span class="tag">Probability theory</span>
+          </div>
+        </div>
+
+        <div class="card rv" style="--d:200">
+          <h3><svg><use href="#i-cap"/></svg>Climate change and disaster management</h3>
+          <div class="tags">
+            <span class="tag">Vulnerability and risk analysis</span>
+            <span class="tag">Landslide hazard assessment and mitigation</span>
+            <span class="tag">Remote sensing and GIS applications</span>
+            <span class="tag">Geo-spatial data for disaster mitigation</span>
+          </div>
+          <div class="group" style="margin-top:14px">Methods used routinely</div>
+          <div class="tags">
+            <span class="tag">Monin-Obukhov similarity theory</span><span class="tag">Eddy covariance flux processing</span>
+            <span class="tag">PBL scheme evaluation</span><span class="tag">Reanalysis validation</span>
+            <span class="tag">Correlation, MB, MAE, RMSE, IoA</span><span class="tag">NetCDF workflows</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---------- CONTACT ---------- -->
+  <section class="panel" id="p-contact" data-name="contact">
+    <div class="phead">
+      <div>
+        <h2>Get in touch</h2>
+        <p class="lede">Open to collaboration on surface layer observations, mountain boundary layer modelling and NWP evaluation.</p>
+      </div>
+      <div class="stamp">Roorkee, Uttarakhand, India</div>
+    </div>
+
+    <div class="body">
+      <div>
+        <p class="closing rv" style="--d:60">
+          Happy to discuss turbulence measurements over complex terrain, boundary layer schemes, or
+          WRF setups for mountainous regions. <b>Email is the quickest way to reach me.</b>
+          <small>
+            Shiwam Singh &middot; born 03 March 2000<br>
+            Centre of Excellence in Disaster Mitigation and Management<br>
+            Indian Institute of Technology Roorkee, Uttarakhand 247667, India
+          </small>
+        </p>
+      </div>
+
+      <div class="reach">
+        <a class="rv" style="--d:120" href="mailto:shiwam_s@dm.iitr.ac.in">
+          <svg><use href="#i-mail"/></svg>
+          <span><span class="k">institute email</span><br><span class="v">shiwam_s@dm.iitr.ac.in</span></span>
+        </a>
+        <a class="rv" style="--d:170" href="mailto:shivambela1@gmail.com">
+          <svg><use href="#i-mail"/></svg>
+          <span><span class="k">personal email</span><br><span class="v">shivambela1@gmail.com</span></span>
+        </a>
+        <a class="rv" style="--d:220" href="tel:+919198093834">
+          <svg><use href="#i-phone"/></svg>
+          <span><span class="k">phone</span><br><span class="v">+91 91980 93834</span></span>
+        </a>
+        <a class="rv" style="--d:270" href="https://www.linkedin.com/in/shiwam-singh-ab1392219" target="_blank" rel="noopener">
+          <svg><use href="#i-in"/></svg>
+          <span><span class="k">linkedin</span><br><span class="v">shiwam-singh-ab1392219</span></span>
+        </a>
+        <a class="rv" style="--d:320" href="https://scholar.google.co.in/citations?user=D6hiOkkAAAAJ&hl=en" target="_blank" rel="noopener">
+          <svg><use href="#i-scholar"/></svg>
+          <span><span class="k">google scholar</span><br><span class="v">publication record</span></span>
+        </a>
+        <a class="rv" style="--d:370" href="https://www.researchgate.net/profile/Shiwam-Singh-2" target="_blank" rel="noopener">
+          <svg><use href="#i-rg"/></svg>
+          <span><span class="k">researchgate</span><br><span class="v">Shiwam-Singh-2</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</div>
+</main>
+
+<div class="hud">
+  <div class="count"><b id="cur">01</b> / <span id="tot">10</span></div>
+  <div class="bar"><i id="barfill"></i></div>
+  <div class="hint" id="hint">scroll, arrows, or swipe to move</div>
+  <div class="steps">
+    <button id="prev" aria-label="Previous section"><svg><use href="#i-prev"/></svg></button>
+    <button id="next" aria-label="Next section"><svg><use href="#i-next"/></svg></button>
+  </div>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ================================================================
+   THEME SWITCHER
+================================================================ */
+(function(){
+  var body = document.body;
+  var themeBtns = {
+    original: document.querySelector('[data-theme="original"]'),
+    light1: document.querySelector('[data-theme="light-1"]'),
+    light2: document.querySelector('[data-theme="light-2"]'),
+    light3: document.querySelector('[data-theme="light-3"]'),
+    dark1: document.querySelector('[data-theme="dark-1"]'),
+    dark2: document.querySelector('[data-theme="dark-2"]'),
+    dark3: document.querySelector('[data-theme="dark-3"]'),
+    dark4: document.querySelector('[data-theme="dark-4"]')
+  };
+  var dots = document.querySelectorAll('.theme-dots span');
+  var currentTheme = 'dark-1';
+  var lightIndex = 0, darkIndex = 0;
+
+  function applyTheme(theme) {
+    body.className = body.className.replace(/\btheme-\S+/g, '').trim();
+    if (theme !== 'original') body.classList.add('theme-' + theme);
+    currentTheme = theme;
+    dots.forEach(function(d) {
+      d.classList.toggle('active', d.dataset.theme === theme);
+    });
+  }
+
+  function cycleTheme(list, dir) {
+    var themes = list;
+    var idx = themes.indexOf(currentTheme);
+    var next = themes[(idx + dir + themes.length) % themes.length];
+    applyTheme(next);
+  }
+
+  var lightThemes = ['original', 'light-1', 'light-2', 'light-3'];
+  var darkThemes = ['dark-1', 'dark-2', 'dark-3', 'dark-4'];
+
+  document.getElementById('lightModeBtn').addEventListener('click', function() {
+    var idx = lightThemes.indexOf(currentTheme);
+    var next = lightThemes[(idx + 1) % lightThemes.length];
+    applyTheme(next);
+  });
+
+  document.getElementById('darkModeBtn').addEventListener('click', function() {
+    var idx = darkThemes.indexOf(currentTheme);
+    var next = darkThemes[(idx + 1) % darkThemes.length];
+    applyTheme(next);
+  });
+
+  dots.forEach(function(d) {
+    d.addEventListener('click', function() {
+      applyTheme(this.dataset.theme);
+    });
+  });
+})();
+
+/* ================================================================
+   MAIN PAGE LOGIC
+================================================================ */
+var track  = document.getElementById('track');
+var panels = Array.prototype.slice.call(track.querySelectorAll('.panel'));
+var links  = Array.prototype.slice.call(document.querySelectorAll('#nav a'));
+var stack  = window.matchMedia('(max-width:1000px), (max-height:520px)');
+var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+var idx = 0, locked = false;
+
+document.getElementById('tot').textContent = String(panels.length).padStart(2,'0');
+
+function pad(n){ return String(n).padStart(2,'0'); }
+
+var g1 = document.getElementById('g1'), g2 = document.getElementById('g2');
+var ridge = document.querySelector('.ridge');
+var ramp = panels.map(function(p){
+  return getComputedStyle(p).getPropertyValue('--a-rgb').trim() || '0 205 185';
+});
+window.__accent = ramp[0].split(/\s+/).join(',');
+
+function paint(i){
+  var here = ramp[i], far = ramp[(i + 4) % ramp.length];
+  var css  = 'rgb(' + here + ')';
+  document.documentElement.style.setProperty('--now', css);
+  document.documentElement.style.setProperty('--now-ink',
+    'rgb(' + (getComputedStyle(panels[i]).getPropertyValue('--ai-rgb').trim() || '0 112 102') + ')');
+  window.__accent = here.split(/\s+/).join(',');
+  if(g1){
+    g1.style.backgroundColor = css;
+    g1.style.transform = 'translate3d(' + (i * 3.2) + 'vw,' + (-i * 1.5) + 'vh,0) scale(' + (1 + i*0.04) + ')';
+  }
+  if(g2){
+    g2.style.backgroundColor = 'rgb(' + far + ')';
+    g2.style.transform = 'translate3d(' + (-i * 4) + 'vw,' + (i * 2) + 'vh,0) scale(' + (1 + i*0.03) + ')';
+  }
+  if(ridge && !stack.matches){
+    ridge.style.transform = 'translate3d(' + (-i * 2.2) + '%,0,0) scaleY(' + (1 + i * 0.016).toFixed(3) + ')';
+  }
+}
+
+function go(i, push){
+  i = Math.max(0, Math.min(panels.length-1, i));
+  idx = i;
+  var name = panels[i].dataset.name;
+
+  if(stack.matches){
+    panels[i].scrollIntoView({behavior: reduce.matches ? 'auto' : 'smooth', block:'start'});
+  }else{
+    track.style.transform = 'translate3d(' + (-i*100) + '%,0,0)';
+  }
+
+  panels.forEach(function(p,n){ p.classList.toggle('on', n===i); });
+  links.forEach(function(a){ a.classList.toggle('on', a.getAttribute('href') === '#'+name); });
+
+  document.getElementById('cur').textContent = pad(i+1);
+  document.getElementById('barfill').style.transform =
+      'scaleX(' + ((i+1)/panels.length) + ')';
+  document.getElementById('prev').disabled = (i===0);
+  document.getElementById('next').disabled = (i===panels.length-1);
+
+  paint(i);
+
+  var b = panels[i].querySelector('.body');
+  if(b && !stack.matches) b.scrollTop = 0;
+
+  if(push !== false && location.hash !== '#'+name){
+    history.replaceState(null, '', '#'+name);
+  }
+  if(i===0) runCounters();
+
+  locked = true;
+  setTimeout(function(){ locked = false; }, reduce.matches ? 60 : 680);
+}
+
+links.forEach(function(a){
+  a.addEventListener('click', function(e){
+    e.preventDefault();
+    var n = panels.findIndex(function(p){ return '#'+p.dataset.name === a.getAttribute('href'); });
+    if(n > -1) go(n);
+  });
+});
+document.getElementById('prev').addEventListener('click', function(){ go(idx-1); });
+document.getElementById('next').addEventListener('click', function(){ go(idx+1); });
+
+window.addEventListener('keydown', function(e){
+  if(stack.matches) return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'){ e.preventDefault(); go(idx+1); }
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){ e.preventDefault(); go(idx-1); }
+  else if(e.key==='Home'){ e.preventDefault(); go(0); }
+  else if(e.key==='End'){ e.preventDefault(); go(panels.length-1); }
+});
+
+var acc = 0, accTimer;
+document.getElementById('stage').addEventListener('wheel', function(e){
+  if(stack.matches) return;
+  var d = Math.abs(e.deltaX) > Math.abs(e.deltaY) ? e.deltaX : e.deltaY;
+  var body = panels[idx].querySelector('.body');
+  if(body && body.scrollHeight > body.clientHeight + 2 && Math.abs(e.deltaY) > Math.abs(e.deltaX)){
+    var top = body.scrollTop <= 0;
+    var bot = body.scrollTop + body.clientHeight >= body.scrollHeight - 1;
+    if((d < 0 && !top) || (d > 0 && !bot)) return;
+  }
+  e.preventDefault();
+  if(locked) return;
+  acc += d;
+  clearTimeout(accTimer);
+  accTimer = setTimeout(function(){ acc = 0; }, 200);
+  if(Math.abs(acc) > 55){ go(idx + (acc > 0 ? 1 : -1)); acc = 0; }
+}, {passive:false});
+
+var tx=0, ty=0, tracking=false;
+document.getElementById('stage').addEventListener('touchstart', function(e){
+  if(stack.matches) return;
+  tx = e.touches[0].clientX; ty = e.touches[0].clientY; tracking = true;
+}, {passive:true});
+document.getElementById('stage').addEventListener('touchend', function(e){
+  if(!tracking || stack.matches) return;
+  tracking = false;
+  var dx = e.changedTouches[0].clientX - tx;
+  var dy = e.changedTouches[0].clientY - ty;
+  if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) go(idx + (dx < 0 ? 1 : -1));
+}, {passive:true});
+
+function fromHash(){
+  var n = panels.findIndex(function(p){ return '#'+p.dataset.name === location.hash; });
+  go(n > -1 ? n : 0, false);
+}
+window.addEventListener('hashchange', fromHash);
+var rt;
+window.addEventListener('resize', function(){
+  clearTimeout(rt);
+  rt = setTimeout(function(){
+    if(stack.matches){ track.style.transform = ''; }
+    else { track.style.transform = 'translate3d(' + (-idx*100) + '%,0,0)'; }
+  }, 120);
+});
+if(stack.matches){ panels.forEach(function(p){ p.classList.add('on'); }); }
+fromHash();
+
+var counted = false;
+function runCounters(){
+  if(counted) return; counted = true;
+  Array.prototype.forEach.call(document.querySelectorAll('.stat .n'), function(el){
+    var to = +el.dataset.to, t0 = null, dur = 1200;
+    if(reduce.matches){ el.textContent = to; return; }
+    function step(ts){
+      if(!t0) t0 = ts;
+      var k = Math.min(1, (ts - t0)/dur);
+      var e = 1 - Math.pow(1 - k, 3);
+      el.textContent = Math.round(to * e);
+      if(k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  });
+}
+
+var clockEl = document.getElementById('clock');
+function tick(){
+  try{
+    clockEl.textContent = new Intl.DateTimeFormat('en-GB',{
+      timeZone:'Asia/Kolkata', hour:'2-digit', minute:'2-digit', second:'2-digit', hour12:false
+    }).format(new Date());
+  }catch(err){ clockEl.textContent = new Date().toLocaleTimeString(); }
+}
+tick(); setInterval(tick, 1000);
+
+var cvs = document.getElementById('flow');
+if(cvs && !reduce.matches && !stack.matches){
+  var ctx = cvs.getContext('2d', {alpha:true});
+  var W=0, H=0, dpr=1, parts=[], t=0, alive=true;
+
+  function size(){
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    W = window.innerWidth; H = window.innerHeight;
+    cvs.width = Math.floor(W*dpr); cvs.height = Math.floor(H*dpr);
+    cvs.style.width = W+'px'; cvs.style.height = H+'px';
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+  }
+
+  function seedOne(){
+    return {
+      x: Math.random()*W, y: Math.random()*H,
+      life: 0, max: 100 + Math.random()*220,
+      w: Math.random() < .2 ? 1.3 : .6,
+      c: Math.random() < .5 ? (window.__accent || '0,205,185') : '0,142,255'
+    };
+  }
+  function seed(){
+    var n = Math.round(Math.min(130, Math.max(50, W*H/15000)));
+    parts = []; for(var i=0;i<n;i++) parts.push(seedOne());
+  }
+
+  function ang(x,y){
+    return (Math.sin(x*0.0017 + t*0.20) +
+            Math.cos(y*0.0026 - t*0.14) +
+            Math.sin((x*0.6 + y)*0.0013 + t*0.09)) * 1.15;
+  }
+
+  function frame(){
+    if(!alive) return;
+    t += 0.003;
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.fillStyle = 'rgba(0,0,0,0.06)';
+    ctx.fillRect(0,0,W,H);
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.lineCap = 'round';
+
+    for(var i=0;i<parts.length;i++){
+      var p = parts[i], a = ang(p.x, p.y);
+      var shear = 0.55 + (1 - p.y/H) * 1.8;
+      var px = p.x, py = p.y;
+      p.x += Math.cos(a)*0.9*shear + 0.32*shear;
+      p.y += Math.sin(a)*0.72;
+      p.life++;
+      var fade = Math.sin(Math.PI * (p.life/p.max));
+      ctx.strokeStyle = 'rgba(' + p.c + ',' + (0.42*fade).toFixed(3) + ')';
+      ctx.lineWidth = p.w;
+      ctx.beginPath(); ctx.moveTo(px,py); ctx.lineTo(p.x,p.y); ctx.stroke();
+      if(p.life > p.max || p.x > W+40 || p.x < -40 || p.y < -40 || p.y > H+40){
+        parts[i] = seedOne();
+        if(Math.random() < .7) parts[i].x = -20;
+      }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  size(); seed(); frame();
+  var st;
+  window.addEventListener('resize', function(){
+    clearTimeout(st); st = setTimeout(function(){ size(); seed(); }, 180);
+  });
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden){ alive = false; }
+    else if(!alive){ alive = true; requestAnimationFrame(frame); }
+  });
+}
+
+var used = false;
+['keydown','wheel','touchstart','click'].forEach(function(ev){
+  window.addEventListener(ev, function(){
+    if(used) return; used = true;
+    var h = document.getElementById('hint');
+    h.style.transition = 'opacity .6s'; h.style.opacity = '0';
+  }, {once:true, passive:true});
+});
+
+})();
+</script>
+
+<script>
+/* ================================================================
+   GALAXY BACKGROUND
+   Bright, bloomed spiral galaxy modelled on the GPT-6 Astra hero:
+   dense glowing arms, warm and cool tinted stars, a white core,
+   and stars that stream along the arms so the shape keeps morphing
+   while the whole disc turns. Time-based and paused when hidden.
+================================================================ */
+(function () {
+  "use strict";
+
+  var CFG = {
+    starsDesktop: 4800,   // arm + bulge stars
+    starsMobile: 2400,
+    knots: 70,            // bright glowing clumps along the arms
+    dustStars: 320,       // tiny field stars across the screen
+    arms: 2,
+    pitch: 2.7,           // log-spiral winding
+    spin: -0.07,          // whole-disc rotation, rad/s
+    flow: 0.009,          // how fast stars stream along the arms (radius units / s)
+    sizeDesktop: 0.6,     // galaxy radius vs min(stage width, height)
+    sizeMobile: 0.47,
+    tilt: 0.9,            // 1 = face-on
+    parallax: true
+  };
+
+  var cv = document.getElementById("galaxy");
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext("2d", { alpha: true });
+  if (!ctx) return;
+
+  var reduceQ = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var smallQ = window.matchMedia("(max-width:1000px), (max-height:520px)");
+
+  var W = 0, H = 0, dpr = 1, R = 0, cx = 0, cy = 0;
+  var stars = [], knots = [], dust = [], dark = true;
+  var dots = [], spikes = [], glow = null, dustSpr = null;
+  var running = true, last = 0, T = 0, rafId = 0;
+  var stride = 1, probeN = 0, probeT = 0;   // adaptive quality for slower machines
+  var mx = 0, my = 0, px = 0, py = 0;
+  var RMIN = 0.05, RMAX = 1.04;
+
+  /* star colours: mostly white, some warm peach/amber, a few blue */
+  var PAL_DARK  = ["255,255,255", "228,236,255", "255,220,190", "255,184,140", "176,204,255"];
+  var PAL_LIGHT = ["14,36,104", "24,64,160", "84,48,168", "16,102,150", "52,94,206"];
+  var WEIGHTS   = [0.5, 0.2, 0.14, 0.08, 0.08];
+
+  function pickColour() {
+    var x = Math.random(), acc = 0;
+    for (var i = 0; i < WEIGHTS.length; i++) { acc += WEIGHTS[i]; if (x < acc) return i; }
+    return 0;
+  }
+
+  function gauss() {
+    var u = 0, v = 0;
+    while (!u) u = Math.random();
+    while (!v) v = Math.random();
+    return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
+  }
+
+  /* sprite with a hot core and a wide bloom */
+  function dotSprite(size, rgb) {
+    var c = document.createElement("canvas");
+    c.width = c.height = size;
+    var g = c.getContext("2d"), h = size / 2;
+    var gr = g.createRadialGradient(h, h, 0, h, h, h);
+    gr.addColorStop(0, "rgba(255,255,255,1)");
+    gr.addColorStop(0.08, "rgba(" + rgb + ",1)");
+    gr.addColorStop(0.2, "rgba(" + rgb + ",.55)");
+    gr.addColorStop(0.45, "rgba(" + rgb + ",.14)");
+    gr.addColorStop(1, "rgba(" + rgb + ",0)");
+    if (!dark) {
+      gr = g.createRadialGradient(h, h, 0, h, h, h);
+      gr.addColorStop(0, "rgba(" + rgb + ",1)");
+      gr.addColorStop(0.2, "rgba(" + rgb + ",.7)");
+      gr.addColorStop(0.45, "rgba(" + rgb + ",.16)");
+      gr.addColorStop(1, "rgba(" + rgb + ",0)");
+    }
+    g.fillStyle = gr;
+    g.fillRect(0, 0, size, size);
+    return c;
+  }
+
+  function spikeSprite(size, rgb) {
+    var c = dotSprite(size, rgb), g = c.getContext("2d"), h = size / 2;
+    var lw = Math.max(1, size / 70);
+    var core = dark ? "255,255,255" : rgb;
+    [[0, h, size, h], [h, 0, h, size]].forEach(function (L, k) {
+      var lg = g.createLinearGradient(L[0], L[1], L[2], L[3]);
+      lg.addColorStop(0, "rgba(" + rgb + ",0)");
+      lg.addColorStop(0.5, "rgba(" + core + ",.9)");
+      lg.addColorStop(1, "rgba(" + rgb + ",0)");
+      g.fillStyle = lg;
+      if (k === 0) g.fillRect(0, h - lw / 2, size, lw);
+      else g.fillRect(h - lw / 2, 0, lw, size);
+    });
+    return c;
+  }
+
+  function glowSprite(size, rgb) {
+    var c = document.createElement("canvas");
+    c.width = c.height = size;
+    var g = c.getContext("2d"), h = size / 2;
+    var gr = g.createRadialGradient(h, h, 0, h, h, h);
+    gr.addColorStop(0, "rgba(" + rgb + ",.55)");
+    gr.addColorStop(0.35, "rgba(" + rgb + ",.18)");
+    gr.addColorStop(1, "rgba(" + rgb + ",0)");
+    g.fillStyle = gr;
+    g.fillRect(0, 0, size, size);
+    return c;
+  }
+
+  function applyTheme() {
+    dark = /\btheme-dark/.test(document.body.className);
+    var pal = dark ? PAL_DARK : PAL_LIGHT;
+    dots = pal.map(function (rgb) { return dotSprite(64, rgb); });
+    spikes = pal.map(function (rgb) { return spikeSprite(128, rgb); });
+    glow = glowSprite(128, dark ? "235,238,255" : "40,90,200");
+    dustSpr = dotSprite(16, dark ? "255,255,255" : "30,60,140");
+    if (reduceQ.matches) draw();
+  }
+
+  function armAngle(arm, r) {
+    return arm * (2 * Math.PI / CFG.arms) + CFG.pitch * Math.log(Math.max(r, RMIN) / RMIN);
+  }
+
+  function build() {
+    var n = smallQ.matches ? CFG.starsMobile : CFG.starsDesktop;
+
+    knots = [];
+    for (var k = 0; k < CFG.knots; k++) {
+      knots.push({
+        arm: k % CFG.arms,
+        r0: RMIN + (RMAX - RMIN) * Math.pow(Math.random(), 0.8),
+        off: gauss() * 0.1,
+        v: CFG.flow * (0.6 + Math.random() * 0.8),
+        g: 0.5 + Math.random() * 0.9       // glow size
+      });
+    }
+
+    stars = [];
+    for (var i = 0; i < n; i++) {
+      var q = Math.random(), st = {};
+      if (q < 0.12) {                      // bulge: fast inner swirl
+        st.t = 0;
+        st.r = Math.abs(gauss()) * 0.15 + 0.005;
+        st.dim = 0.5;
+        st.th = Math.random() * 2 * Math.PI;
+        st.w = 0.12 + 0.1 * Math.random();
+      } else if (q < 0.5) {               // members of a bright knot
+        st.t = 1;
+        st.k = (Math.random() * knots.length) | 0;
+        st.dr = gauss() * 0.022;
+        st.dt = gauss() * 0.06;
+      } else {                             // stars spread along the arms
+        st.t = 2;
+        st.arm = (Math.random() * CFG.arms) | 0;
+        st.r0 = RMIN + (RMAX - RMIN) * Math.pow(Math.random(), 0.9);
+        st.off = gauss() * 0.2;
+        st.dr = gauss() * 0.03;
+        st.v = CFG.flow * (0.5 + Math.random());
+      }
+      var bright = Math.random() < 0.06;
+      st.c = pickColour();
+      st.b = bright;
+      st.s = bright ? 3 + Math.random() * 3.2 : 0.7 + Math.pow(Math.random(), 1.8) * 2.2;
+      st.a = (0.55 + 0.45 * Math.random()) * (st.dim || 1);
+      st.tf = 0.8 + Math.random() * 2.4;
+      st.tp = Math.random() * 6.283;
+      stars.push(st);
+    }
+
+    dust = [];
+    for (var d = 0; d < CFG.dustStars; d++) {
+      dust.push({
+        x: Math.random(), y: Math.random(),
+        s: 0.8 + Math.random() * 1.8, a: 0.2 + Math.random() * 0.6,
+        tf: 0.4 + Math.random() * 1.6, tp: Math.random() * 6.283
+      });
+    }
+  }
+
+  /* position along the arm, streaming outward and wrapping, with a fade at both ends */
+  function flowR(r0, v) {
+    var span = RMAX - RMIN;
+    return RMIN + ((r0 - RMIN + v * T) % span + span) % span;
+  }
+  function edgeFade(r) {
+    var a = Math.min(1, (r - RMIN) / 0.06), b = Math.min(1, (RMAX - r) / 0.12);
+    return Math.max(0, Math.min(a, b));
+  }
+
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    W = cv.clientWidth || window.innerWidth;     // canvas box = full large viewport
+    H = cv.clientHeight || window.innerHeight;
+    cv.width = Math.floor(W * dpr);
+    cv.height = Math.floor(H * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var rail = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--rail")) || 0;
+    if (smallQ.matches) rail = 0;
+    var sw = W - rail;
+    if (smallQ.matches) {
+      // phones: size from the longer side so the galaxy fills the whole screen
+      R = Math.max(sw, H) * CFG.sizeMobile;
+      cx = sw * 0.5;
+      cy = H * 0.5;
+    } else {
+      R = Math.min(sw, H) * CFG.sizeDesktop;
+      cx = rail + sw * 0.5;
+      cy = H * 0.52;
+    }
+  }
+
+  function draw() {
+    ctx.globalCompositeOperation = "source-over";
+    ctx.globalAlpha = 1;
+    ctx.clearRect(0, 0, W, H);
+
+    px += (mx - px) * 0.04;
+    py += (my - py) * 0.04;
+
+    var rot = T * CFG.spin;
+    var tilt = CFG.tilt + 0.04 * Math.sin(T * 0.13);
+    var yaw = -0.3 + 0.05 * Math.sin(T * 0.08);
+    var cY = Math.cos(yaw), sY = Math.sin(yaw);
+    var ox = cx + px * 20, oy = cy + py * 14;
+
+    function project(r, th) {
+      var x = Math.cos(th) * r * R, y = Math.sin(th) * r * R * tilt;
+      return [ox + x * cY - y * sY, oy + x * sY + y * cY];
+    }
+
+    ctx.globalCompositeOperation = dark ? "lighter" : "source-over";
+
+    // field stars
+    for (var j = 0; j < dust.length; j++) {
+      var u = dust[j];
+      ctx.globalAlpha = u.a * (0.5 + 0.5 * Math.sin(T * u.tf + u.tp)) * (dark ? 1 : 0.35);
+      var ds = u.s * 3;
+      ctx.drawImage(dustSpr, u.x * W - px * 6 - ds / 2, u.y * H - py * 4 - ds / 2, ds, ds);
+    }
+
+    // core bloom
+    ctx.save();
+    ctx.translate(ox, oy);
+    ctx.rotate(yaw);
+    ctx.scale(1, tilt);
+    var pulse = 1 + 0.035 * Math.sin(T * 0.7);
+    var cr = R * 0.44 * pulse;
+    var cg = ctx.createRadialGradient(0, 0, 0, 0, 0, cr);
+    if (dark) {
+      cg.addColorStop(0, "rgba(255,255,255,.9)");
+      cg.addColorStop(0.1, "rgba(255,250,242,.6)");
+      cg.addColorStop(0.3, "rgba(232,236,255,.26)");
+      cg.addColorStop(0.6, "rgba(210,220,255,.07)");
+      cg.addColorStop(1, "rgba(200,210,255,0)");
+    } else {
+      cg.addColorStop(0, "rgba(30,70,180,.45)");
+      cg.addColorStop(0.3, "rgba(50,100,210,.14)");
+      cg.addColorStop(1, "rgba(50,100,210,0)");
+    }
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = cg;
+    ctx.beginPath();
+    ctx.arc(0, 0, cr, 0, 6.2832);
+    ctx.fill();
+    ctx.restore();
+
+    // knot positions this frame + their glow
+    var kp = new Array(knots.length);
+    for (var k = 0; k < knots.length; k++) {
+      var kn = knots[k];
+      var kr = flowR(kn.r0, kn.v);
+      var kth = armAngle(kn.arm, kr) + kn.off + rot;
+      kp[k] = { r: kr, th: kth, f: edgeFade(kr) };
+      var P = project(kr, kth);
+      var gs = R * 0.13 * kn.g * (0.6 + 0.4 * (1 - kr));
+      ctx.globalAlpha = (dark ? 0.55 : 0.3) * kp[k].f;
+      ctx.drawImage(glow, P[0] - gs / 2, P[1] - gs / 2, gs, gs);
+    }
+
+    // stars
+    var boost = stride > 1 ? 1.35 : 1;
+    for (var i = 0; i < stars.length; i += stride) {
+      var s = stars[i], r, th, fade = 1;
+      if (s.t === 0) {
+        r = s.r;
+        th = s.th + T * s.w + rot;
+      } else if (s.t === 1) {
+        var K = kp[s.k];
+        r = Math.abs(K.r + s.dr);
+        th = K.th + s.dt / Math.max(K.r, 0.12);
+        fade = K.f;
+      } else {
+        var fr = flowR(s.r0, s.v);
+        r = Math.abs(fr + s.dr);
+        th = armAngle(s.arm, fr) + s.off * (1 + 0.6 * fr) + rot;
+        fade = edgeFade(fr);
+      }
+      if (fade <= 0.01) continue;
+      var P2 = project(r, th);
+      ctx.globalAlpha = Math.min(1, s.a * boost) * fade * (0.62 + 0.38 * Math.sin(T * s.tf + s.tp));
+      var d;
+      if (s.b) {
+        d = s.s * 10;
+        ctx.drawImage(spikes[s.c], P2[0] - d / 2, P2[1] - d / 2, d, d);
+      } else {
+        d = s.s * 7;
+        ctx.drawImage(dots[s.c], P2[0] - d / 2, P2[1] - d / 2, d, d);
+      }
+    }
+
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = "source-over";
+  }
+
+  function frame(now) {
+    if (!running) return;
+    var dt = last ? Math.min(0.05, (now - last) / 1000) : 0.016;
+    last = now;
+    T += dt;
+    if (probeN < 120) {                      // after warm-up, halve the star count if frames are slow
+      probeN++;
+      if (probeN > 30) probeT += dt;
+      if (probeN === 120 && probeT / 90 > 1 / 42) stride = 2;
+    }
+    draw();
+    rafId = requestAnimationFrame(frame);
+  }
+
+  function start() {
+    cancelAnimationFrame(rafId);
+    if (reduceQ.matches) { T = 20; draw(); return; }
+    running = true;
+    last = 0;
+    rafId = requestAnimationFrame(frame);
+  }
+
+  var grt;
+  window.addEventListener("resize", function () {
+    clearTimeout(grt);
+    grt = setTimeout(function () {
+      var wasSmall = stars.length === CFG.starsMobile;
+      size();
+      if (wasSmall !== smallQ.matches) build();
+      if (reduceQ.matches) draw();
+    }, 150);
+  });
+  window.addEventListener("orientationchange", function () {
+    setTimeout(function () { size(); if (reduceQ.matches) draw(); }, 300);
+  });
+
+  if (CFG.parallax) {
+    window.addEventListener("pointermove", function (e) {
+      mx = e.clientX / (W || 1) - 0.5;
+      my = e.clientY / (H || 1) - 0.5;
+    }, { passive: true });
+  }
+
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) { running = false; cancelAnimationFrame(rafId); }
+    else start();
+  });
+
+  new MutationObserver(applyTheme).observe(document.body, {
+    attributes: true, attributeFilter: ["class"]
+  });
+
+  T = 20;          // start mid-flow so arms are fully populated on load
+  size();
+  build();
+  applyTheme();
+  start();
+})();
+</script>
+</body>
+</html>
