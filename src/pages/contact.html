@@ -1,0 +1,64 @@
+<section class="ph">
+  <div class="wrap">
+    <h1>Contact</h1>
+    <p>I am happy to talk about turbulence measurements over complex terrain, boundary layer schemes, or setting up WRF for mountainous regions. Email is the quickest way to reach me.</p>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0;border-top:0">
+  <div class="wrap">
+    <ul class="reach">
+      <li id="email-inst" data-find="Contact|Institute email|shiwam_s@dm.iitr.ac.in"><span class="k">Institute email</span><span class="v"><a href="mailto:shiwam_s@dm.iitr.ac.in">shiwam_s@dm.iitr.ac.in</a></span><button class="btn ghost sm" type="button" data-copy="shiwam_s@dm.iitr.ac.in" data-copied="Institute email copied">Copy</button></li>
+      <li id="email-personal" data-find="Contact|Personal email|shivambela1@gmail.com"><span class="k">Personal email</span><span class="v"><a href="mailto:shivambela1@gmail.com">shivambela1@gmail.com</a></span><button class="btn ghost sm" type="button" data-copy="shivambela1@gmail.com" data-copied="Personal email copied">Copy</button></li>
+      <li><span class="k">Google Scholar</span><span class="v"><a href="https://scholar.google.co.in/citations?user=D6hiOkkAAAAJ&amp;hl=en" rel="noopener" target="_blank">Citations and papers</a></span><span></span></li>
+      <li><span class="k">ResearchGate</span><span class="v"><a href="https://www.researchgate.net/profile/Shiwam-Singh-2" rel="noopener" target="_blank">Shiwam-Singh-2</a></span><span></span></li>
+      <li><span class="k">LinkedIn</span><span class="v"><a href="https://www.linkedin.com/in/shiwam-singh-ab1392219" rel="noopener" target="_blank">shiwam-singh</a></span><span></span></li>
+      <li><span class="k">GitHub</span><span class="v"><a href="https://github.com/singhshiwam" rel="noopener" target="_blank">singhshiwam</a></span><span></span></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec tint" id="write">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <h2 style="font-size:var(--step-3);margin-bottom:14px">Write to me</h2>
+        <p class="muted" style="max-width:46ch">Fill this in and your email app opens with the message ready to send. Nothing is stored on this site.</p>
+        <form class="form" data-mailform style="margin-top:22px">
+          <label>Your name<input name="name" required autocomplete="name"></label>
+          <label>What is it about?
+            <select name="topic">
+              <option>Research collaboration</option>
+              <option>Data or code question</option>
+              <option>Talk or workshop invitation</option>
+              <option>Something else</option>
+            </select>
+          </label>
+          <label>Message<textarea name="msg" required></textarea></label>
+          <div class="btns"><button class="btn" type="submit">Open in my email app</button></div>
+          <p class="hint">Sends to shiwam_s@dm.iitr.ac.in</p>
+        </form>
+      </div>
+      <div>
+        <h2 style="font-size:var(--step-2);margin-bottom:14px">Where to find me</h2>
+        <p>Weather and Climate Research Group<br>Centre of Excellence in Disaster Mitigation and Management<br>Indian Institute of Technology Roorkee<br>Roorkee, Uttarakhand 247667, India</p>
+        <div class="map"><iframe title="Map of IIT Roorkee" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=77.8860%2C29.8580%2C77.9070%2C29.8720&amp;layer=mapnik&amp;marker=29.8649%2C77.8966"></iframe></div>
+        <p class="muted" style="font-size:.84rem;margin-top:8px">Map data © <a href="https://www.openstreetmap.org/copyright" rel="noopener" target="_blank">OpenStreetMap</a> contributors</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<nav class="pn" aria-label="Next and previous pages">
+  <a href="gallery.html"><small>Previous</small><span>Gallery</span></a>
+  <a href="./"><small>Back to</small><span>Home</span></a>
+</nav>
+<script>
+document.addEventListener('submit', function (e) {
+  var f = e.target.closest('[data-mailform]'); if (!f) return;
+  e.preventDefault();
+  var name = f.name.value.trim(), topic = f.topic.value, msg = f.msg.value.trim();
+  var subject = topic + ' (from ' + name + ')';
+  location.href = 'mailto:shiwam_s@dm.iitr.ac.in?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(msg + '\n\n' + name);
+});
+</script>

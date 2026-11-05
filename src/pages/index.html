@@ -1,0 +1,140 @@
+<section class="hero" aria-label="Introduction">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="wrap hero-in">
+    <h1>Shiwam <span class="l2">Singh</span></h1>
+    <p class="lead">I study the lowest few hundred metres of the atmosphere over the Himalaya, where weather models are hardest to get right.</p>
+    <p class="who">PhD researcher in the Weather and Climate Research Group, Centre of Excellence in Disaster Mitigation and Management, IIT Roorkee</p>
+    <div class="btns">
+      <a class="btn" href="research.html">Read about the research</a>
+      <a class="btn ghost" href="publications.html">Publications</a>
+    </div>
+  </div>
+  <aside class="scene-note" aria-live="polite">
+    <b class="when-day">Daytime: convective boundary layer</b>
+    <b class="when-night">Night: stable boundary layer</b>
+    <span class="when-day">Sun-warmed slopes drive thermals and upslope winds. Turbulence mixes the air up to an inversion, and cumulus forms over the ridge.</span>
+    <span class="when-night">The ground cools, cold air drains down the slopes and pools in the valley. Turbulence is weak and intermittent, which is where flux schemes struggle most.</span>
+  </aside>
+</section>
+
+<section class="now" id="now" aria-label="Current conditions near the Ranichauri tower site">
+  <div class="wrap now-in">
+    <div>
+      <p class="title">Ranichauri, Uttarakhand, right now</p>
+      <p class="src" data-src>Loading model values for the tower site</p>
+    </div>
+    <div><p class="k">Air temperature</p><p class="v" data-v="t">--</p></div>
+    <div><p class="k">Relative humidity</p><p class="v" data-v="rh">--</p></div>
+    <div><p class="k">Wind at 10 m</p><p class="v" data-v="w">--</p></div>
+    <div><p class="k">Cloud cover</p><p class="v" data-v="cc">--</p></div>
+    <div><p class="k">Sunrise and sunset</p><p class="v" data-v="sun">--</p></div>
+  </div>
+</section>
+
+<section class="sec" id="about-short">
+  <div class="wrap">
+    <p class="statement">Weather models compute the exchange of heat, moisture and momentum at the ground with theory built for flat, uniform land. I test that theory against turbulence measurements from a mountain tower, and work out what holds up in complex terrain.</p>
+    <p class="statement-b">The errors matter beyond the surface. A wrong surface energy balance changes the simulated convection, and with it the forecast of the heavy rain that sets off cloudbursts and landslides in the Himalaya. My training is in pure mathematics, which helps when the problem sits inside the equations of the model rather than in its settings.</p>
+
+    <div class="threads">
+      <div class="thread">
+        <svg viewBox="0 0 220 100" aria-hidden="true">
+          <path d="M10 88 H210 M18 94 V8" stroke="currentColor" stroke-opacity=".35" stroke-width="1"/>
+          <path d="M18 74 C60 70 100 60 140 42 S195 14 210 10" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M18 74 C70 71 110 66 150 58 S195 50 210 48" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="5 4"/>
+          <path d="M18 74 C70 72 120 69 160 66 S200 62 210 61" fill="none" stroke="currentColor" stroke-width="1.4" stroke-opacity=".55"/>
+        </svg>
+        <h3>Surface layer parameterization</h3>
+        <p>Monin-Obukhov similarity theory supplies the fluxes in almost every operational model. I compare stability functions against measured fluxes, especially at night when the air is stably stratified.</p>
+        <a href="research.html#explorer">Try the stability function explorer</a>
+      </div>
+      <div class="thread">
+        <svg viewBox="0 0 220 100" aria-hidden="true">
+          <path d="M30 96 V12" stroke="currentColor" stroke-width="2"/>
+          <path d="M30 22 H18 M30 46 H18 M30 70 H18" stroke="currentColor" stroke-width="1.6"/>
+          <circle cx="16" cy="22" r="2.6" fill="currentColor"/><circle cx="16" cy="46" r="2.6" fill="currentColor"/><circle cx="16" cy="70" r="2.6" fill="currentColor"/>
+          <path d="M50 50 l5 -14 l4 22 l5 -30 l4 26 l5 -12 l4 18 l5 -24 l4 14 l5 -8 l4 20 l5 -28 l4 22 l5 -10 l4 12 l5 -20 l4 16 l5 -6 l4 10 l5 -18 l4 22 l5 -14 l4 6 l5 -12 l4 18 l5 -22 l4 14 l5 -4 l4 8 l5 -16 l4 12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+        </svg>
+        <h3>Turbulence measurements</h3>
+        <p>Sonic anemometers on a 30 m tower at Ranichauri sample the wind 20 times a second. From those records I compute the turbulent fluxes, after despiking, rotation and quality control.</p>
+        <a href="research.html#tower">How the measurements work</a>
+      </div>
+      <div class="thread">
+        <svg viewBox="0 0 220 100" aria-hidden="true">
+          <path d="M6 92 C40 70 60 84 86 60 S130 30 160 44 S200 70 214 52" fill="none" stroke="currentColor" stroke-opacity=".45" stroke-width="1.2"/>
+          <path d="M6 96 C40 82 70 92 96 74 S140 52 168 62 S204 82 214 70" fill="none" stroke="currentColor" stroke-opacity=".3" stroke-width="1.2"/>
+          <rect x="18" y="8" width="184" height="86" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <rect x="74" y="26" width="88" height="54" fill="none" stroke="currentColor" stroke-width="1.6"/>
+          <rect x="104" y="40" width="34" height="26" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        <h3>High-resolution modelling</h3>
+        <p>I run WRF at kilometre scale over Uttarakhand and the Northwest Himalaya, change surface layer code at source level, and test the results against stations and reanalysis.</p>
+        <a href="research.html#modelling">Modelling work</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec tint" id="recent">
+  <div class="wrap">
+    <div class="sec-h ml">
+      <div class="side">Most recent first</div>
+      <div><h2>Recent</h2></div>
+    </div>
+    <ol class="log">
+      <li><time datetime="2026-05">May 2026</time><div><p class="t">Talk at the EGU General Assembly 2026, Vienna</p><p class="d">Parameterization of surface layer processes under stable conditions over a mountainous region, with an Early Career Scientist travel award from EGU.</p></div></li>
+      <li><time datetime="2026">2026</time><div><p class="t">Paper in Scientific Reports</p><p class="d">A framework for an impact-based heat stress warning system for a coastal city in India.</p></div></li>
+      <li><time datetime="2025-12">December 2025</time><div><p class="t">AGU Fall Meeting 2025</p><p class="d">Evaluation of different parameterizations for the computation of surface fluxes over a mountainous region.</p></div></li>
+      <li><time datetime="2025-11">November 2025</time><div><p class="t">INTROMET-2025, IITM Pune</p><p class="d">Evaluation of different similarity functions under stable conditions over a mountainous region.</p></div></li>
+      <li><time datetime="2025-10-13">October 2025</time><div><p class="t">Second prize for a poster at Research Scholar's Day, CoEDMM</p><p class="d">Analysis of the observed behaviour of heat and momentum fluxes over a mountainous region.</p></div></li>
+      <li><time datetime="2025-07-28">July 2025</time><div><p class="t">HPC4Climate Summer School, Max Planck Institute for Meteorology</p><p class="d">Eleven days in Lauenburg, Germany, on a travel grant.</p></div></li>
+    </ol>
+    <p style="margin-top:22px"><a href="talks.html">All talks and awards</a></p>
+  </div>
+</section>
+
+<section class="sec" id="selected">
+  <div class="wrap">
+    <div class="sec-h ml">
+      <div class="side">Peer reviewed</div>
+      <div><h2>Selected publications</h2></div>
+    </div>
+    <ol class="pubs">
+      <li class="pub">
+        <div class="side"><span class="yr">2025</span><span class="jr">Weather and Forecasting</span></div>
+        <div>
+          <h3><a href="https://doi.org/10.1175/WAF-D-24-0178.1" rel="noopener" target="_blank">Parameterization of surface layer processes in extreme weather conditions over mountainous region</a></h3>
+          <p class="au"><b>Singh, S.</b> and Srivastava, P.</p>
+        </div>
+      </li>
+      <li class="pub">
+        <div class="side"><span class="yr">2026</span><span class="jr">Scientific Reports</span></div>
+        <div>
+          <h3><a href="https://doi.org/10.1038/s41598-026-38639-9" rel="noopener" target="_blank">A framework for impact-based heat stress warning system for a coastal city in India</a></h3>
+          <p class="au">Kacker, K., Utpal, A., <b>Singh, S.</b>, Srivastava, P., Mukherjee, M., Subramanian, S.S. and Rakesh, R.</p>
+        </div>
+      </li>
+      <li class="pub">
+        <div class="side"><span class="yr">2025</span><span class="jr">Landslides</span></div>
+        <div>
+          <h3><a href="https://doi.org/10.1007/s10346-025-02494-y" rel="noopener" target="_blank">Chronicle of destruction: the Wayanad landslide of July 30, 2024</a></h3>
+          <p class="au">Yunus, A.P., Sajinkumar, K.S., Gopinath, G. and 19 others, including <b>Singh, S.</b></p>
+        </div>
+      </li>
+    </ol>
+    <p style="margin-top:22px"><a href="publications.html">All publications with citations</a></p>
+  </div>
+</section>
+
+<section class="sec tint" id="say-hello">
+  <div class="wrap ml">
+    <div class="side">Collaboration</div>
+    <div>
+      <p class="statement">Working on mountain boundary layers, surface flux measurements or WRF over complex terrain? I am glad to talk.</p>
+      <div class="btns" style="margin-top:26px">
+        <a class="btn" href="contact.html">Get in touch</a>
+        <button class="btn ghost" type="button" data-copy="shiwam_s@dm.iitr.ac.in" data-copied="Email address copied">Copy email address</button>
+      </div>
+    </div>
+  </div>
+</section>
