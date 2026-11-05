@@ -20,6 +20,9 @@
       (Math.round(c.wind_speed_10m * 10) / 10) + '<small>m/s ' + compass(dir) + '</small>');
     set('cc', Math.round(c.cloud_cover) + '<small>%</small>');
     set('sun', hm(dl.sunrise && dl.sunrise[0]) + '<small>to</small> ' + hm(dl.sunset && dl.sunset[0]));
+    var toH = function (t) { return t ? +t.slice(11, 13) + t.slice(14, 16) / 60 : null; };
+    var sr = toH(dl.sunrise && dl.sunrise[0]), ss = toH(dl.sunset && dl.sunset[0]);
+    if (sr && ss) window.dispatchEvent(new CustomEvent('sunevents', { detail: { sr: sr, ss: ss } }));
     var when = c.time ? c.time.slice(11, 16) : '';
     var src = box.querySelector('[data-src]');
     if (src) src.textContent = 'Open-Meteo model estimate for ' + when + ' IST, not tower measurements.';

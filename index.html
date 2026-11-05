@@ -16,13 +16,13 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <script>
-/* Set day or night before first paint so the page never flashes the wrong palette. */
-(function(){try{var m=localStorage.getItem('ss-mode');if(m!=='day'&&m!=='night'){var h=new Date(Date.now()+(5.5*3600e3)+new Date().getTimezoneOffset()*60e3).getHours();m=(h>=6&&h<18)?'day':'night'}document.documentElement.setAttribute('data-mode',m)}catch(e){}})();
+/* Set day or night before first paint so the page never flashes the wrong palette,
+   and switch on the reveal styles (with a safety net if scripts fail). */
+(function(){var r=document.documentElement;r.classList.add('js');setTimeout(function(){r.classList.add('reveal-all')},3000);try{var m=localStorage.getItem('ss-mode');if(m!=='day'&&m!=='night'){var d=new Date(),h=(d.getUTCHours()+d.getUTCMinutes()/60+5.5)%24;m=(h>=6.6&&h<17.6)?'day':'night'}r.setAttribute('data-mode',m)}catch(e){}})();
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=a0932d56">
+<link rel="preload" href="assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css?v=3648a032">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Shiwam Singh","jobTitle":"PhD researcher, atmospheric science","affiliation":{"@type":"Organization","name":"Indian Institute of Technology Roorkee","department":"Centre of Excellence in Disaster Mitigation and Management"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Indian Institute of Technology Hyderabad"}],"knowsAbout":["Boundary layer meteorology","Surface layer parameterization","Monin-Obukhov similarity theory","Eddy covariance","WRF model","Numerical weather prediction","Mountain meteorology"],"url":"https://singhshiwam.github.io/academic-site/","image":"https://singhshiwam.github.io/academic-site/assets/img/portrait.jpg","sameAs":["https://scholar.google.co.in/citations?user=D6hiOkkAAAAJ&hl=en","https://www.researchgate.net/profile/Shiwam-Singh-2","https://www.linkedin.com/in/shiwam-singh-ab1392219","https://github.com/singhshiwam"]}
@@ -62,6 +62,7 @@
       </button>
     </div>
   </div>
+  <span class="progress" aria-hidden="true"></span>
 </header>
 
 <div class="sheet" id="sheet" hidden>
@@ -79,7 +80,7 @@
 <section class="hero" aria-label="Introduction">
   <canvas id="scene" aria-hidden="true"></canvas>
   <div class="wrap hero-in">
-    <h1>Shiwam <span class="l2">Singh</span></h1>
+    <h1 data-split aria-label="Shiwam Singh"><span class="l1">Shiwam</span> <span class="l2">Singh</span></h1>
     <p class="lead">I study the lowest few hundred metres of the atmosphere over the Himalaya, where weather models are hardest to get right.</p>
     <p class="who">PhD researcher in the Weather and Climate Research Group, Centre of Excellence in Disaster Mitigation and Management, IIT Roorkee</p>
     <div class="btns">
@@ -87,11 +88,24 @@
       <a class="btn ghost" href="publications.html">Publications</a>
     </div>
   </div>
-  <aside class="scene-note" aria-live="polite">
-    <b class="when-day">Daytime: convective boundary layer</b>
-    <b class="when-night">Night: stable boundary layer</b>
-    <span class="when-day">Sun-warmed slopes drive thermals and upslope winds. Turbulence mixes the air up to an inversion, and cumulus forms over the ridge.</span>
-    <span class="when-night">The ground cools, cold air drains down the slopes and pools in the valley. Turbulence is weak and intermittent, which is where flux schemes struggle most.</span>
+  <aside class="scene-ui" data-scene-ui aria-label="Day cycle of the valley scene">
+    <div class="phases" aria-live="polite">
+      <div class="phase" data-phase="morning"><b>Morning transition</b><span>The ground starts to warm. The night-time inversion is eroded from below and a shallow mixed layer begins to grow.</span></div>
+      <div class="phase" data-phase="day"><b>Convective boundary layer</b><span>Sun-warmed slopes drive thermals and upslope winds. Turbulence mixes the air up to a capping inversion, and cumulus forms over the ridge.</span></div>
+      <div class="phase" data-phase="evening"><b>Evening transition</b><span>Surface heating fades and turbulence decays. The old mixed layer is left aloft as a residual layer while a stable layer forms at the ground.</span></div>
+      <div class="phase" data-phase="night"><b>Stable boundary layer</b><span>The ground cools, cold air drains down the slopes and pools in the valley. Turbulence is weak and intermittent, which is where flux schemes struggle most.</span></div>
+    </div>
+    <div class="dial">
+      <button class="play" type="button" data-play aria-pressed="false" aria-label="Play the day cycle">
+        <svg class="i-play" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg>
+        <svg class="i-pause" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor"/></svg>
+      </button>
+      <div class="track">
+        <input type="range" min="0" max="1439" step="1" data-hour aria-label="Time of day in the scene">
+        <div class="ticks" aria-hidden="true"><span>00</span><span>06</span><span>12</span><span>18</span><span>24</span></div>
+      </div>
+    </div>
+    <div class="dial-foot"><span data-hour-out class="num">--:--</span><button type="button" class="now-btn" data-now hidden>Back to now</button></div>
   </aside>
 </section>
 
@@ -114,6 +128,13 @@
     <p class="statement">Weather models compute the exchange of heat, moisture and momentum at the ground with theory built for flat, uniform land. I test that theory against turbulence measurements from a mountain tower, and work out what holds up in complex terrain.</p>
     <p class="statement-b">The errors matter beyond the surface. A wrong surface energy balance changes the simulated convection, and with it the forecast of the heavy rain that sets off cloudbursts and landslides in the Himalaya. My training is in pure mathematics, which helps when the problem sits inside the equations of the model rather than in its settings.</p>
 
+    <dl class="figs" aria-label="In numbers">
+      <div><dt>Peer-reviewed papers</dt><dd data-count="3">3</dd></div>
+      <div><dt>Talks and posters</dt><dd data-count="9">9</dd></div>
+      <div><dt>Countries presented in</dt><dd data-count="5">5</dd></div>
+      <div><dt>Schools and workshops</dt><dd data-count="10">10</dd></div>
+    </dl>
+
     <div class="threads">
       <div class="thread">
         <svg viewBox="0 0 220 100" aria-hidden="true">
@@ -131,7 +152,7 @@
           <path d="M30 96 V12" stroke="currentColor" stroke-width="2"/>
           <path d="M30 22 H18 M30 46 H18 M30 70 H18" stroke="currentColor" stroke-width="1.6"/>
           <circle cx="16" cy="22" r="2.6" fill="currentColor"/><circle cx="16" cy="46" r="2.6" fill="currentColor"/><circle cx="16" cy="70" r="2.6" fill="currentColor"/>
-          <path d="M50 50 l5 -14 l4 22 l5 -30 l4 26 l5 -12 l4 18 l5 -24 l4 14 l5 -8 l4 20 l5 -28 l4 22 l5 -10 l4 12 l5 -20 l4 16 l5 -6 l4 10 l5 -18 l4 22 l5 -14 l4 6 l5 -12 l4 18 l5 -22 l4 14 l5 -4 l4 8 l5 -16 l4 12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
+          <g data-trace="50 50 165 26"></g><path class="static-trace" d="M50 50 l5 -14 l4 22 l5 -30 l4 26 l5 -12 l4 18 l5 -24 l4 14 l5 -8 l4 20 l5 -28 l4 22 l5 -10 l4 12 l5 -20 l4 16 l5 -6 l4 10 l5 -18 l4 22 l5 -14 l4 6 l5 -12 l4 18 l5 -22 l4 14 l5 -4 l4 8 l5 -16 l4 12" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>
         </svg>
         <h3>Turbulence measurements</h3>
         <p>Sonic anemometers on a 30 m tower at Ranichauri sample the wind 20 times a second. From those records I compute the turbulent fluxes, after despiking, rotation and quality control.</p>
@@ -153,6 +174,16 @@
   </div>
 </section>
 
+<section class="sec map-sec" id="travel" data-find="Map|Where the work has travelled|Conferences and schools in Japan, the United States, Singapore, Austria, Germany and India">
+  <div class="wrap">
+    <div class="sec-h ml">
+      <div class="side">Talks and schools</div>
+      <div><h2>Where the work has travelled</h2><p>From Roorkee to meetings and schools across Asia, Europe and North America. Hover or tap a place to see what happened there.</p></div>
+    </div>
+    <div class="travel" data-map></div>
+  </div>
+</section>
+
 <section class="sec tint" id="recent">
   <div class="wrap">
     <div class="sec-h ml">
@@ -160,6 +191,7 @@
       <div><h2>Recent</h2></div>
     </div>
     <ol class="log">
+      <li><time datetime="2026-10-13">October 2026</time><div><p class="t">Poster at Research Scholar's Day 2026, CoEDMM</p><p class="d">Evaluation of surface-layer parameterizations in WRF against year-long turbulence observations over the Central Himalaya, presented on the International Day for Disaster Risk Reduction. I also ran the registration desk that morning. <a href="gallery.html">See the photos</a>.</p></div></li>
       <li><time datetime="2026-05">May 2026</time><div><p class="t">Talk at the EGU General Assembly 2026, Vienna</p><p class="d">Parameterization of surface layer processes under stable conditions over a mountainous region, with an Early Career Scientist travel award from EGU.</p></div></li>
       <li><time datetime="2026">2026</time><div><p class="t">Paper in Scientific Reports</p><p class="d">A framework for an impact-based heat stress warning system for a coastal city in India.</p></div></li>
       <li><time datetime="2025-12">December 2025</time><div><p class="t">AGU Fall Meeting 2025</p><p class="d">Evaluation of different parameterizations for the computation of surface fluxes over a mountainous region.</p></div></li>
@@ -168,6 +200,14 @@
       <li><time datetime="2025-07-28">July 2025</time><div><p class="t">HPC4Climate Summer School, Max Planck Institute for Meteorology</p><p class="d">Eleven days in Lauenburg, Germany, on a travel grant.</p></div></li>
     </ol>
     <p style="margin-top:22px"><a href="talks.html">All talks and awards</a></p>
+  </div>
+</section>
+
+<section class="sec" id="photos" hidden data-gal-teaser>
+  <div class="wrap">
+    <div class="sec-h ml"><div class="side" data-teaser-meta>From the gallery</div><div><h2 data-teaser-title>From the gallery</h2></div></div>
+    <div class="teaser" data-teaser-grid></div>
+    <p style="margin-top:22px"><a href="gallery.html">Open the gallery</a></p>
   </div>
 </section>
 
@@ -247,9 +287,11 @@
   </div>
 </div>
 
-<script src="assets/js/search-index.js?v=a0932d56" defer></script>
-<script src="assets/js/site.js?v=a0932d56" defer></script>
-<script src="assets/js/hero.js?v=a0932d56" defer></script>
-<script src="assets/js/nowcast.js?v=a0932d56" defer></script>
+<script src="assets/js/search-index.js?v=3648a032" defer></script>
+<script src="assets/js/site.js?v=3648a032" defer></script>
+<script src="assets/js/hero.js?v=3648a032" defer></script>
+<script src="assets/js/nowcast.js?v=3648a032" defer></script>
+<script src="assets/js/world-data.js?v=3648a032" defer></script>
+<script src="assets/js/map.js?v=3648a032" defer></script>
 </body>
 </html>

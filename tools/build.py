@@ -25,7 +25,7 @@ BASE_URL = "https://singhshiwam.github.io/academic-site/"
 PAGES = [
     ("index", "Home", "Shiwam Singh, boundary layer meteorology, IIT Roorkee",
      "Shiwam Singh is a PhD researcher at IIT Roorkee working on surface and boundary layer processes in weather prediction models over the Himalaya.",
-     ["assets/js/hero.js", "assets/js/nowcast.js"]),
+     ["assets/js/hero.js", "assets/js/nowcast.js", "assets/js/world-data.js", "assets/js/map.js"]),
     ("about", "About", "About Shiwam Singh",
      "Background, education and research positions of Shiwam Singh, PhD researcher in atmospheric science at IIT Roorkee.", []),
     ("research", "Research", "Research, Shiwam Singh",
@@ -34,7 +34,7 @@ PAGES = [
     ("publications", "Publications", "Publications, Shiwam Singh",
      "Peer-reviewed journal articles by Shiwam Singh, with DOIs and citation formats.", []),
     ("talks", "Talks and awards", "Talks and awards, Shiwam Singh",
-     "Conference presentations at EGU, AGU, GEWEX, JpGU, AOGS and INTROMET, and awards and travel grants.", []),
+     "Conference presentations at EGU, AGU, GEWEX, JpGU, AOGS and INTROMET, and awards and travel grants.", ["assets/js/world-data.js", "assets/js/map.js"]),
     ("training", "Training", "Training and schools, Shiwam Singh",
      "Summer schools, workshops and training programmes in data assimilation, HPC for climate, eddy covariance and disaster risk.", []),
     ("gallery", "Gallery", "Gallery, Shiwam Singh",

@@ -1,1 +1,78 @@
-{"albums": []}
+{
+  "albums": [
+    {
+      "id": "iddrr-rsd-2026",
+      "title": "International Day for Disaster Risk Reduction and Research Scholar's Day 2026",
+      "date": "2026-10-13",
+      "place": "CoEDMM, IIT Roorkee",
+      "category": "campus",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/iddrr-rsd-2026/01.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2026/01.jpg",
+          "w": 2000,
+          "h": 1331,
+          "tw": 700,
+          "th": 466,
+          "caption": "Presenting the poster on surface-layer parameterizations in WRF, evaluated against year-long turbulence observations from the Central Himalaya"
+        },
+        {
+          "src": "gallery/photos/iddrr-rsd-2026/02.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2026/02.jpg",
+          "w": 2000,
+          "h": 1331,
+          "tw": 700,
+          "th": 466,
+          "caption": "At the registration desk in the first half of the day, handing out delegate kits"
+        },
+        {
+          "src": "gallery/photos/iddrr-rsd-2026/03.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2026/03.jpg",
+          "w": 2000,
+          "h": 1331,
+          "tw": 700,
+          "th": 466,
+          "caption": "Registration desk duty before the poster session"
+        },
+        {
+          "src": "gallery/photos/iddrr-rsd-2026/04.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2026/04.jpg",
+          "w": 2000,
+          "h": 1331,
+          "tw": 700,
+          "th": 466,
+          "caption": "Group photo at the entrance of the Centre"
+        },
+        {
+          "src": "gallery/photos/iddrr-rsd-2026/05.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2026/05.jpg",
+          "w": 1331,
+          "h": 2000,
+          "tw": 466,
+          "th": 700,
+          "caption": "With fellow participants by the event banner"
+        },
+        {
+          "src": "gallery/photos/iddrr-rsd-2026/06.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2026/06.jpg",
+          "w": 2000,
+          "h": 1331,
+          "tw": 700,
+          "th": 466,
+          "caption": "With fellow scholars outside the venue"
+        },
+        {
+          "src": "gallery/photos/iddrr-rsd-2026/07.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2026/07.jpg",
+          "w": 1331,
+          "h": 2000,
+          "tw": 466,
+          "th": 700,
+          "caption": "Between sessions on the day"
+        }
+      ],
+      "short": "Research Scholar's Day 2026"
+    }
+  ]
+}

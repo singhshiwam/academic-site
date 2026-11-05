@@ -16,12 +16,12 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <script>
-/* Set day or night before first paint so the page never flashes the wrong palette. */
-(function(){try{var m=localStorage.getItem('ss-mode');if(m!=='day'&&m!=='night'){var h=new Date(Date.now()+(5.5*3600e3)+new Date().getTimezoneOffset()*60e3).getHours();m=(h>=6&&h<18)?'day':'night'}document.documentElement.setAttribute('data-mode',m)}catch(e){}})();
+/* Set day or night before first paint so the page never flashes the wrong palette,
+   and switch on the reveal styles (with a safety net if scripts fail). */
+(function(){var r=document.documentElement;r.classList.add('js');setTimeout(function(){r.classList.add('reveal-all')},3000);try{var m=localStorage.getItem('ss-mode');if(m!=='day'&&m!=='night'){var d=new Date(),h=(d.getUTCHours()+d.getUTCMinutes()/60+5.5)%24;m=(h>=6.6&&h<17.6)?'day':'night'}r.setAttribute('data-mode',m)}catch(e){}})();
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..500&display=swap" rel="stylesheet">
+<link rel="preload" href="assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/site.css?v={{version}}">
 {{head_extra}}
 <script type="application/ld+json">
@@ -55,6 +55,7 @@
       </button>
     </div>
   </div>
+  <span class="progress" aria-hidden="true"></span>
 </header>
 
 <div class="sheet" id="sheet" hidden>

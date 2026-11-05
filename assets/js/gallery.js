@@ -20,12 +20,15 @@
   function render(filter) {
     var list = albums.filter(function (a) { return filter === 'all' || a.category === filter; });
     grid.innerHTML = list.map(function (a) {
-      var c = a.photos[a.cover || 0] || a.photos[0];
-      return '<figure tabindex="0" role="button" data-album="' + esc(a.id) + '" aria-label="Open album: ' + esc(a.title) + '">' +
-        '<img src="' + esc(c.thumb) + '" width="' + c.tw + '" height="' + c.th + '" alt="' + esc(c.caption || a.title) + '" loading="lazy" decoding="async">' +
-        (a.photos.length > 1 ? '<span class="count">' + a.photos.length + ' photos</span>' : '') +
-        '<figcaption>' + esc(a.title) + (a.place ? ', ' + esc(a.place) : '') + '</figcaption></figure>';
+      return '<section class="album"><header class="album-h"><h2>' + esc(a.title) + '</h2><p>' + esc([a.place, when(a.date)].filter(Boolean).join(', ')) +
+        ' <span>' + a.photos.length + (a.photos.length > 1 ? ' photos' : ' photo') + '</span></p></header><div class="gal">' +
+        a.photos.map(function (c, i) {
+          return '<figure tabindex="0" role="button" data-album="' + esc(a.id) + '" data-i="' + i + '" aria-label="Open photo: ' + esc(c.caption || a.title) + '">' +
+            '<img src="' + esc(c.thumb) + '" width="' + c.tw + '" height="' + c.th + '" alt="' + esc(c.caption || a.title) + '" loading="lazy" decoding="async">' +
+            (c.caption ? '<figcaption>' + esc(c.caption) + '</figcaption>' : '') + '</figure>';
+        }).join('') + '</div></section>';
     }).join('');
+    grid.querySelectorAll('figure').forEach(function (f, i) { setTimeout(function () { f.classList.add('in'); }, 50 * i + 30); });
   }
 
   function show() {
@@ -37,16 +40,16 @@
     var nx = cur.photos[(idx + 1) % cur.photos.length]; if (nx) { var pre = new Image(); pre.src = nx.src; }
     lb.querySelector('[data-lb-prev]').hidden = lb.querySelector('[data-lb-next]').hidden = cur.photos.length < 2;
   }
-  function open(id) {
+  function open(id, i) {
     cur = albums.filter(function (a) { return a.id === id; })[0]; if (!cur) return;
-    idx = 0; lastFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = 'hidden';
+    idx = i || 0; lastFocus = document.activeElement; lb.hidden = false; document.body.style.overflow = 'hidden';
     show(); lb.querySelector('[data-lb-close]').focus();
   }
   function close() { lb.hidden = true; document.body.style.overflow = ''; img.removeAttribute('src'); if (lastFocus) lastFocus.focus(); }
   function go(d) { if (!cur) return; idx = (idx + d + cur.photos.length) % cur.photos.length; show(); }
 
-  grid.addEventListener('click', function (e) { var f = e.target.closest('[data-album]'); if (f) open(f.getAttribute('data-album')); });
-  grid.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-album]')) { e.preventDefault(); open(e.target.getAttribute('data-album')); } });
+  grid.addEventListener('click', function (e) { var f = e.target.closest('[data-album]'); if (f) open(f.getAttribute('data-album'), +f.getAttribute('data-i')); });
+  grid.addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.matches('[data-album]')) { e.preventDefault(); open(e.target.getAttribute('data-album'), +e.target.getAttribute('data-i')); } });
   lb.querySelector('[data-lb-close]').addEventListener('click', close);
   lb.querySelector('[data-lb-prev]').addEventListener('click', function () { go(-1); });
   lb.querySelector('[data-lb-next]').addEventListener('click', function () { go(1); });
