@@ -20,7 +20,19 @@
   var scrollY = 0, px = 0, pxT = 0;
 
   /* ---------------- time ---------------- */
-  var SR = 6.6, SS = 17.6;                    /* sunrise and sunset, hours IST; replaced by live values */
+  /* sunrise and sunset for the Central Himalaya (30.3 N, 78.4 E) today, in IST,
+     from the solar declination and equation of time (accurate to a few minutes) */
+  var SR = 6.6, SS = 17.6;
+  (function () {
+    var d = new Date(Date.now() + 5.5 * 3600e3), start = Date.UTC(d.getUTCFullYear(), 0, 0);
+    var n = Math.floor((d - start) / 864e5), rad = Math.PI / 180, lat = 30.3, lon = 78.4;
+    var dec = 23.44 * Math.sin(2 * Math.PI * (284 + n) / 365) * rad;
+    var B = 2 * Math.PI * (n - 81) / 364, eot = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B);
+    var cosH = (Math.sin(-0.833 * rad) - Math.sin(lat * rad) * Math.sin(dec)) / (Math.cos(lat * rad) * Math.cos(dec));
+    var H = Math.acos(Math.max(-1, Math.min(1, cosH))) / rad / 15;
+    var noon = 12 + (82.5 - lon) / 15 - eot / 60;
+    SR = noon - H; SS = noon + H;
+  })();
   function istHour() {
     var d = new Date(), u = d.getUTCHours() + d.getUTCMinutes() / 60 + d.getUTCSeconds() / 3600;
     return (u + 5.5) % 24;
@@ -464,8 +476,6 @@
     if (playBtn) playBtn.setAttribute('aria-pressed', 'false');
     goTo(d.mode === 'night' ? 1 : 13);
   });
-  /* real sunrise and sunset from the nowcast, when it loads */
-  window.addEventListener('sunevents', function (e) { if (e.detail && e.detail.sr && e.detail.ss) { SR = e.detail.sr; SS = e.detail.ss; } });
 
   /* a stored preference that disagrees with the clock wins at load */
   (function () {

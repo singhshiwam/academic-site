@@ -24,59 +24,33 @@
     <div class="sec-h ml"><div class="side">Thesis objectives</div><div><h2>The four parts of the work</h2></div></div>
     <div class="ml"><div class="side"></div>
       <ol class="qs">
-        <li id="obj-sites" data-find="Research|Observed surface layer characteristics at four sites|Ranichauri, Ranchi, CASES-99 and Cardington compared"><div><h3>What do the observations say?</h3><p>Surface layer characteristics from four contrasting turbulence sites: Ranichauri in the Himalaya, Ranchi on the Chota Nagpur plateau, the CASES-99 campaign in Kansas and Cardington in the UK. Comparing a mountain site with flat ones shows which departures from similarity theory are caused by terrain.</p></div></li>
+        <li id="obj-sites" data-find="Research|Observed surface layer characteristics at four sites|A Himalayan site compared with Ranchi, CASES-99 and Cardington"><div><h3>What do the observations say?</h3><p>Surface layer characteristics from four contrasting turbulence sites: one in the Central Himalaya, Ranchi on the Chota Nagpur plateau, the CASES-99 campaign in Kansas and Cardington in the UK. Comparing a mountain site with flat ones shows which departures from similarity theory are caused by terrain.</p></div></li>
         <li id="obj-wrf" data-find="Research|Stability functions in WRF|Evaluating stable and unstable surface layer functions over mountains"><div><h3>Which stability functions work in the model?</h3><p>Stable and unstable stability functions implemented in WRF and evaluated over Uttarakhand against tower and station data. The unstable and extreme-weather part is published in Weather and Forecasting; the stable part is in progress.</p></div></li>
-        <li id="obj-new" data-find="Research|New surface layer parameterization|Heat, moisture and momentum fluxes for mountainous terrain from Ranichauri data"><div><h3>Can we do better?</h3><p>A surface layer parameterization of heat, moisture and momentum fluxes fitted to Ranichauri eddy covariance data, together with a roughness length that changes with conditions instead of staying fixed by land-use class.</p></div></li>
+        <li id="obj-new" data-find="Research|New surface layer parameterization|Heat, moisture and momentum fluxes for mountainous terrain from Himalayan eddy covariance data"><div><h3>Can we do better?</h3><p>A surface layer parameterization of heat, moisture and momentum fluxes fitted to eddy covariance data from the Himalaya, together with a roughness length that changes with conditions instead of staying fixed by land-use class.</p></div></li>
         <li id="obj-future" data-find="Research|Surface layer under future climate|4 km WRF downscaling of CMIP6 for the Northwest Himalaya to 2050"><div><h3>What happens as the climate changes?</h3><p>A 4 km WRF downscaling of CMIP6 projections for the Northwest Himalaya, from a 1985 to 2014 baseline to 2050 under SSP2-4.5 and SSP5-8.5, to see how surface layer variables evolve over the coming decades.</p></div></li>
       </ol>
     </div>
   </div>
 </section>
 
-<section class="sec" id="tower" data-find="Research|Ranichauri flux tower|30 m micrometeorological tower in the Garhwal Himalaya, eddy covariance at 20 Hz">
+<section class="sec" id="tower" data-find="Research|Turbulence observations in the Himalaya|Eddy covariance measurements at 20 Hz from a mountain flux tower">
   <div class="wrap">
-    <div class="sec-h ml"><div class="side">Observations</div><div><h2>A tower in the Garhwal Himalaya</h2></div></div>
+    <div class="sec-h ml"><div class="side">Observations</div><div><h2>Turbulence measured in the mountains</h2></div></div>
     <div class="ml"><div class="side"></div>
     <div class="split">
       <div class="prose">
-        <p>The measurements come from a 30 m micrometeorological tower at Ranichauri, Tehri Garhwal, one of very few high-altitude turbulence sites in the Indian Himalaya. It stands among forest on steep, uneven ground, exactly the kind of setting where flat-terrain theory is under strain.</p>
-        <p>A three-dimensional sonic anemometer samples the wind and temperature 20 times a second. An open-path gas analyser adds water vapour and carbon dioxide. Slower sensors lower down record the profiles of wind, temperature and humidity, and a radiometer measures the radiation budget.</p>
-        <p>Before any comparison with a model, the raw records are despiked, rotated into the mean wind, quality-controlled and sorted by stability. Fluxes are then computed over 30 minute blocks with the eddy covariance method.</p>
-        <p class="muted" style="font-family:var(--sans);font-size:.92rem">The record begins in November 2024.</p>
+        <p>The theory has to be tested against direct measurements, and those are scarce in the Himalaya. I work with high-frequency turbulence data from a micrometeorological flux tower in the Central Himalaya, developed and maintained by Dr. Piyush Srivastava's group at IIT Roorkee.</p>
+        <p>A three-dimensional sonic anemometer records the wind and temperature 20 times a second, and an open-path gas analyser adds water vapour and carbon dioxide. Slower sensors record the profiles and the radiation budget that the model is compared against.</p>
+        <p>Turning those raw records into fluxes a model can be judged by takes several careful steps, shown alongside.</p>
       </div>
-      <figure class="tower-fig">
-        <svg viewBox="0 0 360 400" role="img" aria-labelledby="twr-t">
-          <title id="twr-t">Diagram of the 30 m tower with instruments at different heights</title>
-          <g font-family="Instrument Sans, system-ui, sans-serif" font-size="12" fill="currentColor">
-            <path d="M40 360 H330" stroke="currentColor" stroke-opacity=".4"/>
-            <path d="M28 360 C70 352 110 362 150 356 S260 350 340 358 V380 H28 Z" fill="currentColor" fill-opacity=".08"/>
-            <g stroke="currentColor" stroke-opacity=".35" stroke-width="1">
-              <path d="M44 360 V36"/>
-              <path d="M40 360 h8 M40 306 h8 M40 252 h8 M40 198 h8 M40 144 h8 M40 90 h8 M40 36 h8"/>
-            </g>
-            <g fill-opacity=".7" font-size="11">
-              <text x="14" y="364">0</text><text x="8" y="256">10</text><text x="8" y="148">20</text><text x="8" y="40">30</text>
-              <text x="2" y="20">z, m</text>
-            </g>
-            <path d="M150 360 V36" stroke="currentColor" stroke-width="3"/>
-            <path d="M150 60 L110 360 M150 60 L190 360" stroke="currentColor" stroke-opacity=".3"/>
-            <!-- 27 m -->
-            <g><path d="M150 68 H206" stroke="currentColor" stroke-width="1.6"/><circle cx="210" cy="68" r="5" fill="var(--pine)"/><text x="222" y="64" font-weight="600">27 m</text><text x="222" y="80" fill-opacity=".75">3D sonic anemometer,</text><text x="222" y="94" fill-opacity=".75">gas analyser</text></g>
-            <!-- 16 m -->
-            <g><path d="M150 187 H206" stroke="currentColor" stroke-width="1.6"/><circle cx="210" cy="187" r="4" fill="var(--sun)"/><text x="222" y="183" font-weight="600">16 m</text><text x="222" y="199" fill-opacity=".75">wind, temperature, humidity</text></g>
-            <!-- 8 m -->
-            <g><path d="M150 274 H206" stroke="currentColor" stroke-width="1.6"/><circle cx="210" cy="274" r="4" fill="var(--sun)"/><text x="222" y="270" font-weight="600">8 m</text><text x="222" y="286" fill-opacity=".75">wind, temperature, humidity</text></g>
-            <!-- 3 m -->
-            <g><path d="M150 328 H94" stroke="currentColor" stroke-width="1.6"/><rect x="80" y="323" width="12" height="10" fill="var(--sky)"/><text x="16" y="318" font-weight="600">3 m</text><text x="16" y="304" fill-opacity=".75">radiometer</text></g>
-            <!-- 2 m -->
-            <g><path d="M150 338 H206" stroke="currentColor" stroke-width="1.6"/><circle cx="210" cy="338" r="4" fill="var(--sun)"/><text x="222" y="342" font-weight="600">2 m</text><text x="250" y="342" fill-opacity=".75">temperature, humidity</text></g>
-            <!-- canopy -->
-            <g fill="var(--pine)" fill-opacity=".25"><path d="M262 360 l14 -112 l14 112 z"/><path d="M300 360 l11 -86 l11 86 z"/><path d="M60 360 l12 -98 l12 98 z"/></g>
-            <text x="268" y="236" font-size="11" fill-opacity=".7">forest canopy</text>
-          </g>
-        </svg>
-        <figcaption>Instrument heights on the Ranichauri tower, drawn to scale on the vertical axis. The gas analyser sat at 20 m before December 2025.</figcaption>
-      </figure>
+      <ol class="chain" aria-label="From raw turbulence records to fluxes">
+        <li><b>Raw records at 20 Hz</b><span>Three wind components, sonic temperature, water vapour and carbon dioxide.</span></li>
+        <li><b>Despiking and quality checks</b><span>Spikes, sensor faults and flagged records are removed.</span></li>
+        <li><b>Coordinate rotation</b><span>The axes are rotated into the mean wind, so the mean vertical velocity is zero.</span></li>
+        <li><b>Eddy covariance</b><span>Covariances such as w′T′ and u′w′ over 30 minute blocks give the heat and momentum fluxes.</span></li>
+        <li><b>Stability sorting</b><span>Each block is classed by ζ = z/L, so stable and unstable hours can be tested separately.</span></li>
+        <li><b>Model evaluation</b><span>Observed and simulated fluxes are compared with correlation, mean bias, MAE, RMSE and the index of agreement.</span></li>
+      </ol>
     </div>
     </div>
   </div>

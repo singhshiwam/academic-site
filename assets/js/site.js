@@ -223,7 +223,7 @@
      Reveal on scroll
      ========================================================= */
   var REVEAL = [
-    ['.sec-h, .statement, .statement-b, .prose, .thesis, .figs, .places, .filters, .lab, .tower-fig, .empty, .reach, .form, .facts, .skills > div, .refs, .travel', 'rv'],
+    ['.sec-h, .statement, .statement-b, .prose, .thesis, .figs, .places, .filters, .lab, .chain, .empty, .reach, .form, .facts, .skills > div, .refs, .travel', 'rv'],
     ['.log li, .pub, .talk, .qs li, .award, .thread, .reach li', 'rv'],
     ['.portrait, .map', 'rv-s']
   ];
@@ -243,6 +243,8 @@
       if (io) io.observe(el); else el.classList.add('in');
     });
   });
+
+  $$('.chain li').forEach(function (li, i) { li.style.setProperty('--n', i); });
 
   /* numbers count up once */
   function count(scope) {
