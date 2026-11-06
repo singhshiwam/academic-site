@@ -23,7 +23,7 @@ Static site for GitHub Pages. No framework, no build server: plain HTML, CSS and
 1. Edit the page in `src/pages/`, or the CSS and JS in `assets/`.
 2. Run `python3 tools/build.py`. It rebuilds every page, the search index and the cache-busting version string.
 3. Preview with `python3 -m http.server` and open http://localhost:8000.
-4. Commit and push. GitHub Pages updates in a minute or two. Hard refresh with Ctrl+Shift+R.
+4. Commit and push. Cloudflare Pages redeploys in about a minute. Hard refresh with Ctrl+Shift+R.
 
 Anything with a `data-find="Kind|Title|Description"` attribute and an `id` shows up in the site search.
 
