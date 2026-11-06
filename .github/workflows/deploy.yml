@@ -1,0 +1,67 @@
+# Publishes the site to Cloudflare Pages (free plan) at https://shiwam-singh.pages.dev
+# on every push to main. Needs two repository secrets:
+#   CLOUDFLARE_API_TOKEN   an API token with the "Cloudflare Pages: Edit" permission
+#   CLOUDFLARE_ACCOUNT_ID  the account ID shown in the Cloudflare dashboard
+# Until both exist the job is skipped, so nothing fails.
+name: Deploy to Cloudflare Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages
+  cancel-in-progress: true
+
+env:
+  PROJECT: shiwam-singh
+  CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check secrets
+        id: check
+        run: |
+          if [ -n "$CLOUDFLARE_API_TOKEN" ] && [ -n "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "ok=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::Cloudflare secrets are not set yet, skipping deploy."
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.check.outputs.ok == 'true'
+
+      - uses: actions/setup-node@v4
+        if: steps.check.outputs.ok == 'true'
+        with:
+          node-version: 22
+
+      # The pages are committed already built. Copy only what the site serves.
+      - name: Collect site files
+        if: steps.check.outputs.ok == 'true'
+        run: |
+          mkdir _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude 'src' --exclude 'tools' \
+                --exclude 'README.md' --exclude '_site' ./ _site/
+
+      - name: Create the Pages project if it does not exist
+        if: steps.check.outputs.ok == 'true'
+        run: |
+          if npx --yes wrangler@4 pages project list | grep -q "\b$PROJECT\b"; then
+            echo "Project $PROJECT exists."
+          else
+            npx --yes wrangler@4 pages project create "$PROJECT" --production-branch main
+          fi
+
+      - name: Deploy
+        if: steps.check.outputs.ok == 'true'
+        run: |
+          npx --yes wrangler@4 pages deploy _site --project-name "$PROJECT" --branch main \
+            --commit-hash "$GITHUB_SHA" --commit-message "$(git log -1 --pretty=%s)"

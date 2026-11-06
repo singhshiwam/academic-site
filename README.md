@@ -40,7 +40,9 @@ Categories: `field`, `conference`, `school`, `campus`, `travel`. Photos are resi
 
 ## Hosting and address
 
-The site is served free by Cloudflare Pages at https://shiwam-singh.pages.dev (project name `shiwam-singh`), deployed from the `main` branch of this repository. Every push redeploys it in about a minute. Cloudflare settings for the project: framework preset None, build command empty, build output directory `/`. The pages are committed already built, so Cloudflare runs nothing.
+The site is served free by Cloudflare Pages at https://shiwam-singh.pages.dev (project `shiwam-singh`). `.github/workflows/deploy.yml` uploads it on every push to `main`, so a push is all it takes; the run is listed under the repository's Actions tab. The pages are committed already built, so the workflow only copies the served files (not `src/`, `tools/` or this README) and uploads them.
+
+The workflow needs two repository secrets, set under Settings → Secrets and variables → Actions: `CLOUDFLARE_API_TOKEN` (a Cloudflare API token with the "Cloudflare Pages: Edit" permission) and `CLOUDFLARE_ACCOUNT_ID`. Without them the job is skipped.
 
 - `_headers` sets response headers on Cloudflare (security basics, long caching for fonts).
 - `404.html` is what Cloudflare shows for an address that does not exist.
