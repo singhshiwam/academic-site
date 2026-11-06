@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /src/
+Disallow: /tools/
+
+Sitemap: https://shiwam-singh.dev/sitemap.xml

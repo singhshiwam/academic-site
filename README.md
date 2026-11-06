@@ -16,7 +16,7 @@ Static site for GitHub Pages. No framework, no build server: plain HTML, CSS and
 | `assets/js/gallery.js` | Gallery albums and the full-screen viewer | Yes |
 | `gallery/gallery.json` | Album list, titles, captions | Captions, yes |
 | `index.html`, `about.html`, ... at the root | Finished pages | No, they are generated |
-| `assets/js/search-index.js` | Search entries | No, generated |
+| `assets/js/search-index.js`, `sitemap.xml`, `robots.txt` | Search entries and search-engine files | No, generated |
 
 ## Making a change
 
@@ -38,6 +38,12 @@ python3 tools/add_photos.py egu-2026 photo1.jpg photo2.jpg \
 
 Categories: `field`, `conference`, `school`, `campus`, `travel`. Photos are resized to 2000 px with 700 px thumbnails, and camera metadata (including GPS) is dropped. Write captions in `gallery/gallery.json`. Run the same command with an existing album id to add more photos to it. No rebuild is needed for photos.
 
-## Address
+## Hosting and address
 
-`BASE_URL` in `tools/build.py` is used for the canonical link and social previews. Change it if the site moves to another address, then rebuild.
+The site is served by Cloudflare Pages at https://shiwam-singh.dev, deployed from the `main` branch of this repository. Every push redeploys it in about a minute. Cloudflare settings for the project: framework preset None, build command empty, build output directory `/`. The pages are committed already built, so Cloudflare runs nothing.
+
+- `_headers` sets response headers on Cloudflare (security basics, long caching for fonts).
+- `404.html` is what Cloudflare shows for an address that does not exist.
+- `sitemap.xml` and `robots.txt` are written by `tools/build.py`.
+
+`BASE_URL` in `tools/build.py` is used for the canonical link, social previews and the sitemap. Change it if the site moves to another address, then rebuild.

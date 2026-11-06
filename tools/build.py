@@ -18,8 +18,8 @@ import re
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
 
-# Change this once the site is served from its final address.
-BASE_URL = "https://singhshiwam.github.io/academic-site/"
+# The address the site is served from (Cloudflare Pages, custom domain).
+BASE_URL = "https://shiwam-singh.dev/"
 
 # (file name, menu label, <title>, meta description, extra scripts)
 PAGES = [
@@ -43,6 +43,10 @@ PAGES = [
      "How to reach Shiwam Singh at IIT Roorkee.", []),
 ]
 
+# Served by Cloudflare Pages for any address that does not exist. Not in the menu or search.
+NOT_FOUND = ("404", "", "Page not found, Shiwam Singh",
+             "This address does not exist on Shiwam Singh's website.", [])
+
 
 def nav_html(current):
     out = []
@@ -65,10 +69,11 @@ def main():
     updated = datetime.datetime.now(ist).strftime("%d %B %Y")
 
     index = []
-    for name, label, title, desc, scripts in PAGES:
+    for name, label, title, desc, scripts in PAGES + [NOT_FOUND]:
         body = (SRC / "pages" / f"{name}.html").read_text(encoding="utf-8")
         href = "./" if name == "index" else f"{name}.html"
-        index.append({"t": label, "d": desc, "u": href, "k": "Page"})
+        if name != "404":
+            index.append({"t": label, "d": desc, "u": href, "k": "Page"})
         hits = [(m.group(2), m.group(3)) for m in FIND.finditer(body)]
         hits += [(m.group(3), m.group(2)) for m in FIND2.finditer(body)]
         for anchor, payload in hits:
@@ -86,9 +91,12 @@ def main():
                 .replace("{{body_class}}", " hero-load" if name == "index" else "")
                 .replace("{{version}}", version)
                 .replace("{{updated}}", updated)
-                .replace("{{head_extra}}", "")
+                .replace("{{head_extra}}", '<meta name="robots" content="noindex">' if name == "404" else "")
                 .replace("{{scripts}}", "\n".join(f'<script src="{s}?v={version}" defer></script>' for s in scripts))
                 .replace("{{body}}", body))
+        if name == "404":
+            # Shown at whatever address was mistyped, so relative links must resolve from the root.
+            page = page.replace("<head>", '<head>\n<base href="/">', 1)
         (ROOT / f"{name}.html").write_text(page, encoding="utf-8")
 
     seen, uniq = set(), []
@@ -97,6 +105,13 @@ def main():
             seen.add(e["u"]); uniq.append(e)
     (ROOT / "assets" / "js" / "search-index.js").write_text(
         "window.SEARCH_INDEX=" + json.dumps(uniq, ensure_ascii=False, separators=(",", ":")) + ";\n", encoding="utf-8")
+
+    today = datetime.datetime.now(ist).strftime("%Y-%m-%d")
+    urls = "".join(f"  <url><loc>{BASE_URL}{'' if n == 'index' else n + '.html'}</loc><lastmod>{today}</lastmod></url>\n" for n, *_ in PAGES)
+    (ROOT / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + urls + "</urlset>\n", encoding="utf-8")
+    (ROOT / "robots.txt").write_text(
+        "User-agent: *\nDisallow: /src/\nDisallow: /tools/\n\nSitemap: " + BASE_URL + "sitemap.xml\n", encoding="utf-8")
     print(f"built {len(PAGES)} pages, {len(uniq)} search entries, assets v{version}")
 
 
