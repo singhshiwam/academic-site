@@ -40,7 +40,7 @@ Categories: `field`, `conference`, `school`, `campus`, `travel`. Photos are resi
 
 ## Hosting and address
 
-The site is served by Cloudflare Pages at https://shiwam-singh.dev, deployed from the `main` branch of this repository. Every push redeploys it in about a minute. Cloudflare settings for the project: framework preset None, build command empty, build output directory `/`. The pages are committed already built, so Cloudflare runs nothing.
+The site is served free by Cloudflare Pages at https://shiwam-singh.pages.dev (project name `shiwam-singh`), deployed from the `main` branch of this repository. Every push redeploys it in about a minute. Cloudflare settings for the project: framework preset None, build command empty, build output directory `/`. The pages are committed already built, so Cloudflare runs nothing.
 
 - `_headers` sets response headers on Cloudflare (security basics, long caching for fonts).
 - `404.html` is what Cloudflare shows for an address that does not exist.
