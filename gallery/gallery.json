@@ -370,6 +370,35 @@
       "short": "IIT Hyderabad classmates"
     },
     {
+      "id": "himalaya-views-2025",
+      "title": "Clouds and valleys in the Central Himalaya",
+      "date": "2025",
+      "place": "Central Himalaya, Uttarakhand",
+      "category": "field",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/himalaya-views-2025/01.jpg",
+          "thumb": "gallery/thumbs/himalaya-views-2025/01.jpg",
+          "w": 2000,
+          "h": 1435,
+          "tw": 700,
+          "th": 502,
+          "caption": "Low cloud settled in the valleys below the ridges near the field site"
+        },
+        {
+          "src": "gallery/photos/himalaya-views-2025/02.jpg",
+          "thumb": "gallery/thumbs/himalaya-views-2025/02.jpg",
+          "w": 2000,
+          "h": 1462,
+          "tw": 700,
+          "th": 512,
+          "caption": "Cloud fragments clinging to the slopes on a clear monsoon-season morning"
+        }
+      ],
+      "short": "Central Himalaya"
+    },
+    {
       "id": "research-proposal-2024",
       "title": "Research proposal presentation",
       "date": "2024-11",
