@@ -379,6 +379,26 @@
         }
       ],
       "short": "Research proposal, Nov 2024"
+    },
+    {
+      "id": "apstcdrr-2024",
+      "title": "5th Asia-Pacific Science Technology Conference for Disaster Risk Reduction",
+      "date": "2024-07-12",
+      "place": "IIT Roorkee",
+      "category": "conference",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/apstcdrr-2024/01.jpg",
+          "thumb": "gallery/thumbs/apstcdrr-2024/01.jpg",
+          "w": 1182,
+          "h": 2000,
+          "tw": 414,
+          "th": 700,
+          "caption": "With the poster on evaluating a three-sublayer model over a mountainous region, presented on 12 July 2024"
+        }
+      ],
+      "short": "APSTCDRR 2024"
     }
   ]
 }
