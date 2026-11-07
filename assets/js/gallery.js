@@ -20,7 +20,7 @@
   function render(filter) {
     var list = albums.filter(function (a) { return filter === 'all' || a.category === filter; });
     grid.innerHTML = list.map(function (a) {
-      return '<section class="album"><header class="album-h"><h2>' + esc(a.title) + '</h2><p>' + esc([a.place, when(a.date)].filter(Boolean).join(', ')) +
+      return '<section class="album" id="' + esc(a.id) + '"><header class="album-h"><h2>' + esc(a.title) + '</h2><p>' + esc([a.place, when(a.date)].filter(Boolean).join(', ')) +
         ' <span>' + a.photos.length + (a.photos.length > 1 ? ' photos' : ' photo') + '</span></p></header><div class="gal">' +
         a.photos.map(function (c, i) {
           return '<figure tabindex="0" role="button" data-album="' + esc(a.id) + '" data-i="' + i + '" aria-label="Open photo: ' + esc(c.caption || a.title) + '">' +
@@ -81,5 +81,8 @@
         });
       }
       render('all');
+      /* links such as gallery.html#egu-2026 land on that album once it exists */
+      var target = location.hash && document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) setTimeout(function () { target.scrollIntoView({ block: 'start' }); }, 60);
     });
 })();

@@ -687,6 +687,7 @@ html[data-mode="night"] .travel .land{fill:#1B2944}
 }
 .log .t{margin:0}.log .d{margin:4px 0 0}
 [hidden]{display:none!important}
+.album{scroll-margin-top:96px}
 .album + .album{margin-top:clamp(48px,7vw,88px)}
 .album-h{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 24px;padding-bottom:16px;margin-bottom:20px;border-bottom:1px solid var(--rule)}
 .album-h h2{font-size:var(--step-2);max-width:32ch}

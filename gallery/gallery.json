@@ -111,6 +111,53 @@
         }
       ],
       "short": "Field visit, June 2026"
+    },
+    {
+      "id": "egu-2026",
+      "title": "EGU General Assembly 2026",
+      "date": "2026-05-04",
+      "place": "Vienna, Austria",
+      "category": "conference",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/egu-2026/01.jpg",
+          "thumb": "gallery/thumbs/egu-2026/01.jpg",
+          "w": 1165,
+          "h": 2000,
+          "tw": 408,
+          "th": 700,
+          "caption": "Walking up for my talk in session AS2.1, Atmospheric Boundary Layer: From Basic Turbulence Studies to Integrated Applications, on 4 May"
+        },
+        {
+          "src": "gallery/photos/egu-2026/02.jpg",
+          "thumb": "gallery/thumbs/egu-2026/02.jpg",
+          "w": 1046,
+          "h": 2000,
+          "tw": 366,
+          "th": 700,
+          "caption": "Presenting why the stable surface layer over the Himalaya is hard to represent in weather models"
+        },
+        {
+          "src": "gallery/photos/egu-2026/03.jpg",
+          "thumb": "gallery/thumbs/egu-2026/03.jpg",
+          "w": 1269,
+          "h": 2000,
+          "tw": 444,
+          "th": 700,
+          "caption": "At the welcome wall of the General Assembly"
+        },
+        {
+          "src": "gallery/photos/egu-2026/04.jpg",
+          "thumb": "gallery/thumbs/egu-2026/04.jpg",
+          "w": 1148,
+          "h": 2000,
+          "tw": 402,
+          "th": 700,
+          "caption": "At the entrance to the General Assembly"
+        }
+      ],
+      "short": "EGU 2026, Vienna"
     }
   ]
 }
