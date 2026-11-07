@@ -408,6 +408,53 @@
         }
       ],
       "short": "APSTCDRR 2024"
+    },
+    {
+      "id": "iith-convocation-2022",
+      "title": "Eleventh Convocation, IIT Hyderabad",
+      "date": "2022-08",
+      "place": "IIT Hyderabad",
+      "category": "campus",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/iith-convocation-2022/01.jpg",
+          "thumb": "gallery/thumbs/iith-convocation-2022/01.jpg",
+          "w": 1469,
+          "h": 2000,
+          "tw": 514,
+          "th": 700,
+          "caption": "With my M.Sc. degree in Mathematics at the Eleventh Convocation of IIT Hyderabad"
+        },
+        {
+          "src": "gallery/photos/iith-convocation-2022/02.jpg",
+          "thumb": "gallery/thumbs/iith-convocation-2022/02.jpg",
+          "w": 2000,
+          "h": 1324,
+          "tw": 700,
+          "th": 463,
+          "caption": "On stage with fellow graduates after receiving the degrees"
+        },
+        {
+          "src": "gallery/photos/iith-convocation-2022/03.jpg",
+          "thumb": "gallery/thumbs/iith-convocation-2022/03.jpg",
+          "w": 2000,
+          "h": 1465,
+          "tw": 700,
+          "th": 513,
+          "caption": "Celebrating with classmates, Class of 2022"
+        },
+        {
+          "src": "gallery/photos/iith-convocation-2022/04.jpg",
+          "thumb": "gallery/thumbs/iith-convocation-2022/04.jpg",
+          "w": 1546,
+          "h": 2000,
+          "tw": 541,
+          "th": 700,
+          "caption": "Class of 2022, after the ceremony"
+        }
+      ],
+      "short": "Convocation, IIT Hyderabad"
     }
   ]
 }
