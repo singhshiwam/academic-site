@@ -196,6 +196,55 @@
         }
       ],
       "short": "INTROMET 2025, Pune"
+    },
+    {
+      "id": "nrsc-da-2025",
+      "title": "Advanced data assimilation and inverse modelling, NRSC",
+      "date": "2025-01-21",
+      "place": "National Remote Sensing Centre, Hyderabad",
+      "category": "school",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/nrsc-da-2025/01.jpg",
+          "thumb": "gallery/thumbs/nrsc-da-2025/01.jpg",
+          "w": 1542,
+          "h": 2000,
+          "tw": 540,
+          "th": 700,
+          "caption": "Next to the large Moon globe on the NRSC campus during the four-day training, 21 to 24 January"
+        },
+        {
+          "src": "gallery/photos/nrsc-da-2025/02.jpg",
+          "thumb": "gallery/thumbs/nrsc-da-2025/02.jpg",
+          "w": 1529,
+          "h": 2000,
+          "tw": 535,
+          "th": 700,
+          "caption": "Trying the ISRO astronaut photo stand between training sessions"
+        }
+      ],
+      "short": "NRSC training, Jan 2025"
+    },
+    {
+      "id": "research-proposal-2024",
+      "title": "Research proposal presentation",
+      "date": "2024-11",
+      "place": "CoEDMM, IIT Roorkee",
+      "category": "campus",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/research-proposal-2024/01.jpg",
+          "thumb": "gallery/thumbs/research-proposal-2024/01.jpg",
+          "w": 1148,
+          "h": 2000,
+          "tw": 402,
+          "th": 700,
+          "caption": "Presenting my PhD research proposal, starting from why near-surface exchange over mountains is hard to model"
+        }
+      ],
+      "short": "Research proposal, Nov 2024"
     }
   ]
 }
