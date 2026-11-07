@@ -283,6 +283,26 @@
       "short": "HPC4Climate, Germany"
     },
     {
+      "id": "jrf-srf-2025",
+      "title": "JRF to SRF assessment presentation",
+      "date": "2025-07-16",
+      "place": "CoEDMM, IIT Roorkee",
+      "category": "campus",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/jrf-srf-2025/01.jpg",
+          "thumb": "gallery/thumbs/jrf-srf-2025/01.jpg",
+          "w": 1243,
+          "h": 2000,
+          "tw": 435,
+          "th": 700,
+          "caption": "Presenting predicted against observed 10 m wind speed from the stable-condition WRF experiments at my JRF to SRF assessment, 16 July 2025"
+        }
+      ],
+      "short": "JRF to SRF presentation"
+    },
+    {
       "id": "ec-training-2025",
       "title": "Training session on eddy covariance systems, Campbell Scientific India",
       "date": "2025-05-02",
