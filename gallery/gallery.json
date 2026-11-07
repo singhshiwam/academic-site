@@ -198,6 +198,44 @@
       "short": "INTROMET 2025, Pune"
     },
     {
+      "id": "ec-training-2025",
+      "title": "Training session on eddy covariance systems, Campbell Scientific India",
+      "date": "2025-05-02",
+      "place": "Delhi, India",
+      "category": "school",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/ec-training-2025/01.jpg",
+          "thumb": "gallery/thumbs/ec-training-2025/01.jpg",
+          "w": 2000,
+          "h": 1088,
+          "tw": 700,
+          "th": 381,
+          "caption": "Discussing eddy covariance techniques with Bai Yung during the training session"
+        },
+        {
+          "src": "gallery/photos/ec-training-2025/02.jpg",
+          "thumb": "gallery/thumbs/ec-training-2025/02.jpg",
+          "w": 2000,
+          "h": 1446,
+          "tw": 700,
+          "th": 506,
+          "caption": "Talking through the processing steps with Bai Yung"
+        },
+        {
+          "src": "gallery/photos/ec-training-2025/03.jpg",
+          "thumb": "gallery/thumbs/ec-training-2025/03.jpg",
+          "w": 2000,
+          "h": 1099,
+          "tw": 700,
+          "th": 385,
+          "caption": "Going over the flux calculations on the laptop, with the demonstration sensors set up behind"
+        }
+      ],
+      "short": "Eddy covariance training, May 2025"
+    },
+    {
       "id": "nrsc-da-2025",
       "title": "Advanced data assimilation and inverse modelling, NRSC",
       "date": "2025-01-21",
