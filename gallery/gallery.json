@@ -158,6 +158,44 @@
         }
       ],
       "short": "EGU 2026, Vienna"
+    },
+    {
+      "id": "intromet-2025",
+      "title": "INTROMET 2025, International Symposium on Tropical Meteorology",
+      "date": "2025-11-18",
+      "place": "IITM Pune, India",
+      "category": "conference",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/intromet-2025/01.jpg",
+          "thumb": "gallery/thumbs/intromet-2025/01.jpg",
+          "w": 1127,
+          "h": 2000,
+          "tw": 395,
+          "th": 700,
+          "caption": "At INTROMET 2025, held at the Indian Institute of Tropical Meteorology, Pune, 18 to 20 November"
+        },
+        {
+          "src": "gallery/photos/intromet-2025/02.jpg",
+          "thumb": "gallery/thumbs/intromet-2025/02.jpg",
+          "w": 1564,
+          "h": 2000,
+          "tw": 547,
+          "th": 700,
+          "caption": "With my poster on similarity functions under stable conditions over a mountainous region"
+        },
+        {
+          "src": "gallery/photos/intromet-2025/03.jpg",
+          "thumb": "gallery/thumbs/intromet-2025/03.jpg",
+          "w": 1534,
+          "h": 2000,
+          "tw": 537,
+          "th": 700,
+          "caption": "With Prof. Someshwar Das, formerly Scientist-G and Adviser at the National Centre for Medium Range Weather Forecasting"
+        }
+      ],
+      "short": "INTROMET 2025, Pune"
     }
   ]
 }
