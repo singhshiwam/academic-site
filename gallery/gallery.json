@@ -555,6 +555,62 @@
       "short": "Convocation, IIT Hyderabad"
     },
     {
+      "id": "mtts-2019",
+      "title": "Mathematics Training and Talent Search, Level I",
+      "date": "2019-05-20",
+      "place": "IISER Thiruvananthapuram",
+      "category": "school",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/mtts-2019/01.jpg",
+          "thumb": "gallery/thumbs/mtts-2019/01.jpg",
+          "w": 923,
+          "h": 2000,
+          "tw": 323,
+          "th": 700,
+          "caption": "Receiving my certificate from Prof. Ananthnarayan Hariharan, IIT Bombay"
+        },
+        {
+          "src": "gallery/photos/mtts-2019/02.jpg",
+          "thumb": "gallery/thumbs/mtts-2019/02.jpg",
+          "w": 581,
+          "h": 1032,
+          "tw": 394,
+          "th": 700,
+          "caption": "With Prof. G. Santhanam, IIT Kanpur"
+        },
+        {
+          "src": "gallery/photos/mtts-2019/03.jpg",
+          "thumb": "gallery/thumbs/mtts-2019/03.jpg",
+          "w": 2000,
+          "h": 1500,
+          "tw": 700,
+          "th": 525,
+          "caption": "With Prof. Sukumar Daniel, IIT Hyderabad, and friends from the programme"
+        },
+        {
+          "src": "gallery/photos/mtts-2019/04.jpg",
+          "thumb": "gallery/thumbs/mtts-2019/04.jpg",
+          "w": 1500,
+          "h": 2000,
+          "tw": 525,
+          "th": 700,
+          "caption": "With Prof. S. Kumaresan, founder of MTTS"
+        },
+        {
+          "src": "gallery/photos/mtts-2019/05.jpg",
+          "thumb": "gallery/thumbs/mtts-2019/05.jpg",
+          "w": 1500,
+          "h": 2000,
+          "tw": 525,
+          "th": 700,
+          "caption": "Evening with Prof. S. Kumaresan and fellow participants"
+        }
+      ],
+      "short": "MTTS 2019"
+    },
+    {
       "id": "mtts-2018",
       "title": "Mathematics Training and Talent Search, Level 0",
       "date": "2018-05-28",
