@@ -488,6 +488,26 @@
       "short": "APSTCDRR 2024"
     },
     {
+      "id": "icts-da-2024",
+      "title": "Data assimilation in weather and climate models, ICTS",
+      "date": "2024-05-06",
+      "place": "ICTS, Bengaluru",
+      "category": "school",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/icts-da-2024/01.jpg",
+          "thumb": "gallery/thumbs/icts-da-2024/01.jpg",
+          "w": 2000,
+          "h": 865,
+          "tw": 700,
+          "th": 303,
+          "caption": "With fellow participants outside ICTS during the data assimilation school"
+        }
+      ],
+      "short": "ICTS, May 2024"
+    },
+    {
       "id": "iith-convocation-2022",
       "title": "Eleventh Convocation, IIT Hyderabad",
       "date": "2022-08",
@@ -533,6 +553,71 @@
         }
       ],
       "short": "Convocation, IIT Hyderabad"
+    },
+    {
+      "id": "mtts-2018",
+      "title": "Mathematics Training and Talent Search, Level 0",
+      "date": "2018-05-28",
+      "place": "IIT Guwahati",
+      "category": "school",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/mtts-2018/01.jpg",
+          "thumb": "gallery/thumbs/mtts-2018/01.jpg",
+          "w": 2000,
+          "h": 1500,
+          "tw": 700,
+          "th": 525,
+          "caption": "Group photo of the MTTS 2018 participants and faculty"
+        },
+        {
+          "src": "gallery/photos/mtts-2018/02.jpg",
+          "thumb": "gallery/thumbs/mtts-2018/02.jpg",
+          "w": 2000,
+          "h": 1125,
+          "tw": 700,
+          "th": 394,
+          "caption": "With the participants and faculty on the campus steps"
+        },
+        {
+          "src": "gallery/photos/mtts-2018/03.jpg",
+          "thumb": "gallery/thumbs/mtts-2018/03.jpg",
+          "w": 2000,
+          "h": 1125,
+          "tw": 700,
+          "th": 394,
+          "caption": "Problem-solving session in the classroom"
+        },
+        {
+          "src": "gallery/photos/mtts-2018/04.jpg",
+          "thumb": "gallery/thumbs/mtts-2018/04.jpg",
+          "w": 2000,
+          "h": 1125,
+          "tw": 700,
+          "th": 394,
+          "caption": "Selfie with a faculty member after the sessions"
+        },
+        {
+          "src": "gallery/photos/mtts-2018/05.jpg",
+          "thumb": "gallery/thumbs/mtts-2018/05.jpg",
+          "w": 1280,
+          "h": 960,
+          "tw": 700,
+          "th": 525,
+          "caption": "Evening by the river with friends from the programme"
+        },
+        {
+          "src": "gallery/photos/mtts-2018/06.jpg",
+          "thumb": "gallery/thumbs/mtts-2018/06.jpg",
+          "w": 780,
+          "h": 1040,
+          "tw": 525,
+          "th": 700,
+          "caption": "With a friend from the programme on the IIT Guwahati campus"
+        }
+      ],
+      "short": "MTTS 2018"
     }
   ]
 }
