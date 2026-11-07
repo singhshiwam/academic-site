@@ -8,8 +8,9 @@
 
   /* =========================================================
      Day / night
-     source 'user'  : the header switch, remembered, circular reveal
+     source 'user'  : the header switch, remembered for this visit, circular reveal
      source 'scene' : the home-page day cycle, smooth cross-fade, not remembered
+     source 'clock' : sunrise or sunset passing on other pages, cross-fade
      ========================================================= */
   function apply(m) {
     root.setAttribute('data-mode', m);
@@ -38,9 +39,20 @@
     }
     fire();
   }
-  function store(m) { try { localStorage.setItem('ss-mode', m); } catch (e) {} }
+  /* A flip of the switch holds for this visit only; the next visit follows the clock again. */
+  function store(m) { try { sessionStorage.setItem('ss-mode', m); } catch (e) {} }
+  function chosen() { try { return sessionStorage.getItem('ss-mode'); } catch (e) { return null; } }
   window.siteSetMode = setMode;
   apply(root.getAttribute('data-mode') === 'night' ? 'night' : 'day');
+  /* Pages left open change over at sunrise and sunset by themselves. The home page
+     does this through its day-cycle scene instead. */
+  if (window.siteSun && !document.getElementById('scene')) {
+    setInterval(function () {
+      if (chosen()) return;
+      var m = window.siteSun.mode();
+      if (m !== root.getAttribute('data-mode')) setMode(m, false, 'clock');
+    }, 60000);
+  }
   $$('[data-mode-toggle]').forEach(function (b) {
     b.addEventListener('click', function () {
       var r = b.getBoundingClientRect();

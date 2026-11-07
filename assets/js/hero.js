@@ -22,18 +22,12 @@
   /* ---------------- time ---------------- */
   /* sunrise and sunset for the Central Himalaya (30.3 N, 78.4 E) today, in IST,
      from the solar declination and equation of time (accurate to a few minutes) */
+  /* computed in the page head (src/layout.html) and shared with every page */
   var SR = 6.6, SS = 17.6;
-  (function () {
-    var d = new Date(Date.now() + 5.5 * 3600e3), start = Date.UTC(d.getUTCFullYear(), 0, 0);
-    var n = Math.floor((d - start) / 864e5), rad = Math.PI / 180, lat = 30.3, lon = 78.4;
-    var dec = 23.44 * Math.sin(2 * Math.PI * (284 + n) / 365) * rad;
-    var B = 2 * Math.PI * (n - 81) / 364, eot = 9.87 * Math.sin(2 * B) - 7.53 * Math.cos(B) - 1.5 * Math.sin(B);
-    var cosH = (Math.sin(-0.833 * rad) - Math.sin(lat * rad) * Math.sin(dec)) / (Math.cos(lat * rad) * Math.cos(dec));
-    var H = Math.acos(Math.max(-1, Math.min(1, cosH))) / rad / 15;
-    var noon = 12 + (82.5 - lon) / 15 - eot / 60;
-    SR = noon - H; SS = noon + H;
-  })();
+  function daySun() { if (window.siteSun) { var s = window.siteSun.sun(); SR = s.sr; SS = s.ss; } }
+  daySun();
   function istHour() {
+    if (window.siteSun) return window.siteSun.ist();
     var d = new Date(), u = d.getUTCHours() + d.getUTCMinutes() / 60 + d.getUTCSeconds() / 3600;
     return (u + 5.5) % 24;
   }
@@ -423,7 +417,9 @@
     } else if (playing) {
       T += 1 / 50;                              /* about 50 seconds for a full day at 60 fps */
     } else if (live) {
+      var was = hour();
       T = istHour() + Math.floor(T / 24) * 24;
+      if (hour() < was) daySun();              /* past midnight: new day, new sunrise and sunset */
     }
   }
 
@@ -477,9 +473,9 @@
     goTo(d.mode === 'night' ? 1 : 13);
   });
 
-  /* a stored preference that disagrees with the clock wins at load */
+  /* a switch flipped earlier in this visit that disagrees with the clock wins at load */
   (function () {
-    var pref = null; try { pref = localStorage.getItem('ss-mode'); } catch (e) {}
+    var pref = null; try { pref = sessionStorage.getItem('ss-mode'); } catch (e) {}
     state();
     if (pref === 'day' && S.N > .5) { T = Math.floor(T / 24) * 24 + 13; live = false; }
     if (pref === 'night' && S.N < .5) { T = Math.floor(T / 24) * 24 + 1; live = false; }
