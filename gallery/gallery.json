@@ -1,6 +1,35 @@
 {
   "albums": [
     {
+      "id": "apr-2026",
+      "title": "Annual progress presentation",
+      "date": "2026-11-04",
+      "place": "CoEDMM, IIT Roorkee",
+      "category": "campus",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/apr-2026/01.jpg",
+          "thumb": "gallery/thumbs/apr-2026/01.jpg",
+          "w": 1152,
+          "h": 2000,
+          "tw": 403,
+          "th": 700,
+          "caption": "Opening my annual progress presentation with why near-surface exchange over mountains matters for forecasting"
+        },
+        {
+          "src": "gallery/photos/apr-2026/02.jpg",
+          "thumb": "gallery/thumbs/apr-2026/02.jpg",
+          "w": 1161,
+          "h": 2000,
+          "tw": 407,
+          "th": 700,
+          "caption": "Comparing a Himalayan site with three flat reference sites to test similarity theory"
+        }
+      ],
+      "short": "Annual progress, Nov 2026"
+    },
+    {
       "id": "iddrr-rsd-2026",
       "title": "International Day for Disaster Risk Reduction and Research Scholar's Day 2026",
       "date": "2026-10-13",
