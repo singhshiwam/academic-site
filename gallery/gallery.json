@@ -245,6 +245,35 @@
       "short": "Research Scholar's Day 2025"
     },
     {
+      "id": "hpc4climate-2025",
+      "title": "HPC4Climate Summer School 2025, Max Planck Institute for Meteorology",
+      "date": "2025-07-28",
+      "place": "Lauenburg, near Hamburg, Germany",
+      "category": "school",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/hpc4climate-2025/01.jpg",
+          "thumb": "gallery/thumbs/hpc4climate-2025/01.jpg",
+          "w": 2000,
+          "h": 1428,
+          "tw": 700,
+          "th": 500,
+          "caption": "Getting set up by the river at Lauenburg the evening before the school began"
+        },
+        {
+          "src": "gallery/photos/hpc4climate-2025/02.jpg",
+          "thumb": "gallery/thumbs/hpc4climate-2025/02.jpg",
+          "w": 1172,
+          "h": 2000,
+          "tw": 410,
+          "th": 700,
+          "caption": "Certificate of attendance: 20 hours of lectures and 35 hours of hands-on exercises, 28 July to 7 August 2025"
+        }
+      ],
+      "short": "HPC4Climate, Germany"
+    },
+    {
       "id": "ec-training-2025",
       "title": "Training session on eddy covariance systems, Campbell Scientific India",
       "date": "2025-05-02",
