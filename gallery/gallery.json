@@ -18,6 +18,15 @@
           "caption": "Presenting my poster on surface-layer parameterizations in WRF, evaluated against year-long turbulence observations from the Central Himalaya"
         },
         {
+          "src": "gallery/photos/iddrr-rsd-2026/08.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2026/08.jpg",
+          "w": 1231,
+          "h": 2000,
+          "tw": 431,
+          "th": 700,
+          "caption": "Standing with my poster during the poster session"
+        },
+        {
           "src": "gallery/photos/iddrr-rsd-2026/02.jpg",
           "thumb": "gallery/thumbs/iddrr-rsd-2026/02.jpg",
           "w": 2000,
@@ -73,6 +82,35 @@
         }
       ],
       "short": "Research Scholar's Day 2026"
+    },
+    {
+      "id": "field-visit-2026-06",
+      "title": "Field visit to the flux tower in the Central Himalaya",
+      "date": "2026-06-01",
+      "place": "Central Himalaya, Uttarakhand",
+      "category": "field",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/field-visit-2026-06/01.jpg",
+          "thumb": "gallery/thumbs/field-visit-2026-06/01.jpg",
+          "w": 2000,
+          "h": 1072,
+          "tw": 700,
+          "th": 375,
+          "caption": "Going through the logged turbulence data at the base of the flux tower"
+        },
+        {
+          "src": "gallery/photos/field-visit-2026-06/02.jpg",
+          "thumb": "gallery/thumbs/field-visit-2026-06/02.jpg",
+          "w": 1148,
+          "h": 2000,
+          "tw": 402,
+          "th": 700,
+          "caption": "Checking the data logger records on site before heading back"
+        }
+      ],
+      "short": "Field visit, June 2026"
     }
   ]
 }
