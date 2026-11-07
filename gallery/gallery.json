@@ -198,6 +198,53 @@
       "short": "INTROMET 2025, Pune"
     },
     {
+      "id": "iddrr-rsd-2025",
+      "title": "International Day for Disaster Risk Reduction and Research Scholar's Day 2025",
+      "date": "2025-10-13",
+      "place": "CoEDMM, IIT Roorkee",
+      "category": "campus",
+      "cover": 0,
+      "photos": [
+        {
+          "src": "gallery/photos/iddrr-rsd-2025/01.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2025/01.jpg",
+          "w": 2000,
+          "h": 1220,
+          "tw": 700,
+          "th": 427,
+          "caption": "Receiving the second prize for poster presentation at Research Scholar's Day 2025"
+        },
+        {
+          "src": "gallery/photos/iddrr-rsd-2025/02.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2025/02.jpg",
+          "w": 2000,
+          "h": 1275,
+          "tw": 700,
+          "th": 446,
+          "caption": "Explaining the flux results to visitors during the poster session"
+        },
+        {
+          "src": "gallery/photos/iddrr-rsd-2025/03.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2025/03.jpg",
+          "w": 2000,
+          "h": 1273,
+          "tw": 700,
+          "th": 446,
+          "caption": "Answering questions at the poster"
+        },
+        {
+          "src": "gallery/photos/iddrr-rsd-2025/04.jpg",
+          "thumb": "gallery/thumbs/iddrr-rsd-2025/04.jpg",
+          "w": 2000,
+          "h": 1294,
+          "tw": 700,
+          "th": 453,
+          "caption": "With my poster on the observed behaviour of heat and momentum fluxes over a mountainous region"
+        }
+      ],
+      "short": "Research Scholar's Day 2025"
+    },
+    {
       "id": "ec-training-2025",
       "title": "Training session on eddy covariance systems, Campbell Scientific India",
       "date": "2025-05-02",
