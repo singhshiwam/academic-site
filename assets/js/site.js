@@ -155,23 +155,66 @@
   /* =========================================================
      List filters, with a smooth re-flow
      ========================================================= */
+  /* FLIP: measure, change, then glide every item from where it was */
+  function flip(items, change) {
+    var first = new Map();
+    items.forEach(function (el) { if (!el.hidden) first.set(el, el.getBoundingClientRect()); });
+    change();
+    if (reduce) return;
+    items.forEach(function (el, i) {
+      if (el.hidden) return;
+      var f = first.get(el), l = el.getBoundingClientRect();
+      if (!f) {
+        el.animate([{ opacity: 0, transform: 'translateY(14px) scale(.985)' }, { opacity: 1, transform: 'none' }],
+          { duration: 520, delay: 60 + i * 28, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
+      } else if (Math.abs(f.top - l.top) > 1) {
+        el.animate([{ transform: 'translateY(' + (f.top - l.top) + 'px)' }, { transform: 'none' }],
+          { duration: 560, easing: 'cubic-bezier(.2,.7,.2,1)' });
+      }
+    });
+  }
+  window.siteFlip = flip;
+
+  /* a pill that slides behind the active button of any segmented group */
+  function pill(bar) {
+    var p = document.createElement('span'); p.className = 'pill'; p.setAttribute('aria-hidden', 'true'); bar.appendChild(p);
+    function place(instant) {
+      var b = $('button[aria-pressed="true"]', bar); if (!b) { p.style.opacity = 0; return; }
+      if (instant) p.style.transition = 'none';
+      p.style.opacity = 1;
+      p.style.width = b.offsetWidth + 'px'; p.style.height = b.offsetHeight + 'px';
+      p.style.transform = 'translate(' + b.offsetLeft + 'px,' + b.offsetTop + 'px)';
+      if (instant) { p.offsetWidth; p.style.transition = ''; }
+    }
+    bar.classList.add('has-pill');
+    place(true);
+    new MutationObserver(function () { place(false); }).observe(bar, { subtree: true, attributes: true, attributeFilter: ['aria-pressed'] });
+    window.addEventListener('resize', function () { place(true); });
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { place(true); });
+    return place;
+  }
+  window.sitePill = pill;
+
   $$('[data-filters]').forEach(function (bar) {
     var list = document.getElementById(bar.getAttribute('data-filters'));
     var counter = document.querySelector('[data-count-for="' + list.id + '"]');
+    var items = $$('[data-tags]', list);
+    if (counter) counter.textContent = items.filter(function (it) { return !it.hidden; }).length;
+    pill(bar);
     bar.addEventListener('click', function (e) {
-      var b = e.target.closest('button'); if (!b) return;
+      var b = e.target.closest('button'); if (!b || b.getAttribute('aria-pressed') === 'true') return;
       $$('button', bar).forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-      var f = b.getAttribute('data-f'), n = 0, shown = [];
-      $$('[data-tags]', list).forEach(function (it) {
-        var show = f === 'all' || it.getAttribute('data-tags').split(' ').indexOf(f) > -1;
-        if (show && it.hidden) shown.push(it);
-        it.hidden = !show; if (show) n++;
+      var f = b.getAttribute('data-f'), n = 0;
+      flip(items, function () {
+        items.forEach(function (it) {
+          var show = f === 'all' || it.getAttribute('data-tags').split(' ').indexOf(f) > -1;
+          it.hidden = !show; if (show) { n++; it.classList.add('in'); }
+        });
       });
-      if (counter) counter.textContent = n;
-      if (!reduce) shown.forEach(function (it, i) {
-        it.classList.add('in');
-        it.animate([{ opacity: 0, transform: 'translateY(12px)' }, { opacity: 1, transform: 'none' }], { duration: 500, delay: i * 50, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'backwards' });
-      });
+      if (counter) {
+        counter.textContent = n;
+        if (!reduce) counter.animate([{ opacity: .2, transform: 'translateY(-4px)' }, { opacity: 1, transform: 'none' }], { duration: 380, easing: 'ease-out' });
+      }
     });
   });
 
@@ -340,19 +383,89 @@
      ========================================================= */
   var teaser = $('[data-gal-teaser]');
   if (teaser && window.fetch) fetch('gallery/gallery.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) {
-    var a = (j.albums || []).filter(function (x) { return x.photos && x.photos.length; }).sort(function (x, y) { return (y.date || '').localeCompare(x.date || ''); })[0];
-    if (!a) return;
-    $('[data-teaser-title]', teaser).textContent = a.short || a.title;
-    $('[data-teaser-meta]', teaser).textContent = 'Latest photos, ' + (a.place || '');
+    var al = (j.albums || []).filter(function (x) { return x.photos && x.photos.length; }).sort(function (x, y) { return (y.date || '').localeCompare(x.date || ''); });
+    if (!al.length) return;
+    var total = al.reduce(function (n, a) { return n + a.photos.length; }, 0);
+    $('[data-teaser-meta]', teaser).textContent = al.length + ' albums, ' + total + ' photos';
+    var M = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    function when(d) { var p = (d || '').split('-'); return p[1] ? M[+p[1] - 1] + ' ' + p[0] : p[0]; }
+    /* the newest albums, each shown by its best landscape frame where there is one */
     var g = $('[data-teaser-grid]', teaser);
-    a.photos.slice(0, 4).forEach(function (p, i) {
-      var l = document.createElement('a'); l.href = 'gallery.html'; l.className = 'tz'; l.style.setProperty('--d', i);
-      var im = document.createElement('img'); im.src = p.thumb; im.alt = p.caption || a.title; im.loading = 'lazy'; im.width = p.tw; im.height = p.th;
-      l.appendChild(im); g.appendChild(l);
+    al.slice(0, 5).forEach(function (a, i) {
+      var ph = a.photos.filter(function (p) { return p.tw >= p.th; })[0] || a.photos[0];
+      var l = document.createElement('a'); l.href = 'gallery.html#' + a.id; l.className = 'tile'; l.style.setProperty('--d', i);
+      var im = document.createElement('img'); im.src = i === 0 ? ph.src : ph.thumb; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async';
+      im.width = ph.tw; im.height = ph.th;
+      var c = document.createElement('span'); c.className = 'tile-c';
+      var t = document.createElement('b'); t.textContent = a.short || a.title;
+      var m = document.createElement('small'); m.textContent = when(a.date) + ', ' + a.photos.length + (a.photos.length > 1 ? ' photos' : ' photo');
+      c.appendChild(t); c.appendChild(m); l.appendChild(im); l.appendChild(c); g.appendChild(l);
     });
     teaser.hidden = false;
     if (io) { g.classList.add('rv'); io.observe(g); } altLayout();
   }).catch(function () {});
+
+  /* =========================================================
+     Home portrait: drawn frame, gentle tilt toward the pointer
+     ========================================================= */
+  var me = $('[data-me]');
+  if (me) {
+    if (io) { me.classList.add('rv'); io.observe(me); }
+    if (!reduce && window.matchMedia('(hover: hover)').matches) {
+      var fr = $('.me-frame', me), raf = 0, tx = 0, ty = 0;
+      me.addEventListener('pointermove', function (e) {
+        var r = me.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - .5); ty = ((e.clientY - r.top) / r.height - .5);
+        if (!raf) raf = requestAnimationFrame(function () {
+          raf = 0; fr.style.transform = 'perspective(900px) rotateY(' + (tx * 5) + 'deg) rotateX(' + (-ty * 5) + 'deg)';
+          fr.style.setProperty('--gx', (50 + tx * 60) + '%'); fr.style.setProperty('--gy', (40 + ty * 60) + '%');
+        });
+      });
+      me.addEventListener('pointerleave', function () { fr.style.transform = ''; });
+    }
+  }
+
+  /* =========================================================
+     Header: an ink line that slides between the tabs
+     ========================================================= */
+  var nav = $('.top .nav');
+  if (nav) {
+    var ink = document.createElement('span'); ink.className = 'nav-ink'; ink.setAttribute('aria-hidden', 'true'); nav.appendChild(ink);
+    var curA = $('a[aria-current="page"]', nav);
+    nav.classList.add('has-ink');
+    var to = function (a, instant) {
+      if (!a) { ink.style.opacity = 0; return; }
+      if (instant) ink.style.transition = 'none';
+      ink.style.opacity = 1;
+      ink.style.width = a.offsetWidth + 'px'; ink.style.transform = 'translateX(' + a.offsetLeft + 'px)';
+      if (instant) { ink.offsetWidth; ink.style.transition = ''; }
+    };
+    to(curA, true);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { to(curA, true); });
+    window.addEventListener('resize', function () { to(curA, true); });
+    $$('a', nav).forEach(function (a) {
+      a.addEventListener('pointerenter', function () { to(a); nav.classList.add('hovering'); });
+      a.addEventListener('focus', function () { to(a); });
+    });
+    nav.addEventListener('pointerleave', function () { to(curA); nav.classList.remove('hovering'); });
+    nav.addEventListener('focusout', function (e) { if (!nav.contains(e.relatedTarget)) to(curA); });
+  }
+
+  /* =========================================================
+     Back to top, with a ring that fills as you read
+     ========================================================= */
+  var bt = document.createElement('button');
+  bt.type = 'button'; bt.className = 'to-top'; bt.setAttribute('aria-label', 'Back to top');
+  bt.innerHTML = '<svg viewBox="0 0 44 44" aria-hidden="true"><circle class="ring-bg" cx="22" cy="22" r="20"/><circle class="ring" cx="22" cy="22" r="20" pathLength="100"/><path d="M22 29V15M16 20.5l6-6 6 6" class="arr"/></svg>';
+  document.body.appendChild(bt);
+  bt.addEventListener('click', function () { scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' }); });
+  var btTick = function () {
+    var max = document.documentElement.scrollHeight - innerHeight;
+    var f = max > 0 ? Math.min(1, scrollY / max) : 0;
+    bt.style.setProperty('--p', (100 - f * 100).toFixed(1));
+    bt.classList.toggle('show', scrollY > innerHeight * 1.2);
+  };
+  window.addEventListener('scroll', btTick, { passive: true }); btTick();
 
   /* =========================================================
      Search
