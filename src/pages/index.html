@@ -1,4 +1,5 @@
 <section class="hero" aria-label="Introduction">
+  <div class="hero-stage">
   <canvas id="scene" aria-hidden="true"></canvas>
   <div class="wrap hero-in">
     <h1 data-split aria-label="Shiwam Singh"><span class="l1">Shiwam</span> <span class="l2">Singh</span></h1>
@@ -8,6 +9,7 @@
       <a class="btn" href="research.html">Read about the research</a>
       <a class="btn ghost" href="publications.html">Publications</a>
     </div>
+  </div>
   </div>
   <aside class="scene-ui" data-scene-ui aria-label="Day cycle of the valley scene">
     <div class="phases" aria-live="polite">
@@ -30,27 +32,12 @@
   </aside>
 </section>
 
-<section class="now" id="now" aria-label="Current weather where you are">
-  <div class="wrap now-in">
-    <div>
-      <p class="title">Weather where you are</p>
-      <p class="place" data-place></p>
-      <p class="src" data-src>Finding your location</p>
-    </div>
-    <div><p class="k">Air temperature</p><p class="v" data-v="t">--</p></div>
-    <div><p class="k">Relative humidity</p><p class="v" data-v="rh">--</p></div>
-    <div><p class="k">Wind at 10 m</p><p class="v" data-v="w">--</p></div>
-    <div><p class="k">Cloud cover</p><p class="v" data-v="cc">--</p></div>
-    <div><p class="k">Sunrise and sunset</p><p class="v" data-v="sun">--</p></div>
-  </div>
-</section>
-
 <section class="sec" id="about-short">
   <div class="wrap">
     <div class="intro">
       <div class="intro-text">
-      <p class="statement">Weather models compute the exchange of heat, moisture and momentum at the ground with theory built for flat, uniform land. I test that theory against turbulence measurements from a mountain tower, and work out what holds up in complex terrain.</p>
-      <p class="statement-b">The errors matter beyond the surface. A wrong surface energy balance changes the simulated convection, and with it the forecast of the heavy rain that sets off cloudbursts and landslides in the Himalaya. My training is in pure mathematics, which helps when the problem sits inside the equations of the model rather than in its settings.</p>
+      <p class="statement">Weather models compute the exchange of heat, moisture and momentum at the ground with theory built for flat, uniform land. I test that theory against turbulence measurements from a mountain tower to see which parts still hold in complex terrain.</p>
+      <p class="statement-b">These errors do not stay at the ground. If the surface energy balance is wrong, the simulated convection is wrong too, and so is the forecast of heavy rain, which in the Himalaya means cloudbursts and landslides. I studied pure mathematics before this, so I am comfortable working inside the model equations.</p>
       </div>
       <figure class="me" data-me>
         <svg class="me-lines" viewBox="0 0 400 500" aria-hidden="true" preserveAspectRatio="none">
@@ -109,11 +96,26 @@
   </div>
 </section>
 
-<section class="sec map-sec" id="travel" data-find="Map|Where the work has travelled|Conferences and schools in Japan, the United States, Singapore, Austria, Germany and India">
+<section class="now" id="now" aria-label="Current weather where you are">
+  <div class="wrap now-in">
+    <div>
+      <p class="title">Weather where you are</p>
+      <p class="place" data-place></p>
+      <p class="src" data-src>Finding your location</p>
+    </div>
+    <div><p class="k">Air temperature</p><p class="v" data-v="t">--</p></div>
+    <div><p class="k">Relative humidity</p><p class="v" data-v="rh">--</p></div>
+    <div><p class="k">Wind at 10 m</p><p class="v" data-v="w">--</p></div>
+    <div><p class="k">Cloud cover</p><p class="v" data-v="cc">--</p></div>
+    <div><p class="k">Sunrise and sunset</p><p class="v" data-v="sun">--</p></div>
+  </div>
+</section>
+
+<section class="sec map-sec" id="travel" data-find="Map|Where I have presented|Conferences and schools in Japan, the United States, Singapore, Austria, Germany and India">
   <div class="wrap">
     <div class="sec-h ml">
       <div class="side">Talks and schools</div>
-      <div><h2>Where the work has travelled</h2><p>From Roorkee to meetings and schools across Asia, Europe and North America. Hover or tap a place to see what happened there.</p></div>
+      <div><h2>Where I have presented</h2><p>Conferences and schools I have attended from Roorkee. Hover or tap a place to see what I did there.</p></div>
     </div>
     <div class="travel" data-map></div>
   </div>
@@ -140,7 +142,7 @@
 
 <section class="sec" id="photos" hidden data-gal-teaser>
   <div class="wrap">
-    <div class="sec-h ml"><div class="side" data-teaser-meta>Photos</div><div><h2>From the gallery</h2><p>Conferences, schools, fieldwork and the mountains in between.</p></div></div>
+    <div class="sec-h ml"><div class="side" data-teaser-meta>Photos</div><div><h2>Photos</h2><p>From conferences, schools and field visits.</p></div></div>
     <div class="mosaic" data-teaser-grid></div>
     <p class="mosaic-more"><a class="btn ghost" href="gallery.html">Open the gallery</a></p>
   </div>
@@ -183,7 +185,7 @@
   <div class="wrap ml">
     <div class="side">Collaboration</div>
     <div>
-      <p class="statement">Working on mountain boundary layers, surface flux measurements or WRF over complex terrain? I am glad to talk.</p>
+      <p class="statement">If you work on mountain boundary layers, flux measurements or WRF over complex terrain, write to me. I would like to hear about it.</p>
       <div class="btns" style="margin-top:26px">
         <a class="btn" href="contact.html">Get in touch</a>
         <button class="btn ghost" type="button" data-copy="shiwam_s@dm.iitr.ac.in" data-copied="Email address copied">Copy email address</button>

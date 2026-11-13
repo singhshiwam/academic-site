@@ -39,7 +39,7 @@
   };
   var COLORS = {
     day: { b71: '#7A4FB0', d74: '#5B6B75', bh91: '#2F78B8', cb05: '#A85D08', gr07: '#16695A' },
-    night: { b71: '#8A4FB8', d74: '#565F82', bh91: '#2E6FC2', cb05: '#8E5E0C', gr07: '#B32D55' }
+    night: { b71: '#7A4FB0', d74: '#56667A', bh91: '#1D5A8C', cb05: '#8E5E0C', gr07: '#B32D4B' }
   };
   function col(id) { return COLORS[document.documentElement.getAttribute('data-mode') === 'night' ? 'night' : 'day'][id]; }
 

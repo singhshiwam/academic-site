@@ -70,7 +70,7 @@
   var P = {
     day: { t: '#86B6DA', m: '#CFE2EA', b: '#EAF0EE', far: '#C2D3DC', mid: '#A2BEBE', n1: '#6F9C89', n2: '#4B7868', tree: '#2E5A4C', edge: '#E5F0D8' },
     dusk: { t: '#3E4C7C', m: '#E39B6D', b: '#F5CFA0', far: '#9C93A8', mid: '#7D8392', n1: '#5B6B5E', n2: '#3E4B44', tree: '#28352F', edge: '#FFC48A' },
-    night: { t: '#141F58', m: '#2D4494', b: '#6C86CB', far: '#566DB6', mid: '#3D539B', n1: '#2B3F82', n2: '#1F306B', tree: '#152253', edge: '#C3D3F8' }
+    night: { t: '#0D2646', m: '#1D4C82', b: '#6399C6', far: '#4E80B1', mid: '#366594', n1: '#264F7B', n2: '#1A3C63', tree: '#112B49', edge: '#D2E5F7' }
   };
   Object.keys(P).forEach(function (k) { Object.keys(P[k]).forEach(function (j) { P[k][j] = hex(P[k][j]); }); });
   function palette() {

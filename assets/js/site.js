@@ -16,7 +16,7 @@
     root.setAttribute('data-mode', m);
     $$('[data-mode-toggle]').forEach(function (b) { b.setAttribute('aria-pressed', m === 'night' ? 'true' : 'false'); });
     var meta = $('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', m === 'night' ? '#EEF0F8' : '#F4F7F9');
+    if (meta) meta.setAttribute('content', m === 'night' ? '#EEF2F6' : '#F4F7F9');
   }
   function setMode(m, remember, source, origin) {
     if (m === root.getAttribute('data-mode')) { if (remember) store(m); return; }
@@ -578,5 +578,26 @@
     var hsTick = function () { hsRaf = 0; var h = heroEl.offsetHeight || 1; heroEl.style.setProperty('--hs', Math.max(0, Math.min(1, scrollY / (h * .85))).toFixed(3)); };
     window.addEventListener('scroll', function () { if (!hsRaf && scrollY < heroEl.offsetHeight * 1.2) hsRaf = requestAnimationFrame(hsTick); }, { passive: true });
     hsTick();
+  }
+
+  /* opening statement: words darken in reading order as the paragraph crosses the screen */
+  var st = $('.intro-text .statement');
+  if (st && !reduce) {
+    var words = st.textContent.trim().split(/\s+/);
+    st.setAttribute('aria-label', st.textContent.trim());
+    st.innerHTML = words.map(function (w) { return '<span class="w" aria-hidden="true">' + w + '</span>'; }).join(' ');
+    st.classList.add('hl');
+    var ws = $$('.w', st), stRaf = 0, lit = -1;
+    var stTick = function () {
+      stRaf = 0;
+      var r = st.getBoundingClientRect(), vh = innerHeight;
+      var p = (vh * .88 - r.top) / (r.height + vh * .38);
+      var n = Math.round(Math.max(0, Math.min(1, p)) * ws.length);
+      if (n === lit) return; lit = n;
+      for (var i = 0; i < ws.length; i++) ws[i].classList.toggle('on', i < n);
+    };
+    window.addEventListener('scroll', function () { if (!stRaf) stRaf = requestAnimationFrame(stTick); }, { passive: true });
+    window.addEventListener('resize', stTick);
+    stTick();
   }
 })();
