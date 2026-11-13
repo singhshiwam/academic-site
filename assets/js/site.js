@@ -651,7 +651,7 @@
   }).catch(function () {});
 
   /* wide photographs: revealed on arrival, drifting a little as they pass */
-  var bands = $$('.band-photo');
+  var bands = $$('.band-photo, .cta-photo');
   if (bands.length) {
     bands.forEach(function (b) { if (io) io.observe(b); else b.classList.add('in'); });
     if (!reduce) {

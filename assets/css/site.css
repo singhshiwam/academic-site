@@ -1284,3 +1284,104 @@ html[data-mode="night"]{--c1:#1D5A8C;--c2:#8E5E0C;--c4:#3D7FB8}
 @media print{.ph-ridge,.thumb{display:none}}
 .nav a{white-space:nowrap}
 @media (min-width:1241px) and (max-width:1600px){.nav a{padding-left:8px;padding-right:8px;font-size:.9rem}.top-in{gap:18px}}
+
+/* =========================================================
+   Eighth pass: surface-layer diagram, paper covers, colour
+   panels, ridge edges, photo-backed closing section
+   ========================================================= */
+/* research: the surface layer at the tower, by day and by night */
+.sl-fig{margin:0 0 clamp(32px,5vw,56px);border-radius:20px;overflow:hidden;border:1px solid var(--rule);background:var(--surface);box-shadow:0 30px 60px -44px rgba(10,30,40,.4)}
+.sl-fig svg{display:block;width:100%;height:auto}
+.sl-fig .sky{fill:url(#slg)}
+.sl-fig .g0{stop-color:#BFDDF2}.sl-fig .g1{stop-color:#F3F8F6}
+html[data-mode="night"] .sl-fig .g0{stop-color:#173C63}html[data-mode="night"] .sl-fig .g1{stop-color:#5E8DB8}
+.sl-fig{--l:#1B3A44;--w:#16695A;--h:#C2352F;--far:#C9DDD9;--gr:#6E9C86}
+html[data-mode="night"] .sl-fig{--l:#EAF3FB;--w:#D4E9FF;--h:#9FD0FF;--far:#3B6690;--gr:#1F466C}
+.sl-fig .when-day{display:inline}.sl-fig .when-night{display:none}
+html[data-mode="night"] .sl-fig .when-day{display:none}html[data-mode="night"] .sl-fig .when-night{display:inline}
+.sl-fig .sun{fill:#FFE39A;filter:drop-shadow(0 0 18px rgba(255,214,120,.9))}
+.sl-fig .moon{fill:#F4F8FF;filter:drop-shadow(0 0 12px rgba(220,235,255,.7))}
+.sl-fig .stars circle{fill:#fff;animation:tw 3.6s ease-in-out infinite alternate}.sl-fig .stars circle:nth-child(2n){animation-delay:1.3s}
+@keyframes tw{from{opacity:.3}to{opacity:1}}
+.sl-fig .far{fill:var(--far)}.sl-fig .ground{fill:var(--gr)}
+.sl-fig path{fill:none;stroke:var(--l);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.sl-fig .far,.sl-fig .ground,.sl-fig .moon{stroke:none}
+.sl-fig .axis{stroke-opacity:.45;stroke-dasharray:3 5}
+.sl-fig .prof path{stroke:var(--w);stroke-width:2.2}
+.sl-fig .prof .curve{stroke-opacity:.5;stroke-width:1.4;stroke-dasharray:4 5}
+.sl-fig .wv{animation:wv 2.6s ease-in-out infinite;animation-delay:calc(var(--i) * -.33s)}
+@keyframes wv{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
+.sl-fig .eddies path{stroke:var(--l);stroke-opacity:.72;stroke-width:1.7}
+.sl-fig .eddy{transform-box:fill-box;transform-origin:center;animation:spin var(--d,12s) linear infinite}
+.sl-fig .eddy.rev{animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.sl-fig .flux path{stroke:var(--h);stroke-width:2.4}
+.sl-fig .fx{animation:fxu 2.4s ease-in-out infinite;animation-delay:calc(var(--i) * -.6s)}
+.sl-fig .fx.dn{animation-name:fxd}
+@keyframes fxu{0%{transform:translateY(10px);opacity:0}30%{opacity:1}100%{transform:translateY(-16px);opacity:0}}
+@keyframes fxd{0%{transform:translateY(-12px);opacity:0}30%{opacity:1}100%{transform:translateY(8px);opacity:0}}
+.sl-fig .tower path{stroke-width:1.5}.sl-fig .tower .arm,.sl-fig .sonic path{stroke-width:2}
+.sl-fig .lamp{fill:#E2483F;animation:tw 1.4s steps(2) infinite}
+.sl-fig text{font-family:var(--sans);font-size:15px;font-weight:500;fill:var(--l);paint-order:stroke;stroke:none}
+.sl-fig figcaption{padding:14px 20px 16px;border-top:1px solid var(--rule);font-size:.93rem;color:var(--ink-2);line-height:1.55}
+.sl-fig figcaption b{color:var(--ink);font-weight:600}
+.sl-fig .hint{color:var(--ink-3);font-size:.84rem}
+@media (max-width:640px){.sl-fig text{display:none}.sl-fig path{stroke-width:2.4}}
+
+/* publications: a drawn cover for each paper */
+.pub.has-cover{grid-template-columns:var(--margin-col) minmax(0,1fr) clamp(170px,19vw,240px)}
+.cover{margin:0;align-self:start;border-radius:14px;overflow:hidden;aspect-ratio:240/170;box-shadow:0 24px 40px -26px rgba(10,30,40,.6);transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
+.cover svg{display:block;width:100%;height:100%}
+.pub:hover .cover{transform:translateY(-4px) rotate(.6deg);box-shadow:0 34px 50px -28px rgba(10,30,40,.65)}
+.cover path,.cover circle{fill:none;stroke:#fff;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.cover .mt2{fill:rgba(255,255,255,.16);stroke:none}.cover .mt1{fill:rgba(255,255,255,.26);stroke:none}
+.cover .rain path{stroke-opacity:.55;stroke-width:1.3;animation:rainf 1.1s linear infinite}
+@keyframes rainf{to{transform:translate(-8px,22px);opacity:0}}
+.cover .dash{stroke-dasharray:5 5}
+.cover .ln path{stroke-dasharray:240;stroke-dashoffset:240;transition:stroke-dashoffset 1.6s var(--ease) .2s}
+.cover .ln .dash{stroke-dasharray:5 5;stroke-dashoffset:0;opacity:0;transition:opacity .8s 1.2s}
+.pub.in .cover .ln path,.reveal-all .cover .ln path{stroke-dashoffset:0}.pub.in .cover .ln .dash,.reveal-all .cover .ln .dash{opacity:1}
+.cover .sunc{fill:#FFF3C4;stroke:none}
+.cover .rays circle{stroke-opacity:.5;transform-box:fill-box;transform-origin:center;animation:pulse 3.4s ease-out infinite}
+.cover .rays circle:nth-child(2){animation-delay:1.1s}.cover .rays circle:nth-child(3){animation-delay:2.2s}
+@keyframes pulse{from{transform:scale(.7);opacity:.9}to{transform:scale(1.25);opacity:0}}
+.cover .city{fill:rgba(60,18,24,.55);stroke:none}
+.cover .sea path{stroke-opacity:.8;animation:sea 3.2s ease-in-out infinite alternate}.cover .sea path:nth-child(2){animation-delay:-1.6s;stroke-opacity:.5}
+@keyframes sea{to{transform:translateX(-14px)}}
+.cover .dots circle{stroke:none;fill:#FFF3C4}.cover .dots circle:nth-child(2){fill:#FFD27A}.cover .dots circle:nth-child(3){fill:#FF9A5A}.cover .dots circle:nth-child(4){fill:#8E1F2B}
+.cover .cont path{stroke-opacity:.42;stroke-width:1.1}
+.cover .scar{fill:rgba(255,235,205,.9);stroke:none;transform-box:fill-box;transform-origin:50% 0;animation:slide 5s var(--ease) infinite}
+@keyframes slide{0%,12%{clip-path:inset(0 0 100% 0)}55%,100%{clip-path:inset(0)}}
+@media (max-width:900px){.pub.has-cover{grid-template-columns:var(--margin-col) minmax(0,1fr)}.cover{grid-column:2;width:min(240px,100%);margin-top:16px}}
+@media (max-width:760px){.pub.has-cover{grid-template-columns:1fr}.cover{grid-column:1}}
+
+/* home: research threads on colour panels, figures in a panel */
+.threads{gap:clamp(16px,2vw,24px)}
+.thread{border-top:0;padding:24px 24px 26px;border-radius:20px;background:color-mix(in srgb,var(--sky) 13%,var(--surface));border:1px solid color-mix(in srgb,var(--sky) 22%,transparent)}
+.thread:nth-child(2){background:color-mix(in srgb,var(--pine) 11%,var(--surface));border-color:color-mix(in srgb,var(--pine) 22%,transparent)}
+.thread:nth-child(3){background:color-mix(in srgb,var(--c2) 12%,var(--surface));border-color:color-mix(in srgb,var(--c2) 24%,transparent)}
+.thread svg{background:color-mix(in srgb,var(--surface) 72%,transparent);border-radius:12px;padding:12px;max-height:132px;box-sizing:border-box}
+.thread:nth-child(1) svg{color:var(--sky)}.thread:nth-child(3) svg{color:var(--c2)}
+.thread:hover{transform:translateY(-5px);box-shadow:0 26px 40px -30px rgba(10,30,40,.5)}
+.figs{border:1px solid var(--rule);border-radius:20px;background:linear-gradient(110deg,color-mix(in srgb,var(--pine) 9%,var(--surface)),var(--surface) 60%);padding:0 clamp(16px,2.4vw,30px);overflow:hidden}
+.figs > div:first-child{padding-left:0}
+
+/* tinted sections start with a ridge line, not a ruled edge */
+.sec.tint{position:relative}
+.sec.tint::before{content:"";position:absolute;left:0;right:0;bottom:calc(100% - 1px);height:clamp(22px,3.4vw,46px);background:var(--bg-2);pointer-events:none;
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 46' preserveAspectRatio='none'%3E%3Cpath d='M0 46V30L70 22 130 30 210 12 290 26 380 8 470 24 560 14 660 30 760 10 850 24 940 6 1030 22 1110 14 1200 26V46Z'/%3E%3C/svg%3E") center/100% 100% no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 46' preserveAspectRatio='none'%3E%3Cpath d='M0 46V30L70 22 130 30 210 12 290 26 380 8 470 24 560 14 660 30 760 10 850 24 940 6 1030 22 1110 14 1200 26V46Z'/%3E%3C/svg%3E") center/100% 100% no-repeat}
+.band-photo + .sec.tint::before,.fc-band + .sec.tint::before{display:none}
+
+/* home: closing section over a photograph */
+.cta-photo{position:relative;isolation:isolate;overflow:hidden;border-top:0;color:#fff;padding:clamp(80px,12vw,150px) 0}
+.cta-bg{position:absolute;inset:-8% 0;width:100%;height:116%;object-fit:cover;z-index:-2;transform:translate3d(0,calc(var(--bp,0) * -6%),0)}
+.cta-photo::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,rgba(8,26,34,.82) 0%,rgba(8,26,34,.5) 48%,rgba(8,26,34,.12) 100%)}
+.cta-photo .side{color:rgba(255,255,255,.8)}
+.cta-photo .statement{color:#fff;max-width:26ch;text-shadow:0 2px 24px rgba(0,0,0,.35)}
+.cta-photo .btn:not(.ghost){background:#fff;border-color:#fff;color:#12222B}
+.cta-photo .btn.ghost{color:#fff;border-color:rgba(255,255,255,.6)}
+.cta-photo .btn.ghost:hover{border-color:#fff;color:#fff}
+.cta-photo + .foot .foot-ridge{margin-top:0}
+@media (prefers-reduced-motion:reduce){.sl-fig *,.cover *{animation:none!important}.cover .ln path{stroke-dashoffset:0}.cta-bg{transform:none}}
+.thread svg{overflow:hidden}
