@@ -836,3 +836,85 @@ html:not(.vt-theme)::view-transition-new(root){animation:vt-in .5s cubic-bezier(
   .gal figcaption{display:none}
   .album-h h2{font-size:1.45rem}
 }
+
+/* =========================================================
+   Fourth pass: sky wash in page headers, timeline rails,
+   chips, card spotlight, contact rows, footer ridge
+   ========================================================= */
+
+/* page headers carry the sky of the hour */
+.ph::before{content:"";position:absolute;inset:0;z-index:-2;pointer-events:none;
+  background:radial-gradient(46% 120% at 92% -30%,rgba(232,170,72,.26),transparent 62%),linear-gradient(180deg,rgba(91,141,184,.16),transparent 88%)}
+html[data-mode="night"] .ph::before{
+  background:
+   radial-gradient(1.2px 1.2px at 9% 26%,rgba(255,255,255,.75) 50%,transparent 52%),
+   radial-gradient(1px 1px at 23% 62%,rgba(255,255,255,.5) 50%,transparent 52%),
+   radial-gradient(1.4px 1.4px at 38% 18%,rgba(255,255,255,.7) 50%,transparent 52%),
+   radial-gradient(1px 1px at 52% 44%,rgba(255,255,255,.45) 50%,transparent 52%),
+   radial-gradient(1.2px 1.2px at 66% 14%,rgba(255,255,255,.65) 50%,transparent 52%),
+   radial-gradient(1px 1px at 74% 58%,rgba(255,255,255,.4) 50%,transparent 52%),
+   radial-gradient(1.3px 1.3px at 86% 30%,rgba(255,255,255,.7) 50%,transparent 52%),
+   radial-gradient(1px 1px at 95% 66%,rgba(255,255,255,.45) 50%,transparent 52%),
+   radial-gradient(50% 130% at 88% -30%,rgba(126,150,255,.22),transparent 62%),
+   linear-gradient(180deg,rgba(60,84,150,.22),transparent 90%)}
+::selection{background:var(--sun-soft);color:var(--ink)}
+
+/* timeline rail */
+@media (min-width:761px){
+  .rail{position:relative;--rx:calc(var(--margin-col) + clamp(20px,4vw,56px) / 2);--dot:30px}
+  .pubs.rail{--dot:40px}.log.rail{--dot:27px}
+  .rail::before{content:"";position:absolute;left:var(--rx);top:0;bottom:0;width:1px;background:var(--rule);pointer-events:none}
+  .rail::after{content:"";position:absolute;left:calc(var(--rx) - .5px);top:0;width:2px;border-radius:2px;height:var(--fill,0px);background:linear-gradient(180deg,var(--pine),var(--pine) 70%,var(--sun));pointer-events:none;transition:height .25s linear}
+  .rail > li::after{content:"";position:absolute;left:calc(var(--rx) - 5px);top:var(--dot);width:11px;height:11px;box-sizing:border-box;border-radius:50%;background:var(--surface);border:1.5px solid var(--rule-2);z-index:1;transition:background-color .4s,border-color .4s,box-shadow .5s var(--ease),transform .5s var(--ease)}
+  .rail > li.lit::after{background:var(--pine);border-color:var(--pine);box-shadow:0 0 0 5px var(--pine-soft)}
+  .rail > li:hover::after{transform:scale(1.25)}
+  .rail > li .side,.rail > li > time{transition:color .4s}
+  .rail > li.lit .side time,.rail > li.lit > time,.rail > li.lit .side .yr{color:var(--pine)}
+}
+
+/* chips, one after another */
+@keyframes chip-in{from{opacity:0;transform:translateY(8px) scale(.94)}to{opacity:1;transform:none}}
+.js .rv-chips:not(.in) .chip{opacity:0}
+.rv-chips.in .chip{animation:chip-in .55s var(--ease) backwards;animation-delay:calc(var(--i,0) * 40ms)}
+.reveal-all.js .rv-chips:not(.in) .chip{opacity:1}
+
+/* pointer light on cards */
+.spot{position:relative;isolation:isolate}
+.spot::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;opacity:0;transition:opacity .5s;
+  background:radial-gradient(320px circle at var(--mx,50%) var(--my,50%),var(--sun-soft),transparent 70%)}
+.spot:hover::after{opacity:1}
+
+/* about portrait: same frame language as the home photo */
+.portrait{border-radius:20px;box-shadow:0 30px 60px -34px rgba(10,30,28,.45)}
+.portrait img{border-radius:0}
+.js .portrait.rv-s{opacity:1;transform:none}
+.js .portrait.rv-s img{clip-path:inset(100% 0 0 0);transform:scale(1.12);transition:clip-path 1.3s var(--ease),transform 1.6s var(--ease)}
+.js .portrait.rv-s.in img,.reveal-all .portrait img{clip-path:inset(0);transform:none}
+.js .portrait.rv-s.in:hover img{transform:scale(1.03)}
+.facts dd{transition:color .3s}
+
+/* contact rows */
+.reach li{position:relative;transition:padding-left .5s var(--ease)}
+.reach li::before{content:"";position:absolute;left:0;top:50%;width:0;height:1.5px;background:var(--sun);transition:width .5s var(--ease)}
+.reach li:hover{padding-left:26px}
+.reach li:hover::before{width:16px}
+.reach li:hover .k{color:var(--pine)}
+.reach .k{transition:color .3s}
+
+/* footer ridge */
+.foot{position:relative;border-top:0;padding-top:0}
+.foot-ridge{display:block;width:100%;height:clamp(56px,7vw,96px);margin-bottom:28px}
+.foot-ridge .far{fill:var(--bg-2);stroke:none}
+.foot-ridge .near,.foot-ridge .mast{fill:none;stroke:var(--pine);stroke-width:1.4;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-dasharray:var(--len,3200);stroke-dashoffset:var(--len,3200);transition:stroke-dashoffset 2.4s var(--ease)}
+.foot-ridge .mast{--len:80}
+.foot-ridge .mast{stroke:var(--sun);transition-delay:1.5s;transition-duration:.9s}
+.foot-ridge.in .near,.foot-ridge.in .mast,.reveal-all .foot-ridge .near,.reveal-all .foot-ridge .mast{stroke-dashoffset:0}
+.pn{border-bottom:0}
+
+@media (prefers-reduced-motion:reduce){
+  .rail::after{transition:none}
+  .rv-chips.in .chip{animation:none}
+  .js .portrait.rv-s img{clip-path:none;transform:none}
+  .foot-ridge .near,.foot-ridge .mast{stroke-dashoffset:0;transition:none}
+  .reach li{transition:none}
+}

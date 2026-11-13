@@ -517,4 +517,57 @@
     else if (e.key === '/' && !typing) { e.preventDefault(); openSearch(); }
     else if (e.key === 'Escape') { closeSearch(); if (sheet && !sheet.hidden) menu.click(); }
   });
+
+  /* =========================================================
+     Fourth pass: timeline rails, chips, spotlight, footer ridge
+     ========================================================= */
+  /* a rail beside every dated list that fills as the reader moves down it */
+  var rails = $$('.talks, .log, .pubs');
+  if (rails.length) {
+    rails.forEach(function (ul) { ul.classList.add('rail'); });
+    var railRaf = 0;
+    var railTick = function () {
+      railRaf = 0;
+      var line = innerHeight * .64;
+      rails.forEach(function (ul) {
+        var r = ul.getBoundingClientRect();
+        if (r.bottom < -200 || r.top > innerHeight + 200) return;
+        ul.style.setProperty('--fill', Math.max(0, Math.min(r.height, line - r.top)).toFixed(0) + 'px');
+        for (var i = 0; i < ul.children.length; i++) {
+          var li = ul.children[i]; if (li.hidden) continue;
+          li.classList.toggle('lit', li.getBoundingClientRect().top < line - 24);
+        }
+      });
+    };
+    var railAsk = function () { if (!railRaf) railRaf = requestAnimationFrame(railTick); };
+    window.addEventListener('scroll', railAsk, { passive: true });
+    window.addEventListener('resize', railAsk);
+    document.addEventListener('click', function (e) { if (e.target.closest('[data-filters]')) setTimeout(railAsk, 620); });
+    railTick();
+  }
+
+  /* skill chips arrive one after another */
+  $$('.chips').forEach(function (c) {
+    $$('.chip', c).forEach(function (ch, i) { ch.style.setProperty('--i', i); });
+    if (io) { c.classList.add('rv-chips'); io.observe(c); }
+  });
+
+  /* a soft light that follows the pointer across cards */
+  if (window.matchMedia('(hover: hover)').matches) {
+    $$('.award, .thread, .lab').forEach(function (el) {
+      el.classList.add('spot');
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
+  }
+
+  /* footer ridge draws itself when reached */
+  var ridge = $('[data-ridge]');
+  if (ridge) {
+    /* dash length in screen pixels, a little longer than the line itself */
+    $('.near', ridge).style.setProperty('--len', Math.ceil(innerWidth * 1.1));
+    if (io) io.observe(ridge); else ridge.classList.add('in');
+  }
 })();
