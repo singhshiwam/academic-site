@@ -12,7 +12,7 @@ Static site for GitHub Pages. No framework, no build server: plain HTML, CSS and
 | `assets/js/site.js` | Day/night switch, menu, search (Ctrl K), citation boxes, filters | Yes |
 | `assets/js/hero.js` | The animated valley on the home page | Yes |
 | `assets/js/explorer.js` | Stability function explorer on the Research page | Yes |
-| `assets/js/nowcast.js` | Current weather at the visitor's location (Open-Meteo) | Yes |
+| `assets/js/forecast.js` | Forecast section on the home page: weather, 48-hour chart, 7 days, air quality and advisories for the visitor's location (Open-Meteo, CAMS, Google WeatherNext 2) | Yes |
 | `assets/js/gallery.js` | Gallery albums and the full-screen viewer | Yes |
 | `gallery/gallery.json` | Album list, titles, captions | Captions, yes |
 | `index.html`, `about.html`, ... at the root | Finished pages | No, they are generated |

@@ -25,7 +25,7 @@ BASE_URL = "https://shiwam-singh.pages.dev/"
 PAGES = [
     ("index", "Home", "Shiwam Singh, boundary layer meteorology, IIT Roorkee",
      "Shiwam Singh is a PhD researcher at IIT Roorkee working on surface and boundary layer processes in weather prediction models over the Himalaya.",
-     ["assets/js/hero.js", "assets/js/nowcast.js", "assets/js/world-data.js", "assets/js/map.js"]),
+     ["assets/js/hero.js", "assets/js/forecast.js", "assets/js/world-data.js", "assets/js/map.js"]),
     ("about", "About", "About Shiwam Singh",
      "Background, education and research positions of Shiwam Singh, PhD researcher in atmospheric science at IIT Roorkee.", []),
     ("research", "Research", "Research, Shiwam Singh",

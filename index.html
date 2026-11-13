@@ -33,10 +33,10 @@ if(m!=='day'&&m!=='night')m=clockMode();r.setAttribute('data-mode',m)})();
 </script>
 <link rel="preload" href="assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=e6d34476">
+<link rel="stylesheet" href="assets/css/site.css?v=be3670c4">
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Shiwam Singh","jobTitle":"PhD researcher, atmospheric science","affiliation":{"@type":"Organization","name":"Indian Institute of Technology Roorkee","department":"Centre of Excellence in Disaster Mitigation and Management"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Indian Institute of Technology Hyderabad"}],"knowsAbout":["Boundary layer meteorology","Surface layer parameterization","Monin-Obukhov similarity theory","Eddy covariance","WRF model","Numerical weather prediction","Mountain meteorology"],"url":"https://shiwam-singh.pages.dev/","image":"https://shiwam-singh.pages.dev/assets/img/portrait.jpg","sameAs":["https://scholar.google.co.in/citations?user=D6hiOkkAAAAJ&hl=en","https://www.researchgate.net/profile/Shiwam-Singh-2","https://www.linkedin.com/in/shiwam-singh-ab1392219","https://github.com/singhshiwam"]}
+{"@context":"https://schema.org","@type":"Person","name":"Shiwam Singh","jobTitle":"PhD researcher, atmospheric science","affiliation":{"@type":"Organization","name":"Indian Institute of Technology Roorkee","department":"Centre of Excellence in Disaster Mitigation and Management"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Indian Institute of Technology Hyderabad"}],"knowsAbout":["Boundary layer meteorology","Surface layer parameterization","Monin-Obukhov similarity theory","Eddy covariance","WRF model","Numerical weather prediction","Mountain meteorology"],"url":"https://shiwam-singh.pages.dev/","image":"https://shiwam-singh.pages.dev/assets/img/home-portrait.jpg","sameAs":["https://scholar.google.co.in/citations?user=D6hiOkkAAAAJ&hl=en","https://www.researchgate.net/profile/Shiwam-Singh-2","https://www.linkedin.com/in/shiwam-singh-ab1392219","https://github.com/singhshiwam"]}
 </script>
 </head>
 <body class="page-index hero-load">
@@ -186,18 +186,33 @@ if(m!=='day'&&m!=='night')m=clockMode();r.setAttribute('data-mode',m)})();
   </div>
 </section>
 
-<section class="now" id="now" aria-label="Current weather where you are">
-  <div class="wrap now-in">
-    <div>
-      <p class="title">Weather where you are</p>
-      <p class="place" data-place></p>
-      <p class="src" data-src>Finding your location</p>
+<section class="sec tint fc-sec" id="forecast" data-find="Tool|Forecast where you are|Live weather, hourly and 7-day forecast, air quality and advisories for your own location">
+  <div class="wrap">
+    <div class="sec-h ml"><div class="side">Live forecast</div><div><h2>Weather and air quality where you are</h2>
+      <p class="fc-where"><b data-fc-place>Finding your location</b> <span data-fc-how></span> <button type="button" class="loc-btn" data-fc-locate hidden>Use my device location</button></p></div></div>
+    <div class="fc" data-fc aria-busy="true">
+      <ul class="fc-alerts" data-fc-alerts aria-label="Advisories for the next two days"></ul>
+      <div class="fc-top">
+        <div class="fc-now" data-fc-now><p class="fc-msg">Loading the forecast</p></div>
+        <div class="fc-chart">
+          <div class="fc-chart-h">
+            <p class="fc-k">Next 48 hours</p>
+            <div class="filters fc-tabs" role="group" aria-label="Variable to plot" data-fc-tabs>
+              <button type="button" data-v="t" aria-pressed="true">Temperature</button>
+              <button type="button" data-v="r" aria-pressed="false">Rain</button>
+              <button type="button" data-v="w" aria-pressed="false">Wind</button>
+              <button type="button" data-v="p" aria-pressed="false">Pressure</button>
+            </div>
+          </div>
+          <div class="fc-plot" data-fc-plot tabindex="0" role="img" aria-label="Hourly forecast chart"></div>
+          <p class="fc-legend" data-fc-legend></p>
+          <details class="fc-table"><summary>Show these values as a table</summary><div data-fc-table></div></details>
+        </div>
+      </div>
+      <div class="fc-week"><p class="fc-k">Seven days</p><ol class="fc-days" data-fc-days></ol></div>
+      <div class="fc-air" data-fc-air></div>
     </div>
-    <div><p class="k">Air temperature</p><p class="v" data-v="t">--</p></div>
-    <div><p class="k">Relative humidity</p><p class="v" data-v="rh">--</p></div>
-    <div><p class="k">Wind at 10 m</p><p class="v" data-v="w">--</p></div>
-    <div><p class="k">Cloud cover</p><p class="v" data-v="cc">--</p></div>
-    <div><p class="k">Sunrise and sunset</p><p class="v" data-v="sun">--</p></div>
+    <p class="fc-note" data-fc-note>The forecast is worked out for your own location, in your browser. Nothing about your location is stored on this site.</p>
   </div>
 </section>
 
@@ -319,11 +334,11 @@ if(m!=='day'&&m!=='night')m=clockMode();r.setAttribute('data-mode',m)})();
   </div>
 </div>
 
-<script src="assets/js/search-index.js?v=e6d34476" defer></script>
-<script src="assets/js/site.js?v=e6d34476" defer></script>
-<script src="assets/js/hero.js?v=e6d34476" defer></script>
-<script src="assets/js/nowcast.js?v=e6d34476" defer></script>
-<script src="assets/js/world-data.js?v=e6d34476" defer></script>
-<script src="assets/js/map.js?v=e6d34476" defer></script>
+<script src="assets/js/search-index.js?v=be3670c4" defer></script>
+<script src="assets/js/site.js?v=be3670c4" defer></script>
+<script src="assets/js/hero.js?v=be3670c4" defer></script>
+<script src="assets/js/forecast.js?v=be3670c4" defer></script>
+<script src="assets/js/world-data.js?v=be3670c4" defer></script>
+<script src="assets/js/map.js?v=be3670c4" defer></script>
 </body>
 </html>
