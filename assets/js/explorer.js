@@ -38,8 +38,8 @@
     ]
   };
   var COLORS = {
-    day: { b71: '#7A5AA6', d74: '#66766F', bh91: '#2F78B8', cb05: '#A4640F', gr07: '#1F5C55' },
-    night: { b71: '#C2A6F0', d74: '#9AA8BF', bh91: '#8DB6EA', cb05: '#F0C46C', gr07: '#86D3C7' }
+    day: { b71: '#7A4FB0', d74: '#5B6B75', bh91: '#2F78B8', cb05: '#A85D08', gr07: '#16695A' },
+    night: { b71: '#8A4FB8', d74: '#565F82', bh91: '#2E6FC2', cb05: '#8E5E0C', gr07: '#B32D55' }
   };
   function col(id) { return COLORS[document.documentElement.getAttribute('data-mode') === 'night' ? 'night' : 'day'][id]; }
 

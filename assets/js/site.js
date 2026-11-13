@@ -16,7 +16,7 @@
     root.setAttribute('data-mode', m);
     $$('[data-mode-toggle]').forEach(function (b) { b.setAttribute('aria-pressed', m === 'night' ? 'true' : 'false'); });
     var meta = $('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', m === 'night' ? '#0D1525' : '#EEF2F0');
+    if (meta) meta.setAttribute('content', m === 'night' ? '#EEF0F8' : '#F4F7F9');
   }
   function setMode(m, remember, source, origin) {
     if (m === root.getAttribute('data-mode')) { if (remember) store(m); return; }
@@ -569,5 +569,14 @@
     /* dash length in screen pixels, a little longer than the line itself */
     $('.near', ridge).style.setProperty('--len', Math.ceil(innerWidth * 1.1));
     if (io) io.observe(ridge); else ridge.classList.add('in');
+  }
+
+  /* hero drifts up and thins out as the page scrolls past it */
+  var heroEl = $('.hero');
+  if (heroEl && !reduce) {
+    var hsRaf = 0;
+    var hsTick = function () { hsRaf = 0; var h = heroEl.offsetHeight || 1; heroEl.style.setProperty('--hs', Math.max(0, Math.min(1, scrollY / (h * .85))).toFixed(3)); };
+    window.addEventListener('scroll', function () { if (!hsRaf && scrollY < heroEl.offsetHeight * 1.2) hsRaf = requestAnimationFrame(hsTick); }, { passive: true });
+    hsTick();
   }
 })();
