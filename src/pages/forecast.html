@@ -1,0 +1,54 @@
+<section class="ph">
+  <div class="wrap">
+    <h1>Forecast</h1>
+    <p>Weather, air quality and advisories for the next seven days, worked out for wherever you are reading this.</p>
+  </div>
+</section>
+
+<section class="sec fc-sec" style="padding-top:0;border-top:0" id="live" data-forecast="full" data-find="Tool|Seven-day forecast for your location|Weather, hourly charts, air quality and simple advisories for where you are">
+  <div class="wrap">
+    <div class="fc-head">
+      <p class="fc-where"><b data-fc-place>Finding your location</b> <span data-fc-how></span> <button type="button" class="loc-btn" data-fc-locate hidden>Use my device location</button></p>
+      <p class="fc-upd"><i class="live" aria-hidden="true"></i><span data-fc-updated>Loading</span> <button type="button" class="loc-btn" data-fc-refresh>Refresh now</button></p>
+    </div>
+    <p class="fc-official"><svg viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v5M10 6.2v.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span><b>This is not an official forecast.</b> It is drawn automatically from open weather models. For official forecasts and warnings in India, follow the <a href="https://mausam.imd.gov.in/" rel="noopener" target="_blank">India Meteorological Department (IMD)</a>.</span></p>
+
+    <div class="fc" data-fc aria-busy="true">
+      <div class="fc-brief" data-fc-brief><p class="fc-k">In short</p><p class="fc-msg">Loading the forecast</p></div>
+      <ul class="fc-alerts" data-fc-alerts aria-label="Advisories for the next seven days"></ul>
+      <div class="fc-top">
+        <div class="fc-now" data-fc-now><p class="fc-msg">Loading the forecast</p></div>
+        <div class="fc-chart">
+          <div class="fc-chart-h">
+            <div class="filters fc-tabs" role="group" aria-label="What to plot" data-fc-tabs>
+              <button type="button" data-v="t" aria-pressed="true">Temperature</button>
+              <button type="button" data-v="r" aria-pressed="false">Rain</button>
+              <button type="button" data-v="w" aria-pressed="false">Wind</button>
+              <button type="button" data-v="p" aria-pressed="false">Pressure</button>
+              <button type="button" data-v="a" aria-pressed="false">Air quality</button>
+            </div>
+            <div class="filters fc-tabs fc-range" role="group" aria-label="How far ahead" data-fc-range>
+              <button type="button" data-r="168" aria-pressed="true">7 days</button>
+              <button type="button" data-r="48" aria-pressed="false">48 hours</button>
+            </div>
+          </div>
+          <div class="fc-plot" data-fc-plot tabindex="0" role="img" aria-label="Hourly forecast chart"></div>
+          <p class="fc-legend" data-fc-legend></p>
+          <details class="fc-table"><summary>Show these values as a table</summary><div data-fc-table></div></details>
+        </div>
+      </div>
+      <div class="fc-week"><p class="fc-k">Day by day</p><ol class="fc-days" data-fc-days></ol></div>
+      <div class="fc-air" data-fc-air></div>
+    </div>
+
+    <div class="fc-foot">
+      <p class="fc-note">These are model values for the grid cell around you, not station measurements, and the later days are less certain than the first two. The shaded band on the temperature chart, when it appears, is the spread of Google's WeatherNext 2 ensemble, a coarser global model. Pollutant bars mark the WHO 2021 guideline for a 24-hour mean (8 hours for ozone) against the current hourly value, so read them as a rough guide. Advisories are worked out automatically with fixed thresholds: IMD rainfall classes, Beaufort wind force, and the US air quality index.</p>
+      <p class="fc-credit"><a href="https://open-meteo.com/" rel="noopener" target="_blank">Weather data by Open-Meteo.com</a>, licensed <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license" target="_blank">CC BY 4.0</a>, shown here as charts and summaries. Air quality: Copernicus Atmosphere Monitoring Service (CAMS). Ensemble temperature: Google WeatherNext 2, through Open-Meteo. Place names: BigDataCloud. Your location is used only in your browser to request the forecast and is not stored on this site.</p>
+    </div>
+  </div>
+</section>
+
+<nav class="pn" aria-label="Next and previous pages">
+  <a href="training.html"><small>Previous</small><span>Training</span></a>
+  <a href="gallery.html"><small>Next</small><span>Gallery</span></a>
+</nav>

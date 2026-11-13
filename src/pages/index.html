@@ -96,33 +96,18 @@
   </div>
 </section>
 
-<section class="sec tint fc-sec" id="forecast" data-find="Tool|Forecast where you are|Live weather, hourly and 7-day forecast, air quality and advisories for your own location">
-  <div class="wrap">
-    <div class="sec-h ml"><div class="side">Live forecast</div><div><h2>Weather and air quality where you are</h2>
-      <p class="fc-where"><b data-fc-place>Finding your location</b> <span data-fc-how></span> <button type="button" class="loc-btn" data-fc-locate hidden>Use my device location</button></p></div></div>
-    <div class="fc" data-fc aria-busy="true">
-      <ul class="fc-alerts" data-fc-alerts aria-label="Advisories for the next two days"></ul>
-      <div class="fc-top">
-        <div class="fc-now" data-fc-now><p class="fc-msg">Loading the forecast</p></div>
-        <div class="fc-chart">
-          <div class="fc-chart-h">
-            <p class="fc-k">Next 48 hours</p>
-            <div class="filters fc-tabs" role="group" aria-label="Variable to plot" data-fc-tabs>
-              <button type="button" data-v="t" aria-pressed="true">Temperature</button>
-              <button type="button" data-v="r" aria-pressed="false">Rain</button>
-              <button type="button" data-v="w" aria-pressed="false">Wind</button>
-              <button type="button" data-v="p" aria-pressed="false">Pressure</button>
-            </div>
-          </div>
-          <div class="fc-plot" data-fc-plot tabindex="0" role="img" aria-label="Hourly forecast chart"></div>
-          <p class="fc-legend" data-fc-legend></p>
-          <details class="fc-table"><summary>Show these values as a table</summary><div data-fc-table></div></details>
-        </div>
-      </div>
-      <div class="fc-week"><p class="fc-k">Seven days</p><ol class="fc-days" data-fc-days></ol></div>
-      <div class="fc-air" data-fc-air></div>
+<section class="fc-band" id="forecast" data-forecast="mini" aria-label="Weather where you are">
+  <div class="wrap fc-band-in">
+    <div class="fb-a">
+      <p class="fc-k">Weather where you are</p>
+      <p class="fb-place"><b data-fc-place>Finding your location</b></p>
+      <p class="fb-how"><span data-fc-how></span> <button type="button" class="loc-btn" data-fc-locate hidden>Use my device location</button></p>
     </div>
-    <p class="fc-note" data-fc-note>The forecast is worked out for your own location, in your browser. Nothing about your location is stored on this site.</p>
+    <div class="fb-b" data-fc-mini><p class="fc-msg">Loading the forecast</p></div>
+    <div class="fb-c">
+      <a class="btn" href="forecast.html">Open the 7-day forecast</a>
+      <p class="fb-off">Not an official forecast. For official forecasts, follow <a href="https://mausam.imd.gov.in/" rel="noopener" target="_blank">IMD</a>. <a href="https://open-meteo.com/" rel="noopener" target="_blank">Weather data by Open-Meteo.com</a>.</p>
+    </div>
   </div>
 </section>
 

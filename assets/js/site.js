@@ -600,4 +600,66 @@
     window.addEventListener('resize', stTick);
     stTick();
   }
+
+  /* =========================================================
+     Seventh pass: a skyline in every page header, thumbnails
+     on entries that have photos, photo bands
+     ========================================================= */
+  var phEl = $('.ph');
+  if (phEl) {
+    /* each page gets its own ridge line, from a seed made of its name */
+    var seedStr = (document.body.className.match(/page-([\w-]+)/) || [0, 'x'])[1], sd = 7;
+    for (var si = 0; si < seedStr.length; si++) sd = (sd * 31 + seedStr.charCodeAt(si)) >>> 0;
+    var rnd = function () { sd |= 0; sd = sd + 0x6D2B79F5 | 0; var r = Math.imul(sd ^ sd >>> 15, 1 | sd); r = r + Math.imul(r ^ r >>> 7, 61 | r) ^ r; return ((r ^ r >>> 14) >>> 0) / 4294967296; };
+    var ridgePath = function (base, amp, n, jag) {
+      var d = 'M0 200V' + base.toFixed(1), ph1 = rnd() * 6.28, ph2 = rnd() * 6.28;
+      for (var i = 0; i <= n; i++) {
+        var u = i / n, ramp = .28 + .72 * Math.pow(u, 1.25);
+        var y = base - amp * ramp * (.5 + .34 * Math.sin(u * 5.1 + ph1) + .2 * Math.sin(u * 12.7 + ph2)) - (jag ? (rnd() - .5) * jag * ramp : 0);
+        d += 'L' + (u * 1200).toFixed(1) + ' ' + y.toFixed(1);
+      }
+      return d + 'V200Z';
+    };
+    var rg = document.createElement('div'); rg.className = 'ph-ridge'; rg.setAttribute('aria-hidden', 'true');
+    rg.innerHTML = '<svg viewBox="0 0 1200 200" preserveAspectRatio="none">' +
+      '<path class="r1" d="' + ridgePath(150, 170, 90, 16) + '"/>' +
+      '<path class="r2" d="' + ridgePath(168, 130, 70, 9) + '"/>' +
+      '<path class="r3" d="' + ridgePath(186, 78, 26, 0) + '"/></svg>';
+    phEl.appendChild(rg);
+    if (!reduce) {
+      var pyRaf = 0;
+      window.addEventListener('scroll', function () {
+        if (pyRaf || scrollY > phEl.offsetHeight + 200) return;
+        pyRaf = requestAnimationFrame(function () { pyRaf = 0; phEl.style.setProperty('--py', Math.min(1, scrollY / (phEl.offsetHeight || 1)).toFixed(3)); });
+      }, { passive: true });
+    }
+  }
+
+  /* entries that link to an album show its cover */
+  var withPhotos = $$('.talk, .log li').filter(function (li) { return $('a[href^="gallery.html#"]', li); });
+  if (withPhotos.length && window.fetch) fetch('gallery/gallery.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (j) {
+    var byId = {}; (j.albums || []).forEach(function (a) { byId[a.id] = a; });
+    withPhotos.forEach(function (li) {
+      var id = $('a[href^="gallery.html#"]', li).getAttribute('href').split('#')[1], a = byId[id];
+      if (!a || !a.photos || !a.photos.length) return;
+      var ph = a.photos.filter(function (p) { return p.tw >= p.th; })[0] || a.photos[0];
+      var l = document.createElement('a'); l.className = 'thumb'; l.href = 'gallery.html#' + id; l.setAttribute('aria-label', 'Photos: ' + a.title);
+      var im = document.createElement('img'); im.src = ph.thumb; im.alt = ''; im.loading = 'lazy'; im.decoding = 'async'; im.width = ph.tw; im.height = ph.th;
+      var n = document.createElement('span'); n.textContent = a.photos.length + (a.photos.length > 1 ? ' photos' : ' photo');
+      l.appendChild(im); l.appendChild(n); li.appendChild(l); li.classList.add('has-thumb');
+    });
+  }).catch(function () {});
+
+  /* wide photographs: revealed on arrival, drifting a little as they pass */
+  var bands = $$('.band-photo');
+  if (bands.length) {
+    bands.forEach(function (b) { if (io) io.observe(b); else b.classList.add('in'); });
+    if (!reduce) {
+      var bRaf = 0, bTick = function () {
+        bRaf = 0;
+        bands.forEach(function (b) { var r = b.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return; b.style.setProperty('--bp', ((r.top + r.height / 2 - innerHeight / 2) / innerHeight).toFixed(3)); });
+      };
+      window.addEventListener('scroll', function () { if (!bRaf) bRaf = requestAnimationFrame(bTick); }, { passive: true }); bTick();
+    }
+  }
 })();
