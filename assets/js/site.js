@@ -7,6 +7,26 @@
   var $$ = function (s, el) { return Array.prototype.slice.call((el || document).querySelectorAll(s)); };
 
   /* =========================================================
+     Keep casual visitors out of the page source: the keyboard
+     shortcuts for developer tools and "view source", and the
+     right-click menu. A deterrent only. The browser's own menu
+     still opens the tools, and the files are public.
+     ========================================================= */
+  document.addEventListener('keydown', function (e) {
+    var c = e.code || '', mod = e.ctrlKey || e.metaKey;
+    var hit = c === 'F12' ||
+      (mod && e.shiftKey && /^Key[IJCKEM]$/.test(c)) ||      /* Chrome, Edge, Firefox tools */
+      (e.metaKey && e.altKey && /^Key[IJCU]$/.test(c)) ||    /* Safari and Chrome on a Mac */
+      (mod && !e.shiftKey && !e.altKey && c === 'KeyU') ||   /* view source */
+      (e.shiftKey && (c === 'F7' || c === 'F9' || c === 'F12')); /* Firefox style editor, storage, accessibility */
+    if (hit) { e.preventDefault(); e.stopPropagation(); }
+  }, true);
+  document.addEventListener('contextmenu', function (e) {
+    if (e.target.closest && e.target.closest('input, textarea, [contenteditable]')) return;   /* keep paste in the contact form */
+    e.preventDefault();
+  });
+
+  /* =========================================================
      Day / night
      source 'user'  : the header switch, remembered for this visit, circular reveal
      source 'scene' : the home-page day cycle, smooth cross-fade, not remembered
