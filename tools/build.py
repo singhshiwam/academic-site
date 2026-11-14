@@ -19,7 +19,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SRC = ROOT / "src"
 
 # The address the site is served from (Cloudflare Pages, custom domain).
-BASE_URL = "https://rocky-website.github.io/academic-site/"
+BASE_URL = "https://rocky-website.github.io/"
 
 # (file name, menu label, <title>, meta description, extra scripts)
 PAGES = [
