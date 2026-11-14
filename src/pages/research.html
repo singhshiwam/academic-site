@@ -29,10 +29,10 @@
     <div class="sec-h ml"><div class="side">Thesis objectives</div><div><h2>The four parts of the work</h2></div></div>
     <div class="ml"><div class="side"></div>
       <ol class="qs">
-        <li id="obj-sites" data-find="Research|Observed surface layer characteristics at four sites|A Himalayan site compared with Ranchi, CASES-99 and Cardington"><div><h3>What do the observations say?</h3><p>Surface layer characteristics from four contrasting turbulence sites: one in the Central Himalaya, Ranchi on the Chota Nagpur plateau, the CASES-99 campaign in Kansas and Cardington in the UK. Comparing a mountain site with flat ones shows which departures from similarity theory are caused by terrain.</p></div></li>
-        <li id="obj-wrf" data-find="Research|Stability functions in WRF|Evaluating stable and unstable surface layer functions over mountains"><div><h3>Which stability functions work in the model?</h3><p>Stable and unstable stability functions implemented in WRF and evaluated over Uttarakhand against tower and station data. The unstable and extreme-weather part is published in Weather and Forecasting; the stable part is in progress.</p></div></li>
-        <li id="obj-new" data-find="Research|New surface layer parameterization|Heat, moisture and momentum fluxes for mountainous terrain from Himalayan eddy covariance data"><div><h3>Can we do better?</h3><p>A surface layer parameterization of heat, moisture and momentum fluxes fitted to eddy covariance data from the Himalaya, together with a roughness length that changes with conditions instead of staying fixed by land-use class.</p></div></li>
-        <li id="obj-future" data-find="Research|Surface layer under future climate|4 km WRF downscaling of CMIP6 for the Northwest Himalaya to 2050"><div><h3>What happens as the climate changes?</h3><p>A 4 km WRF downscaling of CMIP6 projections for the Northwest Himalaya, from a 1985 to 2014 baseline to 2050 under SSP2-4.5 and SSP5-8.5, to see how surface layer variables evolve over the coming decades.</p></div></li>
+        <li id="obj-sites" data-find="Research|Observed surface layer characteristics at four sites|A Himalayan site compared with Ranchi, CASES-99 and Cardington"><div><svg class="qi" viewBox="0 0 120 60" aria-hidden="true"><path d="M4 50h28l12-24 8 12 8-16 12 28h44"/><path class="pin" d="M18 50V37M52 38V25M88 50V37M108 50V37"/><g class="dots"><circle cx="18" cy="34" r="3.2"/><circle cx="52" cy="22" r="3.2"/><circle cx="88" cy="34" r="3.2"/><circle cx="108" cy="34" r="3.2"/></g></svg><h3>What do the observations say?</h3><p>Surface layer characteristics from four contrasting turbulence sites: one in the Central Himalaya, Ranchi on the Chota Nagpur plateau, the CASES-99 campaign in Kansas and Cardington in the UK. Comparing a mountain site with flat ones shows which departures from similarity theory are caused by terrain.</p></div></li>
+        <li id="obj-wrf" data-find="Research|Stability functions in WRF|Evaluating stable and unstable surface layer functions over mountains"><div><svg class="qi" viewBox="0 0 120 60" aria-hidden="true"><path class="ax" d="M8 54h106M14 58V6"/><path d="M14 42C42 38 72 26 110 8"/><path class="da" d="M14 42C46 40 78 34 110 27"/><path class="th" d="M14 42C48 41 80 39 110 37"/></svg><h3>Which stability functions work in the model?</h3><p>Stable and unstable stability functions implemented in WRF and evaluated over Uttarakhand against tower and station data. The unstable and extreme-weather part is published in Weather and Forecasting; the stable part is in progress.</p></div></li>
+        <li id="obj-new" data-find="Research|New surface layer parameterization|Heat, moisture and momentum fluxes for mountainous terrain from Himalayan eddy covariance data"><div><svg class="qi" viewBox="0 0 120 60" aria-hidden="true"><path class="ax" d="M8 54h106M14 58V6"/><g class="dots"><circle cx="24" cy="46" r="2.4"/><circle cx="34" cy="40" r="2.4"/><circle cx="42" cy="44" r="2.4"/><circle cx="52" cy="33" r="2.4"/><circle cx="62" cy="36" r="2.4"/><circle cx="70" cy="26" r="2.4"/><circle cx="82" cy="24" r="2.4"/><circle cx="92" cy="15" r="2.4"/><circle cx="102" cy="17" r="2.4"/></g><path d="M16 50C44 44 66 28 110 11"/></svg><h3>Can we do better?</h3><p>A surface layer parameterization of heat, moisture and momentum fluxes fitted to eddy covariance data from the Himalaya, together with a roughness length that changes with conditions instead of staying fixed by land-use class.</p></div></li>
+        <li id="obj-future" data-find="Research|Surface layer under future climate|4 km WRF downscaling of CMIP6 for the Northwest Himalaya to 2050"><div><svg class="qi" viewBox="0 0 120 60" aria-hidden="true"><path class="ax" d="M8 54h106"/><path d="M10 46 26 40l14 4 16-10 12 3"/><path class="da" d="M68 37 86 26l10 3 16-15"/><path class="th" d="M68 54V37"/><text x="88" y="50">2050</text></svg><h3>What happens as the climate changes?</h3><p>A 4 km WRF downscaling of CMIP6 projections for the Northwest Himalaya, from a 1985 to 2014 baseline to 2050 under SSP2-4.5 and SSP5-8.5, to see how surface layer variables evolve over the coming decades.</p></div></li>
       </ol>
     </div>
   </div>
@@ -126,10 +126,28 @@
   <div class="wrap">
     <div class="sec-h ml"><div class="side">Modelling</div><div><h2>Kilometre-scale WRF over the Himalaya</h2></div></div>
     <div class="ml"><div class="side"></div>
+      <div class="split nest-split">
       <div class="prose">
         <p>WRF-ARW is the model I use most, with the urban canopy model and the chemistry module when a problem calls for them, and RegCM for longer regional runs. At kilometre resolution over the Himalaya the results are sensitive to terrain smoothing, land-use classification and the boundary layer scheme, so much of the work is careful sensitivity testing.</p>
         <p>Rather than only switching namelist options, I edit and recompile the surface layer routines in Fortran to test alternative similarity functions and flux formulations. Model runs are checked against tower fluxes, automatic weather stations and reanalyses such as ERA5-Land and IMDAA, using correlation, mean bias, MAE, RMSE and the index of agreement.</p>
         <p>The same work supports group studies of high-impact weather: the extreme rainfall behind the July 2024 Wayanad landslide, an impact-based heat stress warning framework for a coastal city, and the effect of land-use change on forecasts over Dehradun.</p>
+      </div>
+      <figure class="nest" data-nest>
+        <svg viewBox="0 0 360 290" role="img" aria-label="Three nested model domains over mountain terrain, each finer than the one around it">
+          <defs>
+            <pattern id="g1" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40"/></pattern>
+            <pattern id="g2" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20"/></pattern>
+            <pattern id="g3" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M8 0H0V8"/></pattern>
+          </defs>
+          <g class="cont"><path d="M-10 70C50 30 120 96 200 58S320 24 372 74"/><path d="M-10 112C60 76 130 138 206 102S320 70 372 118"/><path d="M-10 156C64 122 136 180 212 146S322 116 372 162"/><path d="M-10 202C70 170 140 224 216 192S324 164 372 208"/><path d="M-10 246C74 216 146 266 220 236S326 210 372 252"/></g>
+          <rect class="d d1" x="14" y="14" width="332" height="262" rx="8" fill="url(#g1)"/>
+          <rect class="d d2" x="104" y="66" width="208" height="166" rx="6" fill="url(#g2)"/>
+          <rect class="d d3" x="164" y="108" width="104" height="88" rx="4" fill="url(#g3)"/>
+          <circle class="site" cx="222" cy="154" r="4"/><circle class="ping" cx="222" cy="154" r="4"/>
+          <g class="lab"><text x="26" y="36">Outer domain</text><text x="114" y="86">Nested domain</text><text x="172" y="126">Kilometre scale</text></g>
+        </svg>
+        <figcaption>Nested domains. Each inner grid is finer than the one around it, down to kilometre scale over the mountains.</figcaption>
+      </figure>
       </div>
     </div>
   </div>

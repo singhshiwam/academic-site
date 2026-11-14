@@ -33,7 +33,7 @@ if(m!=='day'&&m!=='night')m=clockMode();r.setAttribute('data-mode',m)})();
 </script>
 <link rel="preload" href="assets/fonts/newsreader-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/css/site.css?v=ac207341">
+<link rel="stylesheet" href="assets/css/site.css?v=f1d24dea">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Shiwam Singh","jobTitle":"PhD researcher, atmospheric science","affiliation":{"@type":"Organization","name":"Indian Institute of Technology Roorkee","department":"Centre of Excellence in Disaster Mitigation and Management"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"Indian Institute of Technology Hyderabad"}],"knowsAbout":["Boundary layer meteorology","Surface layer parameterization","Monin-Obukhov similarity theory","Eddy covariance","WRF model","Numerical weather prediction","Mountain meteorology"],"url":"https://rocky-website.github.io/","image":"https://rocky-website.github.io/assets/img/home-portrait.jpg","sameAs":["https://scholar.google.co.in/citations?user=D6hiOkkAAAAJ&hl=en","https://www.researchgate.net/profile/Shiwam-Singh-2","https://www.linkedin.com/in/shiwam-singh-ab1392219"]}
@@ -123,26 +123,41 @@ if(m!=='day'&&m!=='night')m=clockMode();r.setAttribute('data-mode',m)})();
 
 <section class="sec" id="education">
   <div class="wrap">
-    <div class="sec-h ml"><div class="side">Newest first</div><div><h2>Education</h2></div></div>
-    <ol class="log">
-      <li id="phd" data-find="Education|PhD, IIT Roorkee|Disaster Mitigation and Management, CoEDMM, since July 2023"><time>2023 to present</time><div><p class="t">Ph.D., Disaster Mitigation and Management</p><p class="d">Indian Institute of Technology Roorkee. Thesis: <i>On improved representation of mountain boundary and surface layer processes in the numerical weather prediction model.</i></p></div></li>
-      <li id="msc" data-find="Education|M.Sc. Mathematics, IIT Hyderabad|2020 to 2022, master's projects on Riemann-Roch and finite projective spaces"><time>2020 to 2022</time><div><p class="t">M.Sc., Mathematics</p><p class="d">Indian Institute of Technology Hyderabad. Projects on the Riemann-Roch theorem for function fields (July to December 2021) and on arcs in finite projective spaces, with links to maximum distance separable codes (January to June 2022).</p></div></li>
-      <li><time>2016 to 2019</time><div><p class="t">B.Sc., Mathematics</p><p class="d">Kisan P.G. College, Dr. Ram Manohar Lohia Avadh University, Ayodhya.</p></div></li>
+    <div class="sec-h ml"><div class="side">2016 to today</div><div><h2>From mathematics to the atmosphere</h2></div></div>
+    <ol class="path" data-path>
+      <li style="--i:0">
+        <svg class="pi" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 54h50M14 58V8"/><path d="M14 50C28 48 36 30 56 10"/><path class="f" d="M30 54V40M40 54V29M50 54V17" /></svg>
+        <p class="yr">2016 to 2019</p>
+        <h3>B.Sc., Mathematics</h3>
+        <p class="pl">Kisan P.G. College, Dr. Ram Manohar Lohia Avadh University, Ayodhya</p>
+      </li>
+      <li style="--i:1" id="msc" data-find="Education|M.Sc. Mathematics, IIT Hyderabad|2020 to 2022, master's projects on Riemann-Roch and finite projective spaces">
+        <svg class="pi" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 8 56 50H8Z"/><circle cx="32" cy="36" r="14"/><path d="M32 8v42M8 50l36-21M56 50 20 29"/><g class="dots"><circle cx="32" cy="8" r="2.6"/><circle cx="8" cy="50" r="2.6"/><circle cx="56" cy="50" r="2.6"/><circle cx="32" cy="50" r="2.6"/><circle cx="20" cy="29" r="2.6"/><circle cx="44" cy="29" r="2.6"/><circle cx="32" cy="36" r="2.6"/></g></svg>
+        <p class="yr">2020 to 2022</p>
+        <h3>M.Sc., Mathematics</h3>
+        <p class="pl">Indian Institute of Technology Hyderabad</p>
+        <p class="d">Projects on the Riemann-Roch theorem for function fields, and on arcs in finite projective spaces with links to maximum distance separable codes.</p>
+      </li>
+      <li style="--i:2" id="jrf" data-find="Experience|Junior Research Fellow, CoEDMM|Improved representation of surface layer parameterizations in WRF">
+        <svg class="pi" viewBox="0 0 64 64" aria-hidden="true"><path d="M22 18 8 32l14 14M42 18l14 14-14 14M37 12 27 52"/></svg>
+        <p class="yr">Nov 2022 to Jul 2023</p>
+        <h3>Junior Research Fellow</h3>
+        <p class="pl">CoEDMM, IIT Roorkee</p>
+        <p class="d">Project on improved representation of surface layer parameterizations in the Weather Research and Forecasting model. It led directly into the doctoral research.</p>
+      </li>
+      <li style="--i:3" class="now" id="phd" data-find="Education|PhD, IIT Roorkee|Disaster Mitigation and Management, CoEDMM, since July 2023">
+        <svg class="pi" viewBox="0 0 64 64" aria-hidden="true"><path d="M4 54 22 28l8 10 10-18 20 34Z"/><path d="M40 20V5M35 9h10M36.500 14h7"/></svg>
+        <p class="yr">2023 to present <span class="live" aria-hidden="true"></span></p>
+        <h3>Ph.D., Disaster Mitigation and Management</h3>
+        <p class="pl">Indian Institute of Technology Roorkee</p>
+        <p class="d">Thesis: <i>On improved representation of mountain boundary and surface layer processes in the numerical weather prediction model.</i> Source-level changes to WRF surface layer routines in Fortran, eddy covariance processing, and model evaluation against tower data.</p>
+      </li>
     </ol>
+    <p class="badges" id="exams" data-find="About|National examinations|Qualified GATE in 2022 and 2023, and JAM in 2019 and 2020"><span class="k">National examinations qualified</span><span>GATE 2022</span><span>GATE 2023</span><span>JAM 2019</span><span>JAM 2020</span></p>
   </div>
 </section>
 
-<section class="sec tint" id="positions">
-  <div class="wrap">
-    <div class="sec-h ml"><div class="side">Research positions</div><div><h2>Experience</h2></div></div>
-    <ol class="log">
-      <li><time>2023 to present</time><div><p class="t">Doctoral researcher, CoEDMM, IIT Roorkee</p><p class="d">Surface layer parameterization and boundary layer modelling over complex terrain. Source-level changes to WRF surface layer routines in Fortran, eddy covariance processing, and model evaluation with correlation, mean bias, MAE, RMSE and index of agreement.</p></div></li>
-      <li id="jrf" data-find="Experience|Junior Research Fellow, CoEDMM|Improved representation of surface layer parameterizations in WRF"><time>Nov 2022 to Jul 2023</time><div><p class="t">Junior Research Fellow, CoEDMM, IIT Roorkee</p><p class="d">Project on improved representation of surface layer parameterizations in the Weather Research and Forecasting model. This work led directly into the doctoral research.</p></div></li>
-    </ol>
-  </div>
-</section>
-
-<section class="sec" id="skills">
+<section class="sec tint" id="skills">
   <div class="wrap">
     <div class="sec-h ml"><div class="side">Tools and training</div><div><h2>Skills</h2></div></div>
     <div class="ml"><div class="side"></div>
@@ -155,13 +170,6 @@ if(m!=='day'&&m!=='night')m=clockMode();r.setAttribute('data-mode',m)})();
         <div><h3>Disaster management coursework</h3><p class="muted" style="font-size:.95rem">Vulnerability and risk analysis, landslide hazard assessment and mitigation, remote sensing and GIS, geospatial data for disaster mitigation.</p></div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="sec tint" id="exams">
-  <div class="wrap ml">
-    <div class="side">National examinations</div>
-    <div class="prose"><p>Qualified GATE in 2022 and 2023, and JAM in 2019 and 2020.</p></div>
   </div>
 </section>
 
@@ -178,6 +186,7 @@ if(m!=='day'&&m!=='night')m=clockMode();r.setAttribute('data-mode',m)})();
     <path class="near" d="M0 80 C150 58 260 78 400 54 S640 82 780 50 S1020 76 1200 58"/>
     <path class="mast" d="M780 50 V22 M774 30 H786 M776 38 H784"/>
   </svg>
+  <p class="foot-mark" aria-hidden="true">Shiwam Singh</p>
   <div class="foot-in">
     <div class="foot-a">
       <p class="foot-name">Shiwam Singh</p>
@@ -204,8 +213,8 @@ if(m!=='day'&&m!=='night')m=clockMode();r.setAttribute('data-mode',m)})();
   </div>
 </div>
 
-<script src="assets/js/search-index.js?v=ac207341" defer></script>
-<script src="assets/js/site.js?v=ac207341" defer></script>
+<script src="assets/js/search-index.js?v=f1d24dea" defer></script>
+<script src="assets/js/site.js?v=f1d24dea" defer></script>
 
 </body>
 </html>

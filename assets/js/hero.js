@@ -301,8 +301,23 @@
       ctx.globalCompositeOperation = 'source-over';
     }
 
+    birds(N);
     tower(N);
     label(N);
+  }
+
+  /* a few birds riding the daytime air */
+  var flock = [];
+  function birds(N) {
+    var a = (1 - N) * (1 - S.dusk * .6);
+    if (a < .05 || reduce) return;
+    if (!flock.length) for (var i = 0; i < 7; i++) flock.push({ u: Math.random(), y: .13 + Math.random() * .2, v: .00018 + Math.random() * .0002, ph: Math.random() * 6.28, s: .75 + Math.random() * .6 });
+    ctx.strokeStyle = 'rgba(38,56,64,' + (.6 * a) + ')'; ctx.lineWidth = 1.3; ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    for (var j = 0; j < flock.length; j++) {
+      var b = flock[j]; b.u += b.v; if (b.u > 1.05) { b.u = -.05; b.y = .12 + Math.random() * .22; }
+      var x = (.3 + b.u * .72) * W, y = H * b.y + Math.sin(frame * .011 + b.ph) * 9, w = 6.5 * b.s, f = Math.sin(frame * .15 + b.ph) * 3.4 * b.s;
+      ctx.beginPath(); ctx.moveTo(x - w, y - f); ctx.quadraticCurveTo(x - w * .45, y - f * .25 - 2.2, x, y); ctx.quadraticCurveTo(x + w * .45, y - f * .25 - 2.2, x + w, y - f); ctx.stroke();
+    }
   }
 
   var moonC = null, moonR = 0;

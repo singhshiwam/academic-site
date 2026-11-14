@@ -278,8 +278,8 @@
      Reveal on scroll
      ========================================================= */
   var REVEAL = [
-    ['.sec-h, .statement, .statement-b, .prose, .thesis, .figs, .places, .filters, .lab, .chain, .empty, .reach, .form, .facts, .skills > div, .refs, .travel', 'rv'],
-    ['.log li, .pub, .talk, .qs li, .award, .thread, .reach li', 'rv'],
+    ['.sec-h, .statement, .statement-b, .prose, .thesis, .figs, .places, .filters, .lab, .chain, .empty, .reach, .form, .facts, .refs, .travel, .badges', 'rv'],
+    ['.log li, .pub, .talk, .qs li, .award, .thread, .reach li, .pubcards li, .rc, .skills > div', 'rv'],
     ['.portrait, .map', 'rv-s']
   ];
   var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) {
@@ -661,5 +661,18 @@
       };
       window.addEventListener('scroll', function () { if (!bRaf) bRaf = requestAnimationFrame(bTick); }, { passive: true }); bTick();
     }
+  }
+
+  /* path, nested domains: drawn when they arrive */
+  $$('[data-path], [data-nest]').forEach(function (el) { if (io) io.observe(el); else el.classList.add('in'); });
+  /* cards lean a little toward the pointer */
+  if (!reduce && window.matchMedia('(hover: hover)').matches) {
+    $$('.rc, .path li, .qs li, .pubcards li').forEach(function (el) {
+      el.classList.add('spot');
+      el.addEventListener('pointermove', function (e) {
+        var r = el.getBoundingClientRect();
+        el.style.setProperty('--mx', (e.clientX - r.left) + 'px'); el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      });
+    });
   }
 })();
