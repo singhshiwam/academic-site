@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /src/
 Disallow: /tools/
 
-Sitemap: https://shiwam-singh.pages.dev/sitemap.xml
+Sitemap: https://rocky-website.github.io/academic-site/sitemap.xml
